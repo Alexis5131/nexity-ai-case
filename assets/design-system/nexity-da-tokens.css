@@ -1,0 +1,31 @@
+:root {
+  /* === IDENTITÉ OFFICIELLE "NEW NEXITY" (W Conran Design 2025) === */
+  --nexity-red-primary: #FF002D;      /* Rouge vif logotype libéré (échantillonné logo officiel) */
+  --nexity-red-banner: #EB002B;       /* Rouge bandeau & accents éditoriaux nexity.fr */
+  --nexity-red-soft: #FFF0F3;         /* Fond léger badges & surlignages Nexity */
+  --nexity-jet-black: #000000;        /* Boutons CTA principaux pill ("Rechercher", "Être rappelé") */
+  --nexity-obsidian: #111315;         /* Titres H1/H2 haute lisibilité */
+
+  /* === PALETTE "ARCHITECTURE & BÂTIMENT MINÉRAL" (Réassurance VEFA) === */
+  --arch-limestone: #FAF8F5;          /* Pierre de Lutèce / Fond principal chaleureux anti-clinique */
+  --arch-sandstone: #F2EFE9;          /* Calcaire sablé / Cartes secondaires & plans cotés */
+  --arch-oak-border: #E2DCD3;         /* Menuiserie chêne clair / Filets architecturaux */
+  --arch-slate-text: #475467;         /* Gris ardoise / Texte courant et notices */
+  --arch-blueprint-blue: #0284C7;     /* Bleu cotation architecte & baies vitrées */
+
+  /* === COULEURS SÉMANTIQUES GARDE-FOUS IA (Démo B2 / B3) === */
+  --guard-quarantine-bg: #FEF3F2;     /* Rouge quarantaine anomalie surface MBI != Plan */
+  --guard-quarantine-fg: #B42318;
+  --guard-legal-warn-bg: #FFFAEB;     /* Orange alerte prix "à partir de" caduc */
+  --guard-legal-warn-fg: #B54708;
+  --guard-verified-bg: #ECFDF3;       /* Vert mention juridique verrouillée & similarité < 30% */
+  --guard-verified-fg: #027A48;
+
+  /* === TYPOGRAPHIE & RAYONS === */
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace; /* Cotes m², réf. lots, pages notice */
+  --radius-pill: 9999px;              /* Signature boutons CTA nexity.fr */
+  --radius-card: 16px;                /* Cartes programmes & lots */
+  --radius-plan: 10px;                /* Cadres plans 2D & cartouches */
+  --shadow-floating: 0 12px 32px -8px rgba(17, 19, 21, 0.08);
+}

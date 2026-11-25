@@ -1,0 +1,29 @@
+{
+  "document": "Notice Descriptive Sommaire VEFA — Programme L'Orée Seine (38 pages)",
+  "clauses_extraites": [
+    {
+      "id": "NOT-P08",
+      "page": 8,
+      "rubrique": "Revêtements de sols et murs intérieurs",
+      "texte_contractuel": "Séjour, entrée, dégagement et coin cuisine : carrelage en grès cérame émaillé 45×45 cm (coloris pierre claire ou gris perle au choix dans la gamme promoteur avant cloisonnement), plinthes assorties. Chambres : revêtement stratifié décor chêne clair pose flottante sur sous-couche acoustique. Murs et plafonds livrés en peinture blanche finition velours deux couches."
+    },
+    {
+      "id": "NOT-P12",
+      "page": 12,
+      "rubrique": "Menuiseries extérieures et occultations",
+      "texte_contractuel": "Menuiseries extérieures mixtes bois intérieur / aluminium thermolaqué extérieur avec double vitrage isolant thermique et acoustique renforcé. Volets roulants électriques à commande centralisée et individuelle dans le séjour et toutes les chambres."
+    },
+    {
+      "id": "NOT-P16",
+      "page": 16,
+      "rubrique": "Équipements cuisine, salle de bain et prises (TMA)",
+      "texte_contractuel": "Salle de bain livrée équipée (meuble vasque, miroir bandeau LED, baignoire ou receveur extra-plat selon plan, radiateur sèche-serviettes). Coin cuisine livré non meublé et sans électroménager : attentes plomberie (eau chaude/froide, évacuation) et bandeau de 6 prises électriques réglementaires posés selon plan. Déplacement de prises ou cloisons non porteuses possible via Travaux Modificatifs Acquéreur (TMA) avant achèvement du gros œuvre. Offre d'aménagement mobilier partenaire La Redoute accessible après signature."
+    },
+    {
+      "id": "NOT-P22",
+      "page": 22,
+      "rubrique": "Chauffage, eau chaude et performance RE2020",
+      "texte_contractuel": "Raccordement au réseau de chaleur urbain alimenté à >65 % par énergies renouvelables, comptage individuel, thermostat d'ambiance programmable. Réglementation RE2020 seuil 2025, étiquette DPE projetée classe A."
+    }
+  ]
+}

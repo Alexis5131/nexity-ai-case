@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "source": "Pré-généré par Claude pendant la préparation (25/11/2026), passé dans les mêmes contrôles que le mode live",
+    "genere_le": "2026-11-25T12:00:00+01:00"
+  },
+  "lots": {
+    "B31": {
+      "titre": "T3 traversant au 4e et dernier étage, terrasse de 14 m²",
+      "accroche": "Le seul T3 disponible au dernier étage du bâtiment B : un séjour de 27,2 m² qui s'ouvre sur une terrasse plein ciel orientée Sud-Ouest.",
+      "points_forts": [
+        {
+          "texte": "Terrasse plein ciel de 14 m², le plus grand extérieur des T3 disponibles (6,5 m² pour le suivant).",
+          "sources": ["MBI.exterieur_type", "MBI.exterieur_m2", "SING.PLUS_GRAND_EXTERIEUR"]
+        },
+        {
+          "texte": "Logement traversant, exposition principale Sud-Ouest, au 4e et dernier étage.",
+          "sources": ["MBI.exposition", "MBI.etage", "SING.TRAVERSANT", "SING.DERNIER_ETAGE"]
+        },
+        {
+          "texte": "D'après le plan de vente : séjour avec coin cuisine de 27,2 m², chambres de 12,4 m² et 10,3 m².",
+          "sources": ["PLAN.sejour_cuisine", "PLAN.chambre_1", "PLAN.chambre_2"]
+        }
+      ],
+      "prestations": [
+        {
+          "texte": "Carrelage grès cérame 45x45 cm au séjour et au coin cuisine, stratifié décor chêne clair dans les chambres, murs et plafonds en peinture blanche.",
+          "clause_id": "NOT-P08"
+        },
+        {
+          "texte": "Volets roulants électriques dans le séjour et toutes les chambres, double vitrage isolant thermique et acoustique.",
+          "clause_id": "NOT-P12"
+        },
+        {
+          "texte": "Coin cuisine livré non meublé et sans électroménager, avec attentes plomberie et 6 prises ; prises déplaçables en TMA avant la fin du gros œuvre.",
+          "clause_id": "NOT-P16"
+        }
+      ]
+    },
+    "B12": {
+      "titre": "T3 de 61,2 m² côté cœur d'îlot, au 1er étage",
+      "accroche": "Exposé Sud-Est et tourné vers le jardin intérieur, c'est le T3 disponible le plus accessible du programme, avec le meilleur prix au m².",
+      "points_forts": [
+        {
+          "texte": "Balcon couvert de 6,5 m² ouvert sur le jardin intérieur, en cœur d'îlot.",
+          "sources": ["MBI.exterieur_type", "MBI.exterieur_m2", "SING.COEUR_ILOT"]
+        },
+        {
+          "texte": "Le prix d'entrée et le meilleur prix au m² parmi les T3 disponibles du programme.",
+          "sources": ["SING.PRIX_ACCES", "SING.PRIX_M2"]
+        },
+        {
+          "texte": "Plan de vente : pièce de vie de 25,8 m² avec coin cuisine, deux chambres de 11,8 m² et 10,1 m².",
+          "sources": ["PLAN.sejour_cuisine", "PLAN.chambre_1", "PLAN.chambre_2"]
+        }
+      ],
+      "prestations": [
+        {
+          "texte": "Sols en grès cérame 45x45 cm dans la pièce de vie, stratifié décor chêne clair dans les chambres, peinture blanche aux murs.",
+          "clause_id": "NOT-P08"
+        },
+        {
+          "texte": "Chauffage par réseau de chaleur urbain alimenté à plus de 65 % par des énergies renouvelables, comptage individuel et thermostat programmable.",
+          "clause_id": "NOT-P22"
+        },
+        {
+          "texte": "Coin cuisine livré sans meubles ni électroménager : attentes plomberie et 6 prises posées selon le plan, modifiables en TMA.",
+          "clause_id": "NOT-P16"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,566 @@
+{
+  "meta": {
+    "mode_demande": "cache",
+    "mode_effectif": "cache",
+    "modele": null,
+    "cache": {
+      "source": "Pré-généré par Claude pendant la préparation (25/11/2026), passé dans les mêmes contrôles que le mode live",
+      "genere_le": "2026-11-25T12:00:00+01:00"
+    },
+    "erreur_initialisation": null,
+    "execute_le": "2026-11-25T11:06:00.744172+00:00",
+    "duree_totale_s": 0.0,
+    "durees_etapes_s": [
+      0.001,
+      0.0,
+      0.0,
+      0.001
+    ]
+  },
+  "programme": {
+    "id": "PRG-92-OREE-SEINE",
+    "nom": "L'Orée Seine",
+    "ville": "Asnières-sur-Seine (92600)",
+    "zone_fiscale": "A",
+    "nb_lots_total": 60,
+    "nb_lots_disponibles": 14,
+    "livraison_previsionnelle": "3e trimestre 2028",
+    "prix_a_partir_de_affiche_page_programme": 269000,
+    "lot_portant_prix_appel": "A04",
+    "garanties": [
+      "GFA bancaire BNP Paribas",
+      "Garantie décennale",
+      "RE2020 seuil 2025 (DPE A projeté)"
+    ]
+  },
+  "lots": [
+    {
+      "lot_id": "B31",
+      "typologie": "T3",
+      "batiment": "B",
+      "etage": 4,
+      "dernier_etage": true,
+      "statut_mbi": "DISPONIBLE",
+      "prix_ttc": 312000,
+      "tva_reduite_5_5_eligible": false,
+      "ptz_eligible": true,
+      "surface_habitable_mbi": 63.4,
+      "exterieur_type": "Terrasse plein ciel",
+      "exterieur_m2": 14.0,
+      "exposition": "Sud-Ouest (traversant)",
+      "parking_inclus": "1 place sous-sol sécurisé",
+      "description_actuelle_mbi_seloger": "Appartement T3 de 63,4 m² au 4e étage avec terrasse et parking.",
+      "plan_2d_fichier": "plans-2d/lot-B31-T3-dernier-etage-63.4m2.svg",
+      "date_changement_statut": null,
+      "prix_m2": 4921,
+      "lecture_plan": {
+        "lot_id": "B31",
+        "surface_cartouche": 63.4,
+        "pieces": {
+          "sejour_cuisine": 27.2,
+          "chambre_1": 12.4,
+          "chambre_2": 10.3,
+          "salle_de_bain_wc": 7.7,
+          "entree_degagement": 5.8
+        },
+        "exterieur_libelle": "Terrasse plein ciel",
+        "exterieur_m2": 14.0,
+        "exposition": "Sud-Ouest",
+        "source": "svg"
+      },
+      "source_lecture": "texte SVG"
+    },
+    {
+      "lot_id": "B12",
+      "typologie": "T3",
+      "batiment": "B",
+      "etage": 1,
+      "dernier_etage": false,
+      "statut_mbi": "DISPONIBLE",
+      "prix_ttc": 279000,
+      "tva_reduite_5_5_eligible": false,
+      "ptz_eligible": true,
+      "surface_habitable_mbi": 61.2,
+      "exterieur_type": "Balcon couvert sur jardin intérieur",
+      "exterieur_m2": 6.5,
+      "exposition": "Sud-Est (calme cœur d'îlot)",
+      "parking_inclus": "1 place sous-sol sécurisé",
+      "description_actuelle_mbi_seloger": "Appartement T3 de 61,2 m² au 1er étage avec balcon.",
+      "plan_2d_fichier": "plans-2d/lot-B12-T3-coeur-ilot-61.2m2.svg",
+      "date_changement_statut": null,
+      "prix_m2": 4559,
+      "lecture_plan": {
+        "lot_id": "B12",
+        "surface_cartouche": 61.2,
+        "pieces": {
+          "sejour_cuisine": 25.8,
+          "chambre_1": 11.8,
+          "chambre_2": 10.1,
+          "salle_de_bain_wc": 7.4,
+          "entree_degagement": 6.1
+        },
+        "exterieur_libelle": "Balcon couvert",
+        "exterieur_m2": 6.5,
+        "exposition": "Sud-Est",
+        "source": "svg"
+      },
+      "source_lecture": "texte SVG"
+    },
+    {
+      "lot_id": "B22",
+      "typologie": "T3",
+      "batiment": "B",
+      "etage": 2,
+      "dernier_etage": false,
+      "statut_mbi": "DISPONIBLE",
+      "prix_ttc": 289000,
+      "tva_reduite_5_5_eligible": false,
+      "ptz_eligible": true,
+      "surface_habitable_mbi": 65.0,
+      "exterieur_type": "Balcon",
+      "exterieur_m2": 5.8,
+      "exposition": "Ouest",
+      "parking_inclus": "1 place sous-sol",
+      "description_actuelle_mbi_seloger": "Beau T3 lumineux de 65 m².",
+      "plan_2d_fichier": "plans-2d/lot-B22-T3-ANOMALIE-61.8m2.svg",
+      "date_changement_statut": null,
+      "prix_m2": 4446,
+      "lecture_plan": {
+        "lot_id": "B22",
+        "surface_cartouche": 61.8,
+        "pieces": {
+          "sejour_cuisine": 26.1,
+          "chambre_1": 12.0,
+          "chambre_2": 10.2,
+          "salle_de_bain_wc": 7.6,
+          "entree_degagement": 5.9
+        },
+        "exterieur_libelle": "Balcon",
+        "exterieur_m2": 5.8,
+        "exposition": "Ouest",
+        "source": "svg"
+      },
+      "source_lecture": "texte SVG"
+    },
+    {
+      "lot_id": "A04",
+      "typologie": "T3",
+      "batiment": "A",
+      "etage": 0,
+      "dernier_etage": false,
+      "statut_mbi": "VENDU",
+      "prix_ttc": 269000,
+      "tva_reduite_5_5_eligible": null,
+      "ptz_eligible": null,
+      "surface_habitable_mbi": 59.5,
+      "exterieur_type": "Loggia",
+      "exterieur_m2": 4.5,
+      "exposition": "Est",
+      "parking_inclus": null,
+      "description_actuelle_mbi_seloger": null,
+      "plan_2d_fichier": null,
+      "date_changement_statut": "2026-11-25T08:00:00Z",
+      "prix_m2": 4521,
+      "lecture_plan": null,
+      "source_lecture": null
+    }
+  ],
+  "notice": {
+    "document": "Notice Descriptive Sommaire VEFA — Programme L'Orée Seine (38 pages)",
+    "clauses_extraites": [
+      {
+        "id": "NOT-P08",
+        "page": 8,
+        "rubrique": "Revêtements de sols et murs intérieurs",
+        "texte_contractuel": "Séjour, entrée, dégagement et coin cuisine : carrelage en grès cérame émaillé 45×45 cm (coloris pierre claire ou gris perle au choix dans la gamme promoteur avant cloisonnement), plinthes assorties. Chambres : revêtement stratifié décor chêne clair pose flottante sur sous-couche acoustique. Murs et plafonds livrés en peinture blanche finition velours deux couches."
+      },
+      {
+        "id": "NOT-P12",
+        "page": 12,
+        "rubrique": "Menuiseries extérieures et occultations",
+        "texte_contractuel": "Menuiseries extérieures mixtes bois intérieur / aluminium thermolaqué extérieur avec double vitrage isolant thermique et acoustique renforcé. Volets roulants électriques à commande centralisée et individuelle dans le séjour et toutes les chambres."
+      },
+      {
+        "id": "NOT-P16",
+        "page": 16,
+        "rubrique": "Équipements cuisine, salle de bain et prises (TMA)",
+        "texte_contractuel": "Salle de bain livrée équipée (meuble vasque, miroir bandeau LED, baignoire ou receveur extra-plat selon plan, radiateur sèche-serviettes). Coin cuisine livré non meublé et sans électroménager : attentes plomberie (eau chaude/froide, évacuation) et bandeau de 6 prises électriques réglementaires posés selon plan. Déplacement de prises ou cloisons non porteuses possible via Travaux Modificatifs Acquéreur (TMA) avant achèvement du gros œuvre. Offre d'aménagement mobilier partenaire La Redoute accessible après signature."
+      },
+      {
+        "id": "NOT-P22",
+        "page": 22,
+        "rubrique": "Chauffage, eau chaude et performance RE2020",
+        "texte_contractuel": "Raccordement au réseau de chaleur urbain alimenté à >65 % par énergies renouvelables, comptage individuel, thermostat d'ambiance programmable. Réglementation RE2020 seuil 2025, étiquette DPE projetée classe A."
+      }
+    ]
+  },
+  "etape1_surfaces": [
+    {
+      "lot_id": "B31",
+      "surface_mbi": 63.4,
+      "surface_plan": 63.4,
+      "somme_pieces": 63.4,
+      "ecart_m2": 0.0,
+      "ecart_pct": 0.0,
+      "statut": "OK",
+      "motifs": [],
+      "dans_tolerance_contractuelle": true
+    },
+    {
+      "lot_id": "B12",
+      "surface_mbi": 61.2,
+      "surface_plan": 61.2,
+      "somme_pieces": 61.2,
+      "ecart_m2": 0.0,
+      "ecart_pct": 0.0,
+      "statut": "OK",
+      "motifs": [],
+      "dans_tolerance_contractuelle": true
+    },
+    {
+      "lot_id": "B22",
+      "surface_mbi": 65.0,
+      "surface_plan": 61.8,
+      "somme_pieces": 61.8,
+      "ecart_m2": -3.2,
+      "ecart_pct": -4.9,
+      "statut": "QUARANTAINE",
+      "motifs": [
+        "Surface MBI 65,00 m² contre 61,80 m² au cartouche (écart -3,20 m²)"
+      ],
+      "dans_tolerance_contractuelle": true
+    }
+  ],
+  "etape2_prix_appel": {
+    "ancien_lot": "A04",
+    "ancien_prix": 269000,
+    "motif": "Le lot A04 qui porte le prix d'appel est passé au statut VENDU",
+    "nouveau_lot": "B12",
+    "nouveau_prix": 279000,
+    "perimetre": "2 lot(s) disponible(s) et fiable(s) dans le flux reçu"
+  },
+  "etape2_exclus": [
+    {
+      "lot_id": "A04",
+      "statut": "VENDU",
+      "depuis": "2026-11-25T08:00:00Z"
+    }
+  ],
+  "etape3_singularites": {
+    "B31": [
+      {
+        "code": "DERNIER_ETAGE",
+        "libelle": "Seul T3 disponible au dernier étage",
+        "valeur": "4e et dernier étage",
+        "reference": null,
+        "champs": [
+          "etage",
+          "dernier_etage"
+        ]
+      },
+      {
+        "code": "PLUS_GRAND_EXTERIEUR",
+        "libelle": "Plus grand extérieur des T3 disponibles",
+        "valeur": "14,0 m²",
+        "reference": "6,5 m² pour le suivant",
+        "champs": [
+          "exterieur_m2",
+          "exterieur_type"
+        ]
+      },
+      {
+        "code": "TRAVERSANT",
+        "libelle": "Seul T3 disponible traversant",
+        "valeur": "Sud-Ouest (traversant)",
+        "reference": null,
+        "champs": [
+          "exposition"
+        ]
+      },
+      {
+        "code": "PLUS_GRANDE_SURFACE",
+        "libelle": "Plus grande surface des T3 disponibles",
+        "valeur": "63,4 m²",
+        "reference": null,
+        "champs": [
+          "surface_habitable_mbi"
+        ]
+      }
+    ],
+    "B12": [
+      {
+        "code": "COEUR_ILOT",
+        "libelle": "Seul T3 disponible côté cœur d'îlot",
+        "valeur": "Balcon couvert sur jardin intérieur",
+        "reference": null,
+        "champs": [
+          "exposition",
+          "exterieur_type"
+        ]
+      },
+      {
+        "code": "PRIX_ACCES",
+        "libelle": "Prix le plus bas des T3 disponibles",
+        "valeur": "279 000 €",
+        "reference": "312 000 € pour le suivant",
+        "champs": [
+          "prix_ttc"
+        ]
+      },
+      {
+        "code": "PRIX_M2",
+        "libelle": "Meilleur prix au m² des T3 disponibles",
+        "valeur": "4 559 €/m²",
+        "reference": "4 921 €/m² pour le suivant",
+        "champs": [
+          "prix_ttc",
+          "surface_habitable_mbi"
+        ]
+      }
+    ]
+  },
+  "etape4_generation": {
+    "B31": {
+      "statut": "PRETE",
+      "source": "cache",
+      "tentatives": 0,
+      "violations": [],
+      "erreur": null,
+      "fiche": {
+        "titre": "T3 traversant au 4e et dernier étage, terrasse de 14 m²",
+        "accroche": "Le seul T3 disponible au dernier étage du bâtiment B : un séjour de 27,2 m² qui s'ouvre sur une terrasse plein ciel orientée Sud-Ouest.",
+        "points_forts": [
+          {
+            "texte": "Terrasse plein ciel de 14 m², le plus grand extérieur des T3 disponibles (6,5 m² pour le suivant).",
+            "sources": [
+              "MBI.exterieur_type",
+              "MBI.exterieur_m2",
+              "SING.PLUS_GRAND_EXTERIEUR"
+            ]
+          },
+          {
+            "texte": "Logement traversant, exposition principale Sud-Ouest, au 4e et dernier étage.",
+            "sources": [
+              "MBI.exposition",
+              "MBI.etage",
+              "SING.TRAVERSANT",
+              "SING.DERNIER_ETAGE"
+            ]
+          },
+          {
+            "texte": "D'après le plan de vente : séjour avec coin cuisine de 27,2 m², chambres de 12,4 m² et 10,3 m².",
+            "sources": [
+              "PLAN.sejour_cuisine",
+              "PLAN.chambre_1",
+              "PLAN.chambre_2"
+            ]
+          }
+        ],
+        "prestations": [
+          {
+            "texte": "Carrelage grès cérame 45x45 cm au séjour et au coin cuisine, stratifié décor chêne clair dans les chambres, murs et plafonds en peinture blanche.",
+            "clause_id": "NOT-P08"
+          },
+          {
+            "texte": "Volets roulants électriques dans le séjour et toutes les chambres, double vitrage isolant thermique et acoustique.",
+            "clause_id": "NOT-P12"
+          },
+          {
+            "texte": "Coin cuisine livré non meublé et sans électroménager, avec attentes plomberie et 6 prises ; prises déplaçables en TMA avant la fin du gros œuvre.",
+            "clause_id": "NOT-P16"
+          }
+        ]
+      },
+      "mentions": [
+        {
+          "id": "LEGAL_VEFA_PRIX",
+          "texte": "*Prix TTC indicatif hors frais d'acte notarié réduits (environ 2,5 % dans le neuf), valeur au 25/11/2026 sous réserve de disponibilité du lot dans le stock MBI. Détail du stationnement inclus précisé sur la fiche lot.",
+          "empreinte": "cd2b02add9fe"
+        },
+        {
+          "id": "LEGAL_PTZ_2026",
+          "texte": "Éligibilité au Prêt à Taux Zéro (PTZ) réservée aux primo-accédants pour l'acquisition de leur résidence principale neuve en zone A, sous conditions de ressources (Revenu Fiscal de Référence N-2) et de composition du foyer. Simulation non engageante ; un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.",
+          "empreinte": "dd10b07a6ad2"
+        },
+        {
+          "id": "LEGAL_VISUEL_NON_CONTRACTUEL",
+          "texte": "Plan de vente et surfaces donnés à titre indicatif sous tolérance contractuelle VEFA (±5 %). Les vues d'inspiration décorative (partenariat La Redoute post-signature) constituent des suggestions d'aménagement non contractuelles ; le logement est livré nu conformément à la Notice Descriptive Sommaire.",
+          "empreinte": "09e7073b35b8"
+        }
+      ],
+      "mentions_intactes": true,
+      "controles": {
+        "chiffres_verifies": [
+          4.0,
+          14.0,
+          27.2,
+          14.0,
+          6.5,
+          4.0,
+          27.2,
+          12.4,
+          10.3,
+          45.0,
+          6.0
+        ],
+        "clauses_citees": [
+          {
+            "id": "NOT-P08",
+            "page": 8
+          },
+          {
+            "id": "NOT-P12",
+            "page": 12
+          },
+          {
+            "id": "NOT-P16",
+            "page": 16
+          }
+        ],
+        "sources_citees": [
+          "MBI.etage",
+          "MBI.exposition",
+          "MBI.exterieur_m2",
+          "MBI.exterieur_type",
+          "PLAN.chambre_1",
+          "PLAN.chambre_2",
+          "PLAN.sejour_cuisine",
+          "SING.DERNIER_ETAGE",
+          "SING.PLUS_GRAND_EXTERIEUR",
+          "SING.TRAVERSANT"
+        ],
+        "violations": 0
+      }
+    },
+    "B12": {
+      "statut": "PRETE",
+      "source": "cache",
+      "tentatives": 0,
+      "violations": [],
+      "erreur": null,
+      "fiche": {
+        "titre": "T3 de 61,2 m² côté cœur d'îlot, au 1er étage",
+        "accroche": "Exposé Sud-Est et tourné vers le jardin intérieur, c'est le T3 disponible le plus accessible du programme, avec le meilleur prix au m².",
+        "points_forts": [
+          {
+            "texte": "Balcon couvert de 6,5 m² ouvert sur le jardin intérieur, en cœur d'îlot.",
+            "sources": [
+              "MBI.exterieur_type",
+              "MBI.exterieur_m2",
+              "SING.COEUR_ILOT"
+            ]
+          },
+          {
+            "texte": "Le prix d'entrée et le meilleur prix au m² parmi les T3 disponibles du programme.",
+            "sources": [
+              "SING.PRIX_ACCES",
+              "SING.PRIX_M2"
+            ]
+          },
+          {
+            "texte": "Plan de vente : pièce de vie de 25,8 m² avec coin cuisine, deux chambres de 11,8 m² et 10,1 m².",
+            "sources": [
+              "PLAN.sejour_cuisine",
+              "PLAN.chambre_1",
+              "PLAN.chambre_2"
+            ]
+          }
+        ],
+        "prestations": [
+          {
+            "texte": "Sols en grès cérame 45x45 cm dans la pièce de vie, stratifié décor chêne clair dans les chambres, peinture blanche aux murs.",
+            "clause_id": "NOT-P08"
+          },
+          {
+            "texte": "Chauffage par réseau de chaleur urbain alimenté à plus de 65 % par des énergies renouvelables, comptage individuel et thermostat programmable.",
+            "clause_id": "NOT-P22"
+          },
+          {
+            "texte": "Coin cuisine livré sans meubles ni électroménager : attentes plomberie et 6 prises posées selon le plan, modifiables en TMA.",
+            "clause_id": "NOT-P16"
+          }
+        ]
+      },
+      "mentions": [
+        {
+          "id": "LEGAL_VEFA_PRIX",
+          "texte": "*Prix TTC indicatif hors frais d'acte notarié réduits (environ 2,5 % dans le neuf), valeur au 25/11/2026 sous réserve de disponibilité du lot dans le stock MBI. Détail du stationnement inclus précisé sur la fiche lot.",
+          "empreinte": "cd2b02add9fe"
+        },
+        {
+          "id": "LEGAL_PTZ_2026",
+          "texte": "Éligibilité au Prêt à Taux Zéro (PTZ) réservée aux primo-accédants pour l'acquisition de leur résidence principale neuve en zone A, sous conditions de ressources (Revenu Fiscal de Référence N-2) et de composition du foyer. Simulation non engageante ; un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.",
+          "empreinte": "dd10b07a6ad2"
+        },
+        {
+          "id": "LEGAL_VISUEL_NON_CONTRACTUEL",
+          "texte": "Plan de vente et surfaces donnés à titre indicatif sous tolérance contractuelle VEFA (±5 %). Les vues d'inspiration décorative (partenariat La Redoute post-signature) constituent des suggestions d'aménagement non contractuelles ; le logement est livré nu conformément à la Notice Descriptive Sommaire.",
+          "empreinte": "09e7073b35b8"
+        }
+      ],
+      "mentions_intactes": true,
+      "controles": {
+        "chiffres_verifies": [
+          61.2,
+          1.0,
+          6.5,
+          25.8,
+          11.8,
+          10.1,
+          45.0,
+          65.0,
+          6.0
+        ],
+        "clauses_citees": [
+          {
+            "id": "NOT-P08",
+            "page": 8
+          },
+          {
+            "id": "NOT-P22",
+            "page": 22
+          },
+          {
+            "id": "NOT-P16",
+            "page": 16
+          }
+        ],
+        "sources_citees": [
+          "MBI.exterieur_m2",
+          "MBI.exterieur_type",
+          "PLAN.chambre_1",
+          "PLAN.chambre_2",
+          "PLAN.sejour_cuisine",
+          "SING.COEUR_ILOT",
+          "SING.PRIX_ACCES",
+          "SING.PRIX_M2"
+        ],
+        "violations": 0
+      }
+    }
+  },
+  "similarite": [
+    {
+      "paire": "B12-B31",
+      "score": 0.053,
+      "seuil": 0.3,
+      "statut": "OK"
+    }
+  ],
+  "lots_temoins": [
+    {
+      "typologie": "T3",
+      "lot_id": "B31",
+      "lots_couverts": [
+        "B31",
+        "B12"
+      ],
+      "raison": "Lot qui porte le plus de singularités : c'est là que le risque de surpromesse est le plus fort."
+    }
+  ],
+  "productivite": {
+    "minutes_manuelles_par_lot": 36,
+    "lots_generes": 2,
+    "lots_a_relire": 1
+  }
+}

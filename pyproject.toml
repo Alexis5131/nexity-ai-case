@@ -1,0 +1,18 @@
+[project]
+name = "nexity-b2-pipeline"
+version = "1.0.0"
+description = "Prototype B2 : usine de pages lots differenciees avec garde-fous (cas Nexity.fr, donnees fictives)"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.6",
+    "defusedxml>=0.7",
+    "anthropic>=0.40",
+    "pillow>=10",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["pipeline/tests"]
+pythonpath = ["pipeline"]
