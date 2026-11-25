@@ -30,23 +30,25 @@ uv run python demo/build_demo.py --run live
 
 ### Raccourcis clavier de la démo
 
-| Touche | Action |
+| Touche / Action | Effet |
 | :--- | :--- |
-| `Espace` ou `→` | Étape suivante (à l'étape 5 : valide le lot-témoin) |
+| `Espace` ou `→` | Étape suivante (à l'étape 5 : valide le lot témoin) |
 | `←` | Revenir à l'étape précédente |
 | `R` | Réinitialiser immédiatement (interrompt aussi « tout dérouler ») |
 | `P` | Basculer entre l'annonce portail et la page `nexity.fr` |
-| `L` | Changer de lot (`B31` ↔ `B12`) |
-| `Z` / `Échap` | Agrandir / refermer le téléphone en mode vidéoprojecteur |
+| `L` | Changer de lot généré (`B31` ↔ `B12`) |
+| `T` | Relancer le tour guidé des fils de preuve (étape ≥ 4) |
+| `Z` / `Échap` | Agrandir / refermer le plan 2D du lot sélectionné |
+| Clic lot (gauche) / étape (rail) | Inspecter n'importe quel lot du flux (`B31`, `B12`, `B22`, `A04`) ou revenir à une étape terminée |
 
 ## Scénario de démonstration (4 minutes)
 
-| Minute | Ce que l'on montre | Étape |
+| Minute | Ce que l'on montre dans le studio en place | Étape |
 | :---: | :--- | :---: |
-| **1** | Le programme *L'Orée Seine*, les 4 lots du flux MBI et leur annonce actuelle d'une ligne. Téléphone en vue « Portail aujourd'hui ». | `0` |
-| **2** | **Garde-fou 1** : `B22` bloqué en quarantaine (plan `61,80 m²` vs MBI `65,00 m²`). **Garde-fou 2** : `A04` vendu, prix d'appel `269 000 €*` recalculé à `279 000 €*` (`B12`). Les deux panneaux restent visibles ensemble. | `1` et `2` |
-| **3** | Singularités pré-calculées avec **portée bornée à l'échantillon vérifié** et **empreinte liée aux voisins**, puis rédaction et contrôles : chiffres prouvés, notice citée par page, mentions légales hors IA, similarité `B12 / B31` (`6 %`). | `3` et `4` |
-| **4** | Validation du lot-témoin `B31` (1 relecture de ~4 min pour 2 fiches, contre 36 min/lot en manuel). Téléphone : curseur état livré / inspiration, `L` pour `B12` (plan affiché au lieu du visuel terrasse), `P` pour comparer au portail, `Z` pour zoomer sur projecteur. | `5` |
+| **1** | Le programme *L'Orée Seine*, les 4 lots reçus dans la colonne MBI et leur annonce actuelle d'une ligne dans l'aperçu mobile (« Portail »). | `0` |
+| **2** | **Garde-fou 1** : balayage des plans 2D, `B22` passe en `QUARANTAINE` dans le dossier central (plan `61,80 m²` vs MBI `65,00 m²` + zoom cartouche). **Garde-fou 2** : `A04` vendu est exclu, le prix d'appel affiché à gauche bascule de `269 000 €` à `279 000 €` (`B12`). | `1` et `2` |
+| **3** | Singularités comparées sur le périmètre vérifié (`T3`) avec barres de comparaison, formulations non prouvées barrées et sélection du lot témoin `B31` ; puis rédaction en direct sur `nexity.fr` avec tracé SVG des fils de preuve reliant chaque phrase au plan 2D, au MBI et aux clauses de la notice descriptive. | `3` et `4` |
+| **4** | Validation groupée du lot témoin `B31` depuis le bandeau d'avis (`1` relecture de ~4 min pour `2` fiches contre `72 min` en manuel), bascule `L` vers `B12`, comparaison `P` avec le portail, raccourci `T` pour les preuves et `Z` pour agrandir un plan. | `5` |
 
 ## Garde-fous implémentés face aux risques du jury
 
@@ -68,7 +70,7 @@ uv run python demo/build_demo.py --run live
 | `pipeline/b2_pipeline/similarity.py` | Similarité Jaccard sur bigrammes hors mots vides (seuil d'alerte `30 %`) |
 | `pipeline/b2_pipeline/legal.py` | Assemblage déterministe des mentions légales et contrôle d'intégrité SHA-256 |
 | `pipeline/b2_pipeline/run.py` | Orchestration de bout en bout, invalidation sur mouvement de stock, sortie déterministe |
-| `demo/template.html` | Studio Sulu 3 en 3 colonnes + aperçu mobile interactif et mode zoom projecteur |
+| `demo/template.html` | Studio Pages Lots en 3 colonnes + fils de preuve SVG, aperçu mobile interactif et zoom plan 2D |
 | `demo/build_demo.py` | Assemblage idempotent de `demo/index.html` autonome hors ligne |
 | `assets/data-demo/mbi_lots.json` | Extrait MBI de 4 lots T3 du programme *L'Orée Seine* |
 
