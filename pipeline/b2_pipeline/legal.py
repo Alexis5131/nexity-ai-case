@@ -37,5 +37,10 @@ def assembler_mentions(lot: Lot, bibliotheque: BibliothequeMentions) -> list[Men
     ]
 
 
-def verifier_integrite(mentions: list[MentionAssemblee], bibliotheque: BibliothequeMentions) -> bool:
-    return all(empreinte(bibliotheque.mentions[m.id]) == m.empreinte == empreinte(m.texte) for m in mentions)
+def verifier_integrite(
+    mentions: list[MentionAssemblee], bibliotheque: BibliothequeMentions
+) -> bool:
+    return all(
+        empreinte(bibliotheque.mentions[m.id]) == m.empreinte == empreinte(m.texte)
+        for m in mentions
+    )

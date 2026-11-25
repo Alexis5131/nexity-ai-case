@@ -2,8 +2,8 @@
 
 Integre : resultat du pipeline (JSON), visuels, plans, logos, polices et tokens CSS.
 Usage :
-    python demo/build_demo.py                      # lit pipeline/out/demo_result.json
-    python demo/build_demo.py --run cache          # relance le pipeline avant (cache | live | auto)
+    uv run python demo/build_demo.py                # lit pipeline/out/demo_result.json
+    uv run python demo/build_demo.py --run cache    # relance le pipeline (cache | live | auto)
 """
 
 from __future__ import annotations
@@ -15,6 +15,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from typing import Any
 
 RACINE = Path(__file__).resolve().parents[1]
 ASSETS = RACINE / "assets"
@@ -42,7 +43,8 @@ def jpeg(chemin: Path, largeur_max: int = 1400, qualite: int = 80) -> str:
         return data_uri(chemin.read_bytes(), "image/jpeg")
     im = Image.open(chemin).convert("RGB")
     if im.width > largeur_max:
-        im = im.resize((largeur_max, round(im.height * largeur_max / im.width)), Image.LANCZOS)
+        hauteur = round(im.height * largeur_max / im.width)
+        im = im.resize((largeur_max, hauteur), Image.Resampling.LANCZOS)
     tampon = io.BytesIO()
     im.save(tampon, "JPEG", quality=qualite, optimize=True, progressive=True)
     return data_uri(tampon.getvalue(), "image/jpeg")
@@ -59,32 +61,37 @@ def polices_css() -> str:
     return "\n".join(regles)
 
 
-def assets(resultat: dict) -> dict:
+def assets(resultat: dict[str, Any]) -> dict[str, Any]:
     visuels = ASSETS / "batiment-visuels"
     plans = {
-        l["lot_id"]: data_uri((ASSETS / l["plan_2d_fichier"]).read_bytes(), "image/svg+xml")
-        for l in resultat["lots"] if l.get("plan_2d_fichier")
+        lot["lot_id"]: data_uri((ASSETS / lot["plan_2d_fichier"]).read_bytes(), "image/svg+xml")
+        for lot in resultat["lots"]
+        if lot.get("plan_2d_fichier")
     }
     return {
         "facade": jpeg(visuels / "01-facade-residence-oree-seine.jpg"),
         "livre": jpeg(visuels / "02-sejour-t3-etat-livre-notice.jpg"),
         "inspiration": jpeg(visuels / "03-sejour-t3-inspiration-laredoute.jpg"),
-        "logoW": data_uri((ASSETS / "brand" / "nexity-logo-2025-white-hd.png").read_bytes(), "image/png"),
+        "logoW": data_uri(
+            (ASSETS / "brand" / "nexity-logo-2025-white-hd.png").read_bytes(), "image/png"
+        ),
         "logoR": data_uri((ASSETS / "brand" / "nexity-logo-2025-hd.png").read_bytes(), "image/png"),
         "plans": plans,
     }
 
 
-def json_script(obj) -> str:
+def json_script(obj: Any) -> str:
     return json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
 
 
 def construire(chemin_resultat: Path = RESULTAT, sortie: Path = DEMO / "index.html") -> Path:
-    resultat = json.loads(chemin_resultat.read_text(encoding="utf-8"))
+    resultat: dict[str, Any] = json.loads(chemin_resultat.read_text(encoding="utf-8"))
     html = (DEMO / "template.html").read_text(encoding="utf-8")
     remplacements = {
         "/*__FONTS__*/": polices_css(),
-        "/*__TOKENS__*/": (ASSETS / "design-system" / "nexity-da-tokens.css").read_text(encoding="utf-8"),
+        "/*__TOKENS__*/": (ASSETS / "design-system" / "nexity-da-tokens.css").read_text(
+            encoding="utf-8"
+        ),
         "/*__RESULT__*/null": json_script(resultat),
         "/*__ASSETS__*/null": json_script(assets(resultat)),
     }
@@ -92,19 +99,34 @@ def construire(chemin_resultat: Path = RESULTAT, sortie: Path = DEMO / "index.ht
         if cle not in html:
             raise ValueError(f"Marqueur absent du gabarit : {cle}")
         html = html.replace(cle, valeur)
-    sortie.write_text(html, encoding="utf-8")
+    if not sortie.exists() or sortie.read_text(encoding="utf-8") != html:
+        sortie.write_text(html, encoding="utf-8")
     return sortie
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--run", choices=["cache", "live", "auto"], help="relancer le pipeline avant l'assemblage")
+    parser.add_argument(
+        "--run",
+        choices=["cache", "live", "auto"],
+        help="relancer le pipeline avant l'assemblage",
+    )
     args = parser.parse_args()
     if args.run:
         subprocess.run(
-            [sys.executable, "-m", "b2_pipeline.run", "--mode", args.run,
-             "--assets", str(ASSETS), "--out", str(RESULTAT)],
-            cwd=RACINE / "pipeline", check=True,
+            [
+                sys.executable,
+                "-m",
+                "b2_pipeline.run",
+                "--mode",
+                args.run,
+                "--assets",
+                str(ASSETS),
+                "--out",
+                str(RESULTAT),
+            ],
+            cwd=RACINE / "pipeline",
+            check=True,
         )
     sortie = construire()
     print(f"Démo assemblée : {sortie} ({sortie.stat().st_size / 1e6:.1f} Mo)")

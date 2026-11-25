@@ -1,5 +1,6 @@
 from b2_pipeline.guardrails import controler_prix_appel, controler_surface, lots_generables
 from b2_pipeline.plan_reader import LecturePlan, lire_plan_svg
+
 from tests.conftest import ASSETS
 
 
@@ -39,23 +40,32 @@ def test_somme_des_pieces_incoherente_bloque(lots):
 
 def test_prix_appel_recalcule_apres_vente_de_a04(donnees, lots):
     alerte = controler_prix_appel(donnees.flux.programme, list(lots.values()), {"B22"})
+    assert alerte is not None
     assert alerte.ancien_lot == "A04" and alerte.ancien_prix == 269000
     assert alerte.nouveau_lot == "B12" and alerte.nouveau_prix == 279000
     assert "VENDU" in alerte.motif
 
 
 def test_lot_en_quarantaine_exclu_du_prix_appel(donnees, lots):
-    lots_mod = [l.model_copy(update={"prix_ttc": 250000}) if l.lot_id == "B22" else l for l in lots.values()]
+    lots_mod = [
+        lot.model_copy(update={"prix_ttc": 250000}) if lot.lot_id == "B22" else lot
+        for lot in lots.values()
+    ]
     alerte = controler_prix_appel(donnees.flux.programme, lots_mod, {"B22"})
+    assert alerte is not None
     assert alerte.nouveau_lot == "B12"
 
 
 def test_pas_d_alerte_si_prix_a_jour(donnees, lots):
-    prog = donnees.flux.programme.model_copy(update={"prix_a_partir_de_affiche_page_programme": 279000,
-                                                      "lot_portant_prix_appel": "B12"})
+    prog = donnees.flux.programme.model_copy(
+        update={
+            "prix_a_partir_de_affiche_page_programme": 279000,
+            "lot_portant_prix_appel": "B12",
+        }
+    )
     assert controler_prix_appel(prog, list(lots.values()), {"B22"}) is None
 
 
 def test_lots_generables_excluent_vendus_et_quarantaine(lots):
     controles = {k: controler_surface(lots[k], lecture(lots[k])) for k in ("B31", "B12", "B22")}
-    assert [l.lot_id for l in lots_generables(list(lots.values()), controles)] == ["B31", "B12"]
+    assert [lot.lot_id for lot in lots_generables(list(lots.values()), controles)] == ["B31", "B12"]

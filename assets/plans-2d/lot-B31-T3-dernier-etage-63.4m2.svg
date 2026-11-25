@@ -109,7 +109,7 @@
     <text x="24" y="222" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#111111">LOT B31 — T3</text>
     <text x="24" y="246" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#344054">Attique traversant sans vis-à-vis • 4e et dernier étage</text>
 
-    <!-- Highlighted Surface Box (Crucial for B3/B2 Vision check!) -->
+    <!-- Surface habitable cartouche -->
     <rect x="24" y="268" width="352" height="86" rx="6" fill="#FFFFFF" stroke="#FF002D" stroke-width="2.5"/>
     <text x="40" y="294" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#475467">SURFACE HABITABLE CARTOUCHE ARCHITECTE</text>
     <text x="40" y="334" font-family="Helvetica, Arial, sans-serif" font-size="32" font-weight="bold" fill="#111111">63,40 m²</text>

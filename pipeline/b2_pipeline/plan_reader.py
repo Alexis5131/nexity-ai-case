@@ -13,6 +13,7 @@ import re
 import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any
 
 from defusedxml import ElementTree as ET
 
@@ -53,7 +54,7 @@ def slug(texte: str) -> str:
 
 def textes_svg(chemin: str | Path) -> list[str]:
     arbre = ET.parse(str(chemin))
-    textes = []
+    textes: list[str] = []
     for element in arbre.iter():
         if element.tag.endswith("text"):
             contenu = "".join(element.itertext()).strip()
@@ -63,9 +64,11 @@ def textes_svg(chemin: str | Path) -> list[str]:
 
 
 def analyser_textes_plan(textes: list[str], source: str = "svg") -> LecturePlan:
-    lot_id = exposition = exterieur_libelle = None
-    exterieur_m2 = None
-    surface = None
+    lot_id: str | None = None
+    exposition: str | None = None
+    exterieur_libelle: str | None = None
+    exterieur_m2: float | None = None
+    surface: float | None = None
     pieces: dict[str, float] = {}
 
     for i, t in enumerate(textes):
@@ -74,9 +77,10 @@ def analyser_textes_plan(textes: list[str], source: str = "svg") -> LecturePlan:
         if exposition is None and (m := _RE_EXPO.match(t)):
             exposition = m.group(1).strip()
         if t == _TITRE_CARTOUCHE:
-            suivant = next((x for x in textes[i + 1 :] if _RE_SURFACE_SEULE.match(x)), None)
-            if suivant:
-                surface = nombre_fr(_RE_SURFACE_SEULE.match(suivant).group(1))
+            for candidat in textes[i + 1 :]:
+                if m_surf := _RE_SURFACE_SEULE.match(candidat):
+                    surface = nombre_fr(m_surf.group(1))
+                    break
         if m := _RE_DETAIL.match(t):
             pieces[slug(m.group(1))] = nombre_fr(m.group(2))
         if exterieur_m2 is None and (m := _RE_EXTERIEUR.match(t)):
@@ -91,7 +95,7 @@ def lire_plan_svg(chemin: str | Path) -> LecturePlan:
     return analyser_textes_plan(textes_svg(chemin), source="svg")
 
 
-SCHEMA_VISION = {
+SCHEMA_VISION: dict[str, Any] = {
     "type": "object",
     "properties": {
         "lot_id": {"type": "string"},
@@ -120,11 +124,13 @@ SYSTEME_VISION = (
 
 def lire_plan_vision(chemin_png: str | Path, client: ClientOutil) -> LecturePlan:
     image = base64.standard_b64encode(Path(chemin_png).read_bytes()).decode()
-    contenu = [
+    contenu: list[dict[str, Any]] = [
         {"type": "image", "source": {"type": "base64", "media_type": "image/png", "data": image}},
         {"type": "text", "text": "Lis le cartouche de ce plan et renvoie les valeurs exactes."},
     ]
-    brut = client.appeler_outil(SYSTEME_VISION, contenu, "lecture_cartouche", SCHEMA_VISION, max_tokens=800)
+    brut = client.appeler_outil(
+        SYSTEME_VISION, contenu, "lecture_cartouche", SCHEMA_VISION, max_tokens=800
+    )
     return LecturePlan(
         lot_id=brut.get("lot_id"),
         surface_cartouche=float(brut["surface_cartouche_m2"]),

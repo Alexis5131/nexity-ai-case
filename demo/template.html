@@ -9,206 +9,518 @@
 /*__TOKENS__*/
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{font-family:var(--font-sans);background:var(--arch-limestone);color:var(--nexity-obsidian);-webkit-font-smoothing:antialiased;overflow:hidden;font-size:15px;line-height:1.45}
-.mono{font-family:var(--font-mono)}
+body{
+  font-family:var(--font-sans);
+  background:var(--arch-limestone);
+  color:var(--nexity-obsidian);
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+  font-size:14.5px;
+  line-height:1.42;
+}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.numval{font-variant-numeric:tabular-nums}
+h1,h2,h3,h4{text-wrap:balance}
 button{font-family:inherit;cursor:pointer}
 
-/* Barre haute */
-.topbar{height:60px;background:#000;display:flex;align-items:center;gap:18px;padding:0 22px;border-bottom:3px solid var(--nexity-red-banner)}
-.topbar img{height:24px;display:block}
-.topbar .sep{width:1px;height:26px;background:#2b2f33}
-.topbar .titre{color:#fff;font-weight:700;font-size:17px;letter-spacing:-.01em}
-.topbar .sous{color:#98A2B3;font-size:12px;font-family:var(--font-mono);margin-top:1px}
+/* Barre haute — folio éditorial tendu */
+.topbar{
+  height:52px;
+  background:#111315;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:0 22px;
+  border-bottom:2px solid var(--nexity-red-primary);
+}
+.topbar img{height:21px;display:block}
+.topbar .sep{width:1px;height:22px;background:#2E3338}
+.topbar .titre{color:#FAF8F5;font-weight:700;font-size:15.5px;letter-spacing:-.015em}
+.topbar .sous{color:#98A2B3;font-size:11px;font-family:var(--font-mono);letter-spacing:.03em;margin-top:1px}
 .topbar .spacer{flex:1}
-.tchip{font-family:var(--font-mono);font-size:11.5px;color:#D0D5DD;border:1px solid #344054;border-radius:var(--radius-pill);padding:5px 11px;white-space:nowrap}
-.tchip.src{color:#fff;border-color:#475467}
-.tchip b{color:#fff;font-weight:600}
+.folio{
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:#98A2B3;
+  letter-spacing:.04em;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  white-space:nowrap;
+}
+.folio .dot-r{display:inline-block;width:7px;height:7px;background:var(--nexity-red-primary);margin-right:6px;vertical-align:1px}
+.folio b{color:#FAF8F5;font-weight:600}
+.folio .vbar{width:1px;height:14px;background:#2E3338}
 
-/* Grille */
-main{display:grid;grid-template-columns:minmax(300px,25fr) minmax(470px,43fr) minmax(360px,32fr);gap:18px;padding:16px 20px 12px;height:calc(100vh - 63px - 32px)}
-.col{display:flex;flex-direction:column;min-height:0;min-width:0}
-.col-head{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;padding:0 2px}
-.col-head .num{font-family:var(--font-mono);font-size:12px;color:var(--nexity-red-primary);letter-spacing:.1em;font-weight:600}
-.col-head h2{font-size:18px;margin:0;font-weight:800;letter-spacing:-.015em}
-.col-head .aside{margin-left:auto;font-size:12px;color:var(--arch-slate-text);font-family:var(--font-mono)}
-.scroll{overflow:auto;min-height:0;flex:1;padding:2px 6px 8px 2px;scrollbar-width:thin}
-.card{background:#fff;border:1px solid var(--arch-oak-border);border-radius:var(--radius-card);box-shadow:var(--shadow-floating)}
-.k{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--arch-slate-text)}
+/* Grille 3 colonnes — filets d’architecte, zéro ombre floue */
+main{
+  display:grid;
+  grid-template-columns:minmax(285px,24fr) minmax(470px,44fr) minmax(355px,32fr);
+  height:calc(100vh - 52px - 30px);
+}
+.col{
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  min-width:0;
+  padding:14px 18px 10px;
+  border-right:1px solid var(--arch-oak-border);
+}
+.col:last-child{border-right:0}
+.col-head{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin:0 0 10px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--nexity-obsidian);
+}
+.col-head .sq{width:8px;height:8px;background:var(--nexity-red-primary);flex:none}
+.col-head .num{font-family:var(--font-mono);font-size:11.5px;color:var(--arch-slate-text);letter-spacing:.08em;font-weight:600}
+.col-head h2{font-size:15.5px;margin:0;font-weight:700;letter-spacing:-.015em}
+.col-head .aside{margin-left:auto;font-size:11px;color:var(--arch-slate-text);font-family:var(--font-mono);letter-spacing:.02em}
+.scroll{overflow:auto;min-height:0;flex:1;padding:0 4px 6px 0;scrollbar-width:thin}
+.k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--arch-slate-text)}
 .muted{color:var(--arch-slate-text)}
-footer{height:32px;display:flex;align-items:center;gap:18px;padding:0 20px;font-size:12px;color:var(--arch-slate-text);border-top:1px solid var(--arch-oak-border);background:var(--arch-limestone)}
-footer .keys{margin-left:auto;font-family:var(--font-mono);font-size:11.5px}
-footer kbd{font-family:var(--font-mono);background:#fff;border:1px solid var(--arch-oak-border);border-radius:5px;padding:0 5px;margin:0 3px 0 8px}
+footer{
+  height:30px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:0 22px;
+  font-size:11.5px;
+  color:var(--arch-slate-text);
+  border-top:1px solid var(--arch-oak-border);
+  background:var(--arch-sandstone);
+}
+footer .keys{margin-left:auto;font-family:var(--font-mono);font-size:11px;white-space:nowrap}
+footer kbd{
+  font-family:var(--font-mono);
+  background:#fff;
+  border:1px solid var(--arch-oak-border);
+  border-radius:3px;
+  padding:0 5px;
+  margin:0 3px 0 8px;
+  color:var(--nexity-obsidian);
+}
 
-/* Colonne 1 : entrées */
-.prog{overflow:hidden;margin-bottom:12px}
-.prog .photo{height:150px;background-size:cover;background-position:center 40%}
-.prog .body{padding:12px 16px 14px}
-.prog h3{margin:2px 0 2px;font-size:20px;font-weight:800;letter-spacing:-.015em}
-.prog .meta{font-size:13px;color:var(--arch-slate-text)}
-.prixappel{margin-top:10px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--arch-sandstone)}
-.prixappel .val{font-family:var(--font-mono);font-size:17px;font-weight:600}
+/* Colonne 1 : entrées du flux MBI */
+.prog{
+  background:#fff;
+  border:1px solid var(--arch-oak-border);
+  margin-bottom:10px;
+}
+.prog .photo{height:126px;background-size:cover;background-position:center 40%;border-bottom:1px solid var(--arch-oak-border)}
+.prog .body{padding:10px 13px 11px}
+.prog .cap-fig{font-family:var(--font-mono);font-size:10px;color:var(--arch-slate-text);letter-spacing:.05em;text-transform:uppercase}
+.prog h3{margin:2px 0 2px;font-size:18px;font-weight:800;letter-spacing:-.02em}
+.prog .meta{font-size:12.5px;color:var(--arch-slate-text)}
+.prixappel{
+  margin-top:8px;
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  flex-wrap:wrap;
+  padding-top:8px;
+  border-top:1px solid var(--arch-oak-border);
+}
+.prixappel .val{font-family:var(--font-mono);font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .prixappel .val.old{text-decoration:line-through;color:var(--arch-slate-text);font-weight:400}
 .prixappel .val.new{color:var(--guard-legal-warn-fg)}
-.prixappel .tag{font-size:11.5px;color:var(--guard-legal-warn-fg);background:var(--guard-legal-warn-bg);border-radius:var(--radius-pill);padding:2px 9px}
-.lot{display:grid;grid-template-columns:62px 1fr auto;gap:10px;align-items:center;padding:10px 12px;margin-bottom:8px;transition:border-color .3s, background .3s}
-.lot .thumb{width:62px;height:44px;border-radius:7px;border:1px solid var(--arch-oak-border);background:#fff center/cover no-repeat}
-.lot .thumb.vide{background:var(--arch-sandstone);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--arch-slate-text);font-family:var(--font-mono)}
-.lot .id{font-family:var(--font-mono);font-weight:600;font-size:14px}
-.lot .l2{font-size:12.5px;color:var(--arch-slate-text)}
-.lot .desc{grid-column:1/-1;font-size:12.5px;color:var(--arch-slate-text);font-style:italic;border-top:1px dashed var(--arch-sandstone);padding-top:6px}
-.lot.q{border-color:#F04438;background:var(--guard-quarantine-bg)}
-.lot.ok{border-color:#6CE9A6}
-.pill{font-size:11.5px;font-weight:600;border-radius:var(--radius-pill);padding:3px 10px;white-space:nowrap;border:1px solid transparent}
-.pill.dispo{background:var(--arch-sandstone);color:var(--arch-slate-text)}
-.pill.vendu{background:#F2F4F7;color:#667085;border-color:#D0D5DD}
-.pill.q{background:var(--guard-quarantine-bg);color:var(--guard-quarantine-fg);border-color:#FDA29B}
-.pill.warn{background:var(--guard-legal-warn-bg);color:var(--guard-legal-warn-fg);border-color:#FEC84B}
-.pill.ok{background:var(--guard-verified-bg);color:var(--guard-verified-fg);border-color:#6CE9A6}
-.pill.ink{background:#000;color:#fff}
-.notice{padding:12px 14px;margin-top:4px}
-.notice .cl{display:flex;gap:10px;font-size:13px;padding:5px 0;border-top:1px solid var(--arch-sandstone)}
+.prixappel .tag{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--guard-legal-warn-fg);
+  border:1px solid #FEC84B;
+  background:var(--guard-legal-warn-bg);
+  padding:1px 6px;
+}
+.sub{
+  margin:11px 0 6px;
+  padding-bottom:4px;
+  border-bottom:1px solid var(--arch-oak-border);
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+}
+.lot{
+  display:grid;
+  grid-template-columns:58px 1fr auto;
+  gap:9px;
+  align-items:center;
+  padding:8px 10px;
+  background:#fff;
+  border:1px solid var(--arch-oak-border);
+  border-left:3px solid var(--arch-oak-border);
+  margin-bottom:6px;
+  transition:border-color .2s, background .2s;
+}
+.lot .thumb{width:58px;height:40px;border:1px solid var(--arch-oak-border);background:#fff center/cover no-repeat}
+.lot .thumb.vide{background:var(--arch-sandstone);display:flex;align-items:center;justify-content:center;font-size:9.5px;color:var(--arch-slate-text);font-family:var(--font-mono)}
+.lot .id{font-family:var(--font-mono);font-weight:600;font-size:13.5px}
+.lot .l2{font-size:12px;color:var(--arch-slate-text)}
+.lot .desc{grid-column:1/-1;font-size:11.5px;color:var(--arch-slate-text);border-top:1px solid var(--arch-sandstone);padding-top:5px}
+.lot.q{border-color:#FDA29B;border-left-color:var(--guard-quarantine-fg);background:var(--guard-quarantine-bg)}
+.lot.ok{border-left-color:var(--guard-verified-fg)}
+.st-tag{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.03em;
+  padding:2px 7px;
+  white-space:nowrap;
+  border:1px solid transparent;
+}
+.st-tag.dispo{background:var(--arch-sandstone);color:var(--arch-slate-text);border-color:var(--arch-oak-border)}
+.st-tag.vendu{background:#F2F4F7;color:#667085;border-color:#D0D5DD}
+.st-tag.q{background:var(--guard-quarantine-bg);color:var(--guard-quarantine-fg);border-color:#FDA29B}
+.st-tag.warn{background:var(--guard-legal-warn-bg);color:var(--guard-legal-warn-fg);border-color:#FEC84B}
+.st-tag.ok{background:var(--guard-verified-bg);color:var(--guard-verified-fg);border-color:#6CE9A6}
+.st-tag.ink{background:#111315;color:#FAF8F5}
+.notice{background:#fff;border:1px solid var(--arch-oak-border);padding:8px 11px;margin-top:4px}
+.notice .cl{display:flex;gap:10px;font-size:12px;padding:4px 0;border-top:1px solid var(--arch-sandstone)}
 .notice .cl:first-of-type{border-top:0}
-.notice .pg{font-family:var(--font-mono);font-size:12px;color:var(--nexity-red-primary);min-width:38px}
-.sub{margin:14px 2px 8px;display:flex;justify-content:space-between;align-items:baseline}
+.notice .pg{font-family:var(--font-mono);font-size:11.5px;color:var(--nexity-red-primary);min-width:36px;font-variant-numeric:tabular-nums}
 
-/* Colonne 2 : pipeline */
-.actions{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-.btn{background:var(--nexity-jet-black);color:#fff;border:0;border-radius:var(--radius-pill);padding:12px 22px;font-size:15px;font-weight:700;letter-spacing:-.005em;transition:transform .1s, opacity .2s}
-.btn:hover{transform:translateY(-1px)}
-.btn:disabled{opacity:.35;cursor:default;transform:none}
-.btn.small{padding:8px 16px;font-size:13.5px}
-.lnk{background:none;border:0;color:var(--arch-slate-text);font-size:13px;text-decoration:underline;text-underline-offset:3px;padding:0}
-.progress{margin-left:auto;display:flex;gap:5px;align-items:center}
-.progress i{width:26px;height:4px;border-radius:2px;background:var(--arch-oak-border);display:block;transition:background .3s}
+/* Colonne 2 : pipeline IA et garde-fous — style Rapport Suisse */
+.actions{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.btn{
+  background:var(--nexity-jet-black);
+  color:#fff;
+  border:0;
+  border-radius:var(--radius-pill);
+  padding:10px 20px;
+  font-size:13.5px;
+  font-weight:700;
+  letter-spacing:-.005em;
+  transition:opacity .15s;
+}
+.btn:hover{opacity:.86}
+.btn:disabled{opacity:.32;cursor:default}
+.btn.small{padding:7px 15px;font-size:12.5px}
+.lnk{background:none;border:0;color:var(--arch-slate-text);font-size:12.5px;font-family:var(--font-mono);text-decoration:underline;text-underline-offset:3px;padding:0}
+.lnk.active{color:var(--nexity-red-primary);font-weight:600}
+.progress{margin-left:auto;display:flex;gap:4px;align-items:center}
+.progress i{width:22px;height:3px;background:var(--arch-oak-border);display:block;transition:background .18s linear}
 .progress i.on{background:var(--nexity-red-primary)}
-.progress span{font-family:var(--font-mono);font-size:12px;color:var(--arch-slate-text);margin-left:6px}
-.step{padding:12px 16px;margin-bottom:10px;transition:opacity .3s}
-.step[data-state="pending"]{opacity:.55;box-shadow:none}
-.step-head{display:flex;align-items:center;gap:12px}
-.step-head .n{width:28px;height:28px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:600;border:1.5px solid var(--arch-oak-border);color:var(--arch-slate-text);background:#fff}
-.step[data-state="running"] .n{border-color:var(--nexity-red-primary);color:var(--nexity-red-primary);animation:pulse 1s infinite}
-.step[data-state="done"] .n{background:#000;border-color:#000;color:#fff}
-.step[data-state="alert"] .n{background:var(--guard-quarantine-fg);border-color:var(--guard-quarantine-fg);color:#fff}
-.step[data-state="warn"] .n{background:var(--guard-legal-warn-fg);border-color:var(--guard-legal-warn-fg);color:#fff}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,0,45,.35)}100%{box-shadow:0 0 0 9px rgba(255,0,45,0)}}
-.step-head h3{margin:0;font-size:16px;font-weight:700;letter-spacing:-.01em}
-.step-head .gf{font-family:var(--font-mono);font-size:11px;color:var(--nexity-red-primary);letter-spacing:.06em;text-transform:uppercase}
-.step-head .st{margin-left:auto}
-.step .desc0{font-size:13px;color:var(--arch-slate-text);margin:6px 0 0 40px}
-.step-body{margin:12px 0 2px 40px}
-.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
-.tbl th{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--arch-slate-text);text-align:left;font-weight:600;padding:0 8px 6px 0}
-.tbl td{padding:6px 8px 6px 0;border-top:1px solid var(--arch-sandstone);font-family:var(--font-mono);font-size:13px}
-.tbl td:first-child{font-weight:600}
-.tbl tr.bad td{color:var(--guard-quarantine-fg)}
-.alertbox{border-radius:12px;padding:12px 14px;margin-top:12px;display:flex;gap:14px}
-.alertbox.q{background:var(--guard-quarantine-bg);border:1px solid #FDA29B;color:#7A271A}
-.alertbox.w{background:var(--guard-legal-warn-bg);border:1px solid #FEC84B;color:#7A2E0E}
-.alertbox.v{background:var(--guard-verified-bg);border:1px solid #6CE9A6;color:#054F31}
-.alertbox h4{margin:0 0 4px;font-size:14.5px}
-.alertbox p{margin:3px 0;font-size:13.5px}
-.alertbox .crop{flex:none;width:210px;height:96px;border:2px solid var(--guard-quarantine-fg);border-radius:8px;background-repeat:no-repeat;background-color:#fff}
-.bigprice{font-family:var(--font-mono);font-size:22px;font-weight:600;display:flex;gap:12px;align-items:baseline;margin:6px 0}
-.bigprice s{color:#B54708;opacity:.6;font-weight:400}
-.bigprice .arrow{font-family:var(--font-sans);font-size:13px;font-weight:600}
-.sings{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sing{background:var(--arch-limestone);border:1px solid var(--arch-oak-border);border-radius:12px;padding:10px 12px}
-.sing .h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
-.sing .h b{font-family:var(--font-mono);font-size:14px}
-.chipS{display:block;background:#fff;border:1px solid var(--arch-oak-border);border-radius:9px;padding:6px 9px;margin-top:6px;font-size:13px}
-.chipS .v{font-family:var(--font-mono);font-size:12.5px;color:var(--nexity-obsidian)}
-.chipS .r{font-size:12px;color:var(--arch-slate-text)}
-.note{font-size:12.5px;color:var(--arch-slate-text);margin-top:8px}
-.gen{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.gen .box{background:var(--arch-limestone);border:1px solid var(--arch-oak-border);border-radius:12px;padding:10px 12px}
-.check{display:flex;gap:8px;font-size:13px;margin-top:6px;align-items:flex-start}
-.check i{flex:none;width:16px;height:16px;border-radius:50%;background:var(--guard-verified-fg);color:#fff;font-style:normal;font-size:10px;display:flex;align-items:center;justify-content:center;margin-top:2px}
-.temoin{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.log{background:var(--nexity-obsidian);color:#D0D5DD;border-radius:12px;padding:10px 14px;height:132px;overflow:hidden;font-family:var(--font-mono);font-size:12px;line-height:1.55;margin-top:6px;flex:none;display:flex;flex-direction:column;justify-content:flex-end}
-.log .ln{flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:fadein .35s}
-.log .t{color:#667085;margin-right:8px}
-.log .tag{color:#fff;margin-right:6px}
-.log .q{color:#FDA29B}.log .w{color:#FEC84B}.log .v{color:#6CE9A6}
-@keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.progress span{font-family:var(--font-mono);font-size:11.5px;color:var(--nexity-obsidian);font-weight:600;margin-left:6px;font-variant-numeric:tabular-nums}
 
-/* Colonne 3 : mobile */
-.seg{display:inline-flex;background:#fff;border:1px solid var(--arch-oak-border);border-radius:var(--radius-pill);padding:3px}
-.seg button{border:0;background:transparent;border-radius:var(--radius-pill);padding:6px 13px;font-size:13px;font-weight:600;color:var(--arch-slate-text)}
-.seg button.on{background:#000;color:#fff}
-.phone-zone{flex:1;min-height:0;display:flex;justify-content:center;align-items:flex-start;padding-top:4px}
-.phone-wrap{transform-origin:top center}
-.phone{width:390px;height:844px;border-radius:54px;background:#111315;padding:12px;box-shadow:0 30px 60px -20px rgba(17,19,21,.35)}
-.screen{width:100%;height:100%;border-radius:43px;background:#fff;overflow:hidden;position:relative;display:flex;flex-direction:column}
-.notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:110px;height:30px;background:#111315;border-radius:18px;z-index:5}
-.sbar{height:44px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:6px 28px 0;font-size:13px;font-weight:700}
+.step{
+  background:#fff;
+  border:1px solid var(--arch-oak-border);
+  border-left:3px solid var(--arch-oak-border);
+  padding:9px 13px;
+  margin-bottom:7px;
+  transition:border-color .18s, opacity .18s;
+}
+.step[data-state="pending"]{opacity:.5;background:var(--arch-limestone)}
+.step[data-state="running"]{border-left-color:var(--nexity-red-primary)}
+.step[data-state="done"]{border-left-color:var(--nexity-obsidian)}
+.step[data-state="alert"]{border-left-color:var(--guard-quarantine-fg)}
+.step[data-state="warn"]{border-left-color:var(--guard-legal-warn-fg)}
+.step.compact{padding:7px 13px}
+.step-head{display:flex;align-items:center;gap:10px}
+.step.clickable .step-head{cursor:pointer}
+.step-head .n{
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:600;
+  color:var(--arch-slate-text);
+  min-width:22px;
+  font-variant-numeric:tabular-nums;
+}
+.step[data-state="running"] .n{color:var(--nexity-red-primary)}
+.step[data-state="done"] .n{color:var(--nexity-obsidian)}
+.step[data-state="alert"] .n{color:var(--guard-quarantine-fg)}
+.step[data-state="warn"] .n{color:var(--guard-legal-warn-fg)}
+.step-head h3{margin:0;font-size:14.5px;font-weight:700;letter-spacing:-.01em}
+.step-head .gf{font-family:var(--font-mono);font-size:10px;color:var(--nexity-red-primary);letter-spacing:.07em;text-transform:uppercase}
+.step-head .resume{font-size:11.5px;color:var(--arch-slate-text);margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:230px}
+.step-head .st{margin-left:auto;display:flex;align-items:center;gap:6px}
+.step-head .chev{font-family:var(--font-mono);font-size:11px;color:var(--arch-slate-text)}
+.step .desc0{font-size:12px;color:var(--arch-slate-text);margin:4px 0 0 32px}
+.step-body{margin:8px 0 2px 0;padding-top:8px;border-top:1px solid var(--arch-sandstone)}
+
+/* Tableaux style Rapport Suisse : filets horizontaux, chiffres alignés à droite */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--arch-slate-text);
+  text-align:right;
+  font-weight:600;
+  padding:0 6px 5px;
+  border-bottom:1px solid var(--nexity-obsidian);
+}
+.tbl th:first-child,.tbl td:first-child{text-align:left;padding-left:0}
+.tbl th:last-child,.tbl td:last-child{text-align:right;padding-right:0}
+.tbl td{
+  padding:4px 6px;
+  border-bottom:1px solid var(--arch-sandstone);
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  font-variant-numeric:tabular-nums;
+  text-align:right;
+  white-space:nowrap;
+}
+.tbl td:first-child{font-weight:600}
+.tbl tr.bad td{color:var(--guard-quarantine-fg);font-weight:600}
+
+/* Encarts d’alerte — filet latéral + chiffre héros, zéro boîte floue */
+.alertbox{
+  padding:8px 11px;
+  margin-top:7px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  border:1px solid var(--arch-oak-border);
+  border-left:3px solid var(--nexity-obsidian);
+  background:var(--arch-limestone);
+}
+.alertbox.q{background:var(--guard-quarantine-bg);border-color:#FDA29B;border-left-color:var(--guard-quarantine-fg);color:#7A271A}
+.alertbox.w{background:var(--guard-legal-warn-bg);border-color:#FEC84B;border-left-color:var(--guard-legal-warn-fg);color:#7A2E0E}
+.alertbox.v{background:var(--guard-verified-bg);border-color:#A6F4C5;border-left-color:var(--guard-verified-fg);color:#054F31}
+.alertbox h4{margin:0 0 2px;font-size:13px;font-weight:700}
+.alertbox p{margin:2px 0;font-size:12px;line-height:1.35}
+.crop-wrap{flex:none;display:flex;flex-direction:column;gap:3px;align-items:flex-start}
+.alertbox .crop{
+  width:178px;
+  height:45px;
+  border:1.5px solid var(--guard-quarantine-fg);
+  background-repeat:no-repeat;
+  background-color:#fff;
+}
+.crop-cap{font-family:var(--font-mono);font-size:9.5px;color:#7A271A;letter-spacing:.03em}
+.hero-stat{
+  font-family:var(--font-mono);
+  font-size:21px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+  line-height:1.1;
+  letter-spacing:-.02em;
+}
+.bigprice{
+  font-family:var(--font-mono);
+  font-size:19px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+  display:flex;
+  gap:10px;
+  align-items:baseline;
+  margin:3px 0;
+}
+.bigprice s{color:#B54708;opacity:.55;font-weight:400;font-size:15px}
+.bigprice .arrow{font-family:var(--font-sans);font-size:12px;font-weight:600}
+
+/* Singularités & contrôles — filets fins, zéro rond d’icône */
+.sings{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sing{background:var(--arch-limestone);border:1px solid var(--arch-oak-border);padding:8px 10px}
+.sing .h{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:5px;border-bottom:1px solid var(--arch-oak-border);margin-bottom:5px}
+.sing .h b{font-family:var(--font-mono);font-size:13px}
+.chipS{display:block;padding:4px 0;border-bottom:1px solid var(--arch-sandstone);font-size:12px}
+.chipS:last-child{border-bottom:0;padding-bottom:0}
+.chipS .v{font-family:var(--font-mono);font-size:11.5px;color:var(--nexity-obsidian);font-variant-numeric:tabular-nums}
+.chipS .r{font-size:11px;color:var(--arch-slate-text)}
+.note{font-size:11.5px;color:var(--arch-slate-text);margin-top:6px;line-height:1.36}
+
+.gen{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gen .box{background:var(--arch-limestone);border:1px solid var(--arch-oak-border);padding:8px 10px}
+.gen .box-h{display:flex;justify-content:space-between;align-items:center;padding-bottom:5px;border-bottom:1px solid var(--arch-oak-border);margin-bottom:5px}
+.chk{display:flex;gap:7px;font-size:12px;margin-top:4px;align-items:baseline;line-height:1.34}
+.chk .mk{font-family:var(--font-mono);font-size:10.5px;font-weight:600;color:var(--guard-verified-fg);flex:none}
+
+/* Barres fines style Rapport Suisse (similarité & charge humaine) */
+.bar-row{margin-top:6px}
+.bar-track{position:relative;height:5px;background:var(--arch-oak-border);width:100%;overflow:visible;margin-top:4px}
+.bar-fill{height:100%;background:var(--guard-verified-fg);animation:wipe .35s ease-out}
+.bar-fill.red{background:var(--nexity-red-primary)}
+.bar-mark{position:absolute;top:-3px;bottom:-3px;width:1.5px;background:var(--nexity-obsidian)}
+@keyframes wipe{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+.temoin{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.comp-bars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;padding-top:7px;border-top:1px solid var(--arch-sandstone)}
+.comp-bars .cb-lbl{display:flex;justify-content:space-between;font-size:11.5px}
+
+/* Journal terminal — sobre, sans bruit */
+.log{
+  background:#111315;
+  color:#D0D5DD;
+  border-top:2px solid var(--nexity-obsidian);
+  padding:7px 12px;
+  height:96px;
+  overflow:hidden;
+  font-family:var(--font-mono);
+  font-size:11px;
+  font-variant-numeric:tabular-nums;
+  line-height:1.48;
+  margin-top:6px;
+  flex:none;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.log .ln{flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:fadein .18s ease-out}
+.log .t{color:#667085;margin-right:8px}
+.log .tag{color:#FAF8F5;margin-right:6px}
+.log .q{color:#FDA29B}.log .w{color:#FEC84B}.log .v{color:#6CE9A6}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+
+/* Colonne 3 : mobile (barre unique compacte + aperçu Nexity fidèle) */
+.mob-bar{
+  display:flex;
+  gap:6px;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+  flex-wrap:nowrap;
+}
+.seg{
+  display:inline-flex;
+  background:#fff;
+  border:1px solid var(--arch-oak-border);
+  border-radius:var(--radius-pill);
+  padding:2px;
+}
+.seg button{
+  border:0;
+  background:transparent;
+  border-radius:var(--radius-pill);
+  padding:4px 9px;
+  font-size:11.5px;
+  font-weight:600;
+  color:var(--arch-slate-text);
+  white-space:nowrap;
+}
+.seg button.on{background:#111315;color:#fff}
+.zbtn{
+  border:1px solid var(--arch-oak-border);
+  background:#fff;
+  border-radius:var(--radius-pill);
+  padding:4px 9px;
+  font-size:11px;
+  font-weight:600;
+  color:var(--nexity-obsidian);
+  font-family:var(--font-mono);
+  white-space:nowrap;
+}
+.zbtn.on{background:var(--nexity-red-primary);color:#fff;border-color:var(--nexity-red-primary)}
+.phone-zone{flex:1;min-height:0;display:flex;justify-content:center;align-items:flex-start;padding-top:2px}
+.phone-wrap{transform-origin:top center;transition:transform .18s ease-out}
+.phone{width:390px;height:820px;border-radius:48px;background:#111315;padding:10px;box-shadow:0 22px 44px -22px rgba(17,19,21,.45)}
+body.zoom-phone .col-mob{
+  position:fixed;
+  inset:8px 0 8px 0;
+  background:rgba(250,248,245,.97);
+  z-index:40;
+  padding:10px 24px 12px;
+  border-right:0;
+  align-items:center;
+}
+body.zoom-phone .col-mob .col-head{width:100%;max-width:460px;margin-bottom:6px;padding-bottom:6px}
+body.zoom-phone .col-mob .mob-bar{width:100%;max-width:460px;margin-bottom:6px}
+body.zoom-phone .phone-zone{width:100%;align-items:center;padding-top:0}
+body.zoom-phone .phone-wrap{transform-origin:center center}
+.screen{width:100%;height:100%;border-radius:39px;background:#fff;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:104px;height:26px;background:#111315;border-radius:15px;z-index:5}
+.sbar{height:40px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:5px 24px 0;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums}
 .app{flex:1;overflow:auto;scrollbar-width:none}
 .app::-webkit-scrollbar{display:none}
-.nx-head{display:flex;justify-content:space-between;align-items:center;padding:8px 18px 10px;border-bottom:1px solid var(--arch-sandstone)}
+.nx-head{display:flex;justify-content:space-between;align-items:center;padding:8px 18px 9px;border-bottom:1px solid var(--arch-sandstone)}
 .nx-head img{height:20px}
-.burger{width:22px;height:14px;border-top:2px solid #000;border-bottom:2px solid #000;position:relative}
+.burger{width:21px;height:13px;border-top:2px solid #000;border-bottom:2px solid #000;position:relative}
 .burger:after{content:"";position:absolute;left:0;right:0;top:4px;border-top:2px solid #000}
 .crumb{font-size:11.5px;color:var(--arch-slate-text);padding:8px 18px 0}
-.ba{position:relative;margin:10px 14px 0;border-radius:14px;overflow:hidden;aspect-ratio:1376/768;background:#eee;user-select:none}
+.ba{position:relative;margin:10px 14px 0;border-radius:12px;overflow:hidden;aspect-ratio:1376/768;background:#eee;user-select:none}
 .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .ba .top{clip-path:inset(0 0 0 var(--cut,50%))}
 .ba .line{position:absolute;top:0;bottom:0;left:var(--cut,50%);width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.15)}
-.ba .knob{position:absolute;top:50%;left:var(--cut,50%);transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
-.ba .lab{position:absolute;top:8px;font-size:10.5px;font-weight:700;background:rgba(0,0,0,.72);color:#fff;border-radius:var(--radius-pill);padding:3px 8px}
+.ba .knob{position:absolute;top:50%;left:var(--cut,50%);transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+.ba .lab{position:absolute;top:8px;font-size:10.5px;font-weight:700;background:rgba(17,19,21,.78);color:#fff;border-radius:var(--radius-pill);padding:3px 8px}
 .ba .lab.l{left:8px}.ba .lab.r{right:8px}
 .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
 .cap{font-size:10.5px;color:var(--arch-slate-text);padding:5px 16px 0}
-.planbox{margin:10px 14px 0;border-radius:14px;border:1px solid var(--arch-oak-border);aspect-ratio:1200/820;background:#fff center/contain no-repeat}
-.lp{padding:12px 18px 0}
-.lp .ref{font-family:var(--font-mono);font-size:11.5px;color:var(--arch-slate-text);letter-spacing:.03em}
-.lp h1{font-size:21px;line-height:1.2;margin:6px 0 8px;font-weight:800;letter-spacing:-.02em}
+.planbox{margin:10px 14px 0;border-radius:10px;border:1px solid var(--arch-oak-border);aspect-ratio:1200/820;background:#fff center/contain no-repeat}
+.lp{padding:11px 18px 0}
+.lp .ref{font-family:var(--font-mono);font-size:11px;color:var(--arch-slate-text);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.lp h1{font-size:20px;line-height:1.18;margin:5px 0 7px;font-weight:800;letter-spacing:-.02em}
 .lp .price{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.lp .price .p{font-family:var(--font-mono);font-size:20px;font-weight:600}
-.badge-red{font-size:11.5px;font-weight:700;color:var(--nexity-red-primary);border:1.5px solid var(--nexity-red-primary);border-radius:var(--radius-pill);padding:2px 9px;background:var(--nexity-red-soft)}
-.facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.facts span{font-size:11.5px;background:var(--arch-limestone);border:1px solid var(--arch-oak-border);border-radius:var(--radius-pill);padding:3px 9px}
-.lp .acc{font-size:14px;margin:12px 0 0;color:#1D2939}
-.lp h2{font-size:14px;margin:16px 0 6px;font-weight:800}
-.pf{display:flex;gap:9px;font-size:13px;margin:7px 0;align-items:flex-start}
-.pf .dot{flex:none;width:7px;height:7px;border-radius:50%;background:var(--nexity-red-primary);margin-top:6px}
-.src{display:inline-block;font-family:var(--font-mono);font-size:9.5px;color:var(--arch-slate-text);border:1px solid var(--arch-oak-border);border-radius:5px;padding:0 4px;margin-left:4px;vertical-align:1px}
-.pr{background:var(--arch-limestone);border-left:3px solid var(--arch-oak-border);border-radius:0 9px 9px 0;padding:7px 10px;margin:7px 0;font-size:12.5px}
-.pr .np{font-family:var(--font-mono);font-size:10.5px;color:var(--nexity-red-primary);font-weight:600;display:block;margin-bottom:2px}
-.cta{margin:16px 18px 6px;display:flex;flex-direction:column;gap:8px}
-.cta button{border-radius:var(--radius-pill);padding:13px;font-size:14px;font-weight:700}
+.lp .price .p{font-family:var(--font-mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.badge-red{font-size:11px;font-weight:700;color:var(--nexity-red-primary);border:1.5px solid var(--nexity-red-primary);border-radius:var(--radius-pill);padding:2px 9px;background:var(--nexity-red-soft)}
+.facts{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.facts span{font-size:11px;background:var(--arch-limestone);border:1px solid var(--arch-oak-border);border-radius:var(--radius-pill);padding:3px 8px}
+.lp .acc{font-size:13.5px;margin:10px 0 0;color:#1D2939}
+.lp h2{font-size:13.5px;margin:14px 0 5px;font-weight:800}
+.pf{display:flex;gap:8px;font-size:12.8px;margin:6px 0;align-items:flex-start}
+.pf .dot{flex:none;width:6px;height:6px;background:var(--nexity-red-primary);margin-top:6px}
+.src{display:inline-block;font-family:var(--font-mono);font-size:9.5px;color:var(--arch-slate-text);border:1px solid var(--arch-oak-border);padding:0 4px;margin-left:4px;vertical-align:1px}
+.pr{background:var(--arch-limestone);border-left:3px solid var(--arch-oak-border);padding:7px 10px;margin:6px 0;font-size:12.5px}
+.pr .np{font-family:var(--font-mono);font-size:10px;color:var(--nexity-red-primary);font-weight:600;display:block;margin-bottom:2px}
+.cta{margin:14px 18px 6px;display:flex;flex-direction:column;gap:8px}
+.cta button{border-radius:var(--radius-pill);padding:12px;font-size:13.5px;font-weight:700}
 .cta .b1{background:#000;color:#fff;border:0}
 .cta .b2{background:#fff;color:#000;border:1.5px solid #000}
-.legal{margin:12px 18px 18px;padding:10px 12px;border-radius:12px;background:var(--arch-limestone);font-size:10px;color:var(--arch-slate-text);line-height:1.4}
-.legal .lock{display:inline-flex;gap:6px;align-items:center;font-family:var(--font-mono);font-size:10px;font-weight:600;color:var(--guard-verified-fg);background:var(--guard-verified-bg);border-radius:var(--radius-pill);padding:2px 8px;margin-bottom:6px}
-.legal p{margin:5px 0}
-.ribbon{font-size:11px;font-weight:700;text-align:center;padding:5px;font-family:var(--font-mono);letter-spacing:.04em}
+.legal{margin:11px 18px 18px;padding:10px 12px;background:var(--arch-limestone);border-top:2px solid var(--nexity-obsidian);font-size:10px;color:var(--arch-slate-text);line-height:1.4}
+.legal .lock{display:inline-flex;gap:6px;align-items:center;font-family:var(--font-mono);font-size:10px;font-weight:600;color:var(--guard-verified-fg);background:var(--guard-verified-bg);padding:2px 7px;margin-bottom:5px}
+.legal p{margin:4px 0}
+.ribbon{font-size:10.5px;font-weight:700;text-align:center;padding:5px;font-family:var(--font-mono);letter-spacing:.04em}
 .ribbon.draft{background:var(--guard-legal-warn-bg);color:var(--guard-legal-warn-fg)}
 .ribbon.ok{background:var(--guard-verified-bg);color:var(--guard-verified-fg)}
 .portal{background:#F2F4F7;min-height:100%}
 .portal .ph{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#fff;border-bottom:1px solid #EAECF0;font-weight:700;font-size:14px;color:#344054}
-.portal .ph .sq{width:22px;height:22px;border-radius:6px;background:#98A2B3}
-.portal .img{height:210px;background-size:cover;background-position:center}
+.portal .ph .sq{width:20px;height:20px;background:#98A2B3}
+.portal .img{height:195px;background-size:cover;background-position:center}
 .portal .bd{background:#fff;padding:14px 16px;margin-bottom:10px}
 .portal .bd .t{font-size:18px;font-weight:700}
-.portal .bd .p{font-size:18px;font-weight:700;margin-top:4px}
+.portal .bd .p{font-size:18px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
 .portal .bd .d{font-size:14px;color:#344054;margin-top:10px}
-.portal .warn{margin:0 12px;background:#FFFAEB;border:1px solid #FEC84B;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#7A2E0E}
-.portal .gbtn{margin:12px 16px;background:#D0D5DD;color:#344054;border-radius:10px;padding:12px;text-align:center;font-weight:700;font-size:14px}
-.empty{padding:60px 30px;text-align:center;color:var(--arch-slate-text);font-size:14px}
-.empty b{display:block;color:var(--nexity-obsidian);font-size:16px;margin-bottom:6px}
-.tbl td,.lot .l2.mono,.prixappel .val{white-space:nowrap}
+.portal .warn{margin:0 12px;background:#FFFAEB;border-left:3px solid #B54708;padding:9px 12px;font-size:12px;color:#7A2E0E}
+.portal .gbtn{margin:12px 16px;background:#D0D5DD;color:#344054;border-radius:6px;padding:12px;text-align:center;font-weight:700;font-size:14px}
+.empty{padding:56px 28px;text-align:center;color:var(--arch-slate-text);font-size:13.5px}
+.empty b{display:block;color:var(--nexity-obsidian);font-size:15.5px;margin-bottom:6px}
+
 @media (max-width:1500px){
-  main{grid-template-columns:minmax(270px,23fr) minmax(440px,45fr) minmax(330px,32fr);gap:14px;padding:12px 14px 10px}
-  .col-head h2{font-size:16px}.col-head .aside{display:none}
+  main{grid-template-columns:minmax(255px,22fr) minmax(435px,45fr) minmax(345px,33fr)}
+  .col{padding:10px 13px 8px}
+  .col-head h2{font-size:14.5px}.col-head .aside{display:none}
   .lot .desc{display:none}
   .lot{grid-template-columns:1fr auto}.lot .thumb{display:none}
-  .step-body{margin-left:0}
 }
 @media (max-height:820px){
-  .prog .photo{height:100px}
-  .log{height:104px}
-  .actions{margin-bottom:8px}.btn{padding:10px 18px;font-size:14px}
+  .topbar{height:48px}
+  main{height:calc(100vh - 48px - 28px)}
+  footer{height:28px;font-size:11px}
+  .col-head{margin-bottom:7px;padding-bottom:6px}
+  .prog .photo{height:84px}
+  .prog .body{padding:8px 11px 9px}
+  .log{height:66px;padding:5px 11px;font-size:10.5px;line-height:1.4}
+  .actions{margin-bottom:7px}.btn{padding:8px 16px;font-size:13px}
+  .step{padding:7px 11px;margin-bottom:5px}
+  .step-body{margin-top:6px;padding-top:6px}
+  .tbl td{padding:3px 6px}
+  .note{margin-top:4px;font-size:11px}
+  .alertbox{padding:6px 10px;margin-top:5px}
+  .alertbox p{font-size:11.5px}
+  .bigprice{font-size:17px;margin:2px 0}
 }
-.toast{position:fixed;left:50%;bottom:48px;transform:translateX(-50%) translateY(20px);background:#000;color:#fff;border-radius:14px;padding:12px 18px;font-size:14px;max-width:560px;opacity:0;transition:all .3s;pointer-events:none;z-index:50}
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:42px;
+  transform:translateX(-50%) translateY(16px);
+  background:#111315;
+  color:#FAF8F5;
+  border-left:3px solid var(--nexity-red-primary);
+  padding:11px 16px;
+  font-size:13.5px;
+  max-width:560px;
+  opacity:0;
+  transition:opacity .2s, transform .2s;
+  pointer-events:none;
+  z-index:60;
+}
 .toast.on{opacity:1;transform:translateX(-50%)}
 </style>
 </head>
@@ -216,37 +528,41 @@ footer kbd{font-family:var(--font-mono);background:#fff;border:1px solid var(--a
 <header class="topbar">
   <img id="logoW" alt="nexity">
   <div class="sep"></div>
-  <div><div class="titre">Studio Pages Lots</div><div class="sous">back-office Sulu 3 / prototype B2</div></div>
+  <div><div class="titre">Studio Pages Lots</div><div class="sous">SULU 3 BACK-OFFICE / PROTOTYPE B2</div></div>
   <div class="spacer"></div>
-  <span class="tchip">Programme, lots et visuels fictifs</span>
-  <span class="tchip src" id="srcChip"></span>
+  <div class="folio">
+    <span><i class="dot-r"></i>Données fictives</span>
+    <span class="vbar"></span>
+    <span id="srcChip"></span>
+  </div>
 </header>
 
 <main>
   <section class="col">
-    <div class="col-head"><span class="num">01</span><h2>Entrées du flux MBI</h2><span class="aside" id="flowTime"></span></div>
+    <div class="col-head"><span class="sq"></span><span class="num">01</span><h2>Entrées du flux MBI</h2><span class="aside" id="flowTime"></span></div>
     <div class="scroll" id="colIn"></div>
   </section>
 
   <section class="col">
-    <div class="col-head"><span class="num">02</span><h2>Pipeline IA et garde-fous</h2></div>
+    <div class="col-head"><span class="sq"></span><span class="num">02</span><h2>Contrôles, singularités et rédaction</h2></div>
     <div class="actions">
-      <button class="btn" id="btnNext"></button>
-      <button class="lnk" id="btnAuto">tout dérouler</button>
+      <button type="button" class="btn" id="btnNext"></button>
+      <button type="button" class="lnk" id="btnAuto">tout dérouler</button>
       <div class="progress" id="progress"></div>
     </div>
     <div class="scroll" id="steps"></div>
     <div class="log" id="log"></div>
   </section>
 
-  <section class="col">
-    <div class="col-head"><span class="num">03</span><h2>Rendu mobile</h2><span class="aside">70 % du trafic</span></div>
-    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:10px;flex-wrap:wrap">
-      <div class="seg" id="segVue"><button data-v="portail">Portail aujourd'hui</button><button data-v="nexity">nexity.fr avec B2</button></div>
+  <section class="col col-mob">
+    <div class="col-head"><span class="sq"></span><span class="num">03</span><h2>Rendu mobile</h2><span class="aside">70&nbsp;% du trafic</span></div>
+    <div class="mob-bar">
+      <div class="seg" id="segVue"><button type="button" data-v="portail">Portail</button><button type="button" data-v="nexity">nexity.fr</button></div>
       <div class="seg" id="segLot"></div>
+      <button type="button" class="zbtn" id="btnZoom" title="Agrandir le téléphone pour le vidéoprojecteur (touche Z)">Zoom</button>
     </div>
     <div class="phone-zone" id="phoneZone">
-      <div class="phone-wrap" id="phoneWrap"><div class="phone"><div class="screen"><div class="notch"></div>
+      <div class="phone-wrap" id="phoneWrap"><div class="phone" id="phoneBox"><div class="screen"><div class="notch"></div>
         <div class="sbar"><span>9:41</span><span class="mono" style="font-size:11px">5G</span></div>
         <div class="app" id="app"></div>
       </div></div></div>
@@ -255,43 +571,49 @@ footer kbd{font-family:var(--font-mono);background:#fff;border:1px solid var(--a
 </main>
 
 <footer>
-  <span>Prototype pédagogique (cas d'étude nexity.fr) : aucune donnée réelle, aucun formulaire actif.</span>
-  <span class="keys">Espace<kbd>suivant</kbd> R<kbd>réinitialiser</kbd> P<kbd>portail / nexity</kbd> L<kbd>lot</kbd></span>
+  <span>Prototype pédagogique (cas d’étude nexity.fr)&nbsp;: aucune donnée réelle, aucun formulaire actif.</span>
+  <span class="keys">Espace/→<kbd>suivant</kbd> ←<kbd>retour</kbd> R<kbd>reset</kbd> P<kbd>vue</kbd> L<kbd>lot</kbd> Z<kbd>zoom</kbd></span>
 </footer>
 <div class="toast" id="toast"></div>
 
 <script>
 const R = /*__RESULT__*/null;
 const A = /*__ASSETS__*/null;
+const NBSP = "\u00A0";
+const NNBSP = "\u202F";
 
 const ICON = {
-  check:`<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.3l2.3 2.3 4.7-5"/></svg>`,
   lr:`<svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2L1 6l4 4M13 2l4 4-4 4"/></svg>`,
   lock:`<svg width="10" height="11" viewBox="0 0 10 11" fill="currentColor"><rect x="1" y="5" width="8" height="6" rx="1.5"/><path d="M3 5V3.5a2 2 0 014 0V5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>`,
 };
 
 const STEPS = [
-  {n:1, gf:"Garde-fou 1 : la donnée", titre:"Lecture des plans et contrôle des surfaces",
-   desc:"Le cartouche de chaque plan est comparé au flux MBI avant toute rédaction."},
-  {n:2, gf:"Garde-fou 2 : le prix affiché", titre:"Statuts de vente et prix d'appel",
-   desc:"Un lot vendu ne peut plus porter le prix « à partir de » de la page programme."},
-  {n:3, gf:"Calcul déterministe", titre:"Singularités intra-programme",
-   desc:"Ce qui distingue chaque lot de ses voisins, calculé avant l'appel au modèle."},
-  {n:4, gf:"Garde-fou 3 : le texte", titre:"Rédaction par Claude et contrôles",
-   desc:"Chiffres prouvés, notice citée, mentions légales hors IA, similarité entre lots."},
+  {n:1, gf:"Garde-fou 1 · Donnée", titre:"Lecture des plans et contrôle des surfaces",
+   desc:"Le cartouche architecte de chaque plan est vérifié face au flux MBI avant toute rédaction."},
+  {n:2, gf:"Garde-fou 2 · Prix d’appel", titre:"Statuts de vente et prix «\u00A0à partir de\u00A0»",
+   desc:"Un lot vendu ne peut plus porter le prix d’appel de la page programme."},
+  {n:3, gf:"Calcul déterministe & portée", titre:"Singularités intra-programme",
+   desc:"Différences prouvées, portée bornée à l’échantillon vérifié et empreinte liée aux voisins."},
+  {n:4, gf:"Garde-fou 3 · Texte & juridique", titre:"Rédaction par Claude et contrôles",
+   desc:"Chiffres prouvés, portée vérifiée, notice citée, mentions hors IA et similarité."},
   {n:5, gf:"Validation humaine", titre:"Relecture du lot-témoin",
-   desc:"Un lot relu par typologie au lieu d'une relecture complète de chaque fiche."},
+   desc:"Une relecture ciblée par typologie au lieu d’une rédaction manuelle de chaque fiche."},
 ];
 
-const S = {step:0, running:false, temoin:false, vue:"portail", lot:"B31", log:[], auto:false};
+const S = {
+  step:0, running:false, temoin:false, vue:"portail", lot:"B31",
+  log:[], auto:false, runId:0, cut:50, zoom:false, openSteps:new Set(),
+};
 
 const $ = s => document.querySelector(s);
 const lots = Object.fromEntries(R.lots.map(l => [l.lot_id, l]));
 const gen = R.etape4_generation;
 const genIds = Object.keys(gen);
 const surf = Object.fromEntries(R.etape1_surfaces.map(c => [c.lot_id, c]));
+const perims = R.etape3_perimetres || {};
 const nf = (x, d=2) => Number(x).toLocaleString("fr-FR", {minimumFractionDigits:d, maximumFractionDigits:d});
-const eur = x => Math.round(x).toLocaleString("fr-FR") + " €";
+const eur = x => Math.round(x).toLocaleString("fr-FR") + NNBSP + "€";
+const pct = x => `${x}${NNBSP}%`;
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const paris = iso => new Date(iso).toLocaleString("fr-FR", {timeZone:"Europe/Paris", day:"2-digit", month:"2-digit", year:"numeric", hour:"2-digit", minute:"2-digit"}).replace(" ", " à ");
 const etage = l => l.etage === 0 ? "rez-de-chaussée" : (l.etage === 1 ? "1er étage" : `${l.etage}e étage`) + (l.dernier_etage ? " (dernier)" : "");
@@ -302,32 +624,45 @@ const isCache = R.meta.mode_effectif !== "live";
 function renderInputs(){
   const p = R.programme, alerte = R.etape2_prix_appel;
   const prix = (S.step >= 2 && alerte)
-    ? `<span class="val old">${eur(alerte.ancien_prix)}*</span><span class="val new">${eur(alerte.nouveau_prix)}*</span><span class="tag">mise à jour proposée</span>`
-    : `<span class="val">${eur(p.prix_a_partir_de_affiche_page_programme)}*</span><span class="muted" style="font-size:12px">porté par le lot ${p.lot_portant_prix_appel}</span>`;
-  let h = `<div class="card prog"><div class="photo" style="background-image:url(${A.facade})"></div><div class="body">
-    <div class="k">${esc(p.id)}</div><h3>${esc(p.nom)}</h3>
-    <div class="meta">${esc(p.ville)} / zone ${esc(p.zone_fiscale)} / livraison ${esc(p.livraison_previsionnelle)}</div>
-    <div class="meta">${p.nb_lots_total} lots, dont ${p.nb_lots_disponibles} disponibles</div>
-    <div class="prixappel"><span class="k" style="width:100%">Prix d'appel de la page programme</span>${prix}</div></div></div>`;
-  h += `<div class="sub"><span class="k">Échantillon du flux : ${R.lots.length} lots T3</span><span class="k">mis à jour 2 fois par jour</span></div>`;
+    ? `<span class="val old">${eur(alerte.ancien_prix)}*</span><span class="val new">${eur(alerte.nouveau_prix)}*</span><span class="tag">Mise à jour proposée</span>`
+    : `<span class="val">${eur(p.prix_a_partir_de_affiche_page_programme)}*</span><span class="muted" style="font-size:11.5px">porté par le lot ${p.lot_portant_prix_appel}</span>`;
+  let h = `<div class="prog"><div class="photo" style="background-image:url(${A.facade})"></div><div class="body">
+    <div class="cap-fig">Fig. 1 · ${esc(p.id)}</div><h3>${esc(p.nom)}</h3>
+    <div class="meta">${esc(p.ville)} · zone ${esc(p.zone_fiscale)} · livraison ${esc(p.livraison_previsionnelle)}</div>
+    <div class="meta numval">${p.nb_lots_total} lots, dont ${p.nb_lots_disponibles} disponibles</div>
+    <div class="prixappel"><span class="k" style="width:100%">Prix d’appel affiché</span>${prix}</div></div></div>`;
+  h += `<div class="sub"><span class="k">Extrait MBI · ${R.lots.length} lots T3</span><span class="k">2 flux / jour</span></div>`;
   for (const l of R.lots) {
     const c = surf[l.lot_id];
-    let pill = l.statut_mbi === "VENDU" ? `<span class="pill vendu">Vendu</span>` : `<span class="pill dispo">Disponible</span>`, cls = "";
-    if (S.step >= 1 && c && c.statut === "QUARANTAINE") { pill = `<span class="pill q">Quarantaine</span>`; cls = "q"; }
-    if (S.step >= 4 && gen[l.lot_id]) { pill = S.temoin ? `<span class="pill ok">Validé</span>` : `<span class="pill ok">Fiche prête</span>`; cls = "ok"; }
-    if (S.step >= 2 && l.statut_mbi === "VENDU") pill = `<span class="pill vendu">Vendu, exclu</span>`;
+    let tag = l.statut_mbi === "VENDU" ? `<span class="st-tag vendu">Vendu</span>` : `<span class="st-tag dispo">Disponible</span>`, cls = "";
+    if (S.step >= 1 && c && c.statut === "QUARANTAINE") { tag = `<span class="st-tag q">Quarantaine</span>`; cls = "q"; }
+    if (S.step >= 4 && gen[l.lot_id]) { tag = S.temoin ? `<span class="st-tag ok">Validé</span>` : `<span class="st-tag ok">Prête</span>`; cls = "ok"; }
+    if (S.step >= 2 && l.statut_mbi === "VENDU") tag = `<span class="st-tag vendu">Exclu</span>`;
     const thumb = planURI(l.lot_id) ? `<div class="thumb" style="background-image:url(${planURI(l.lot_id)})"></div>` : `<div class="thumb vide">sans plan</div>`;
-    h += `<div class="card lot ${cls}">${thumb}<div><div class="id">LOT ${l.lot_id}</div>
-      <div class="l2">${l.typologie} / ${etage(l)}</div><div class="l2 mono">${nf(l.surface_habitable_mbi,1)} m² / ${eur(l.prix_ttc)}</div></div>${pill}
-      ${l.description_actuelle_mbi_seloger ? `<div class="desc">Annonce actuelle : « ${esc(l.description_actuelle_mbi_seloger)} »</div>` : ""}</div>`;
+    h += `<div class="lot ${cls}">${thumb}<div><div class="id">LOT ${l.lot_id}</div>
+      <div class="l2">${l.typologie} · ${etage(l)}</div><div class="l2 mono">${nf(l.surface_habitable_mbi,1)}${NNBSP}m² · ${eur(l.prix_ttc)}</div></div>${tag}
+      ${l.description_actuelle_mbi_seloger ? `<div class="desc">Annonce actuelle${NBSP}: «${NBSP}${esc(l.description_actuelle_mbi_seloger)}${NBSP}»</div>` : ""}</div>`;
   }
-  h += `<div class="sub"><span class="k">${esc(R.notice.document.split("\u2014")[0].trim())}</span><span class="k">${R.notice.clauses_extraites.length} clauses</span></div><div class="card notice">`;
-  for (const c of R.notice.clauses_extraites) h += `<div class="cl"><span class="pg">p. ${c.page}</span><span>${esc(c.rubrique)}</span></div>`;
-  h += `</div><div class="sub"><span class="k">Bibliothèque de mentions légales</span><span class="k">verrouillée hors IA</span></div>`;
+  h += `<div class="sub"><span class="k">${esc(R.notice.document.split("\u2014")[0].trim())}</span><span class="k">${R.notice.clauses_extraites.length} clauses</span></div><div class="notice">`;
+  for (const c of R.notice.clauses_extraites) h += `<div class="cl"><span class="pg">p.${NNBSP}${c.page}</span><span>${esc(c.rubrique)}</span></div>`;
+  h += `</div><div class="sub"><span class="k">Bibliothèque juridique</span><span class="k">Hors IA · SHA-256</span></div>`;
   $("#colIn").innerHTML = h;
 }
 
 /* ---------- Colonne 2 ---------- */
+function syncOpenSteps(){
+  if (S.step <= 0) S.openSteps = new Set();
+  else if (S.step <= 2) S.openSteps = new Set([1, 2].filter(n => n <= S.step));
+  else if (S.step <= 4) S.openSteps = new Set([3, 4].filter(n => n <= S.step));
+  else S.openSteps = new Set([4, 5]);
+}
+function stepSummary(n){
+  if (n === 1) { const q = R.etape1_surfaces.find(c => c.statut === "QUARANTAINE"); return q ? `${q.lot_id} bloqué (${nf(q.ecart_m2)}${NNBSP}m²)` : "Surfaces conformes"; }
+  if (n === 2) { const a = R.etape2_prix_appel; return a ? `${eur(a.ancien_prix)} → ${eur(a.nouveau_prix)} (${a.nouveau_lot})` : "Prix à jour"; }
+  if (n === 3) return `${genIds.join(" & ")} · portée bornée`;
+  if (n === 4) { const s = R.similarite[0]; return s ? `Similarité ${pct(Math.round(s.score*100))} · 0 violation` : "Contrôles OK"; }
+  return "";
+}
 function stepState(n){
   if (S.step < n - 1 || (S.step === n - 1 && !S.running)) return "pending";
   if (S.step === n - 1 && S.running) return "running";
@@ -336,93 +671,144 @@ function stepState(n){
   if (n === 5 && !S.temoin) return "warn";
   return "done";
 }
-const statusPill = {pending:`<span class="pill dispo">En attente</span>`, running:`<span class="pill warn">En cours</span>`,
-  alert:`<span class="pill q">1 lot bloqué</span>`, warn:`<span class="pill warn">Action requise</span>`, done:`<span class="pill ok">Terminé</span>`};
+const statusTag = {
+  pending:`<span class="st-tag dispo">En attente</span>`,
+  running:`<span class="st-tag warn">En cours</span>`,
+  alert:`<span class="st-tag q">1 bloqué</span>`,
+  warn:`<span class="st-tag warn">Action</span>`,
+  done:`<span class="st-tag ok">Validé</span>`,
+};
 
 function body1(){
-  const rows = R.etape1_surfaces.map(c => `<tr class="${c.statut==="QUARANTAINE"?"bad":""}"><td>${c.lot_id}</td><td>${nf(c.surface_mbi)} m²</td>
-    <td>${c.surface_plan==null?"absent":nf(c.surface_plan)+" m²"}</td><td>${c.somme_pieces==null?"":nf(c.somme_pieces)+" m²"}</td>
-    <td>${c.ecart_m2==null?"":(c.ecart_m2>0?"+":"")+nf(c.ecart_m2)+" m²"}</td>
-    <td>${c.statut==="OK"?`<span class="pill ok">OK</span>`:`<span class="pill q">Quarantaine</span>`}</td></tr>`).join("");
+  const rows = R.etape1_surfaces.map(c => `<tr class="${c.statut==="QUARANTAINE"?"bad":""}"><td>${c.lot_id}</td><td>${nf(c.surface_mbi)}${NNBSP}m²</td>
+    <td>${c.surface_plan==null?"absent":nf(c.surface_plan)+NNBSP+"m²"}</td><td>${c.somme_pieces==null?"":nf(c.somme_pieces)+NNBSP+"m²"}</td>
+    <td>${c.ecart_m2==null?"":(c.ecart_m2>0?"+":"")+nf(c.ecart_m2)+NNBSP+"m²"}</td>
+    <td>${c.statut==="OK"?`<span class="st-tag ok">OK</span>`:`<span class="st-tag q">Quarantaine</span>`}</td></tr>`).join("");
   const q = R.etape1_surfaces.find(c => c.statut === "QUARANTAINE");
   const src = [...new Set(R.lots.map(l => l.source_lecture).filter(Boolean))].join(", ");
-  let h = `<table class="tbl"><tr><th>Lot</th><th>Flux MBI</th><th>Cartouche plan</th><th>Somme pièces</th><th>Écart</th><th>Statut</th></tr>${rows}</table>
-    <div class="note">Lecture du plan : ${esc(src)}. Le lot ${R.etape2_exclus.map(e=>e.lot_id).join(", ")} est vendu : il n'est pas contrôlé.</div>`;
-  if (q) h += `<div class="alertbox q"><div class="crop" style="background-image:url(${planURI(q.lot_id)});background-size:640px auto;background-position:-404px -234px"></div><div>
-    <h4>Lot ${q.lot_id} en quarantaine : aucune génération lancée</h4>
-    <p>${esc(q.motifs[0])}.</p>
-    <p>Écart de ${nf(q.ecart_pct,1)} % : sous la tolérance contractuelle de 5 %, mais l'annonce afficherait ${nf(Math.abs(q.ecart_m2),1)} m² de trop. Le pipeline bloque au-delà de 0,5 m².</p>
-    <p><b>Alerte envoyée à la direction régionale</b> pour corriger le MBI. Sans ce contrôle, l'erreur partirait aussi sur les portails.</p></div></div>`;
+  let h = `<table class="tbl"><tr><th>Lot</th><th>Flux MBI</th><th>Plan</th><th>Somme pièces</th><th>Écart</th><th>Statut</th></tr>${rows}</table>
+    <div class="note">Source${NBSP}: ${esc(src)} · Lot ${R.etape2_exclus.map(e=>e.lot_id).join(", ")} vendu (exclu).</div>`;
+  if (q) h += `<div class="alertbox q">
+    <div class="crop-wrap">
+      <div class="crop" style="background-image:url(${planURI(q.lot_id)});background-size:600px 410px;background-position:-389px -241px"></div>
+      <span class="crop-cap">Extrait exact du cartouche ${q.lot_id}</span>
+    </div>
+    <div>
+      <h4>Lot ${q.lot_id} bloqué${NBSP}: ${nf(q.ecart_m2)}${NNBSP}m² (${pct(nf(q.ecart_pct,1))})</h4>
+      <p>Seuil bloquant 0,50${NNBSP}m² dépassé. Alerte envoyée en région avant diffusion portails et site.</p>
+    </div></div>`;
   return h;
 }
 function body2(){
   const a = R.etape2_prix_appel, ex = R.etape2_exclus[0];
-  if (!a) return `<div class="note">Prix d'appel à jour.</div>`;
-  return `<div class="alertbox w"><div style="flex:1"><h4>Prix « à partir de » caduc sur la page programme</h4>
+  if (!a) return `<div class="note">Prix d’appel à jour.</div>`;
+  return `<div class="alertbox w"><div style="flex:1"><h4>Prix «${NBSP}à partir de${NBSP}» caduc sur la page programme</h4>
     <p>${esc(a.motif)}${ex && ex.depuis ? ` le ${paris(ex.depuis)}` : ""}.</p>
-    <div class="bigprice"><s>${eur(a.ancien_prix)}*</s><span class="arrow">devient</span><span>${eur(a.nouveau_prix)}*</span><span class="arrow">(lot ${a.nouveau_lot})</span></div>
-    <p>Recalculé sur ${esc(a.perimetre)} : le lot en quarantaine est exclu tant qu'il n'est pas corrigé.</p>
-    <p>Mise à jour proposée à l'équipe contenu, visa juridique sur la mention de prix. Afficher un prix qui n'existe plus serait une pratique commerciale trompeuse.</p></div></div>`;
+    <div class="bigprice"><s>${eur(a.ancien_prix)}*</s><span class="arrow">→</span><span>${eur(a.nouveau_prix)}*</span><span class="arrow">(lot ${a.nouveau_lot})</span></div>
+    <p>Recalculé sur ${esc(a.perimetre)} (lot en quarantaine exclu) · visa juridique requis.</p></div></div>`;
 }
 function body3(){
   const cols = Object.entries(R.etape3_singularites).map(([id, ss]) => {
     const l = lots[id];
-    return `<div class="sing"><div class="h"><b>${id} / ${l.typologie}</b><span class="pill ink">${ss.length} différence${ss.length>1?"s":""}</span></div>
+    return `<div class="sing"><div class="h"><b>${id} · ${l.typologie}</b><span class="st-tag ink">${ss.length} preuve${ss.length>1?"s":""}</span></div>
       ${ss.map(s => `<span class="chipS"><b>${esc(s.libelle)}</b><br><span class="v">${esc(s.valeur)}</span>${s.reference?` <span class="r">(${esc(s.reference)})</span>`:""}</span>`).join("")}</div>`;
   }).join("");
-  return `<div class="sings">${cols}</div><div class="note">Comparaison aux autres ${lots[genIds[0]].typologie} disponibles et fiables du flux. Le modèle rédige ensuite à partir de ces différences : il ne les invente pas.</div>`;
+  const typo = lots[genIds[0]]?.typologie || "T3";
+  const pm = perims[typo];
+  const scopeTxt = pm && !pm.complet
+    ? `Portée bornée (${pm.nb_comparables} ${typo} vérifiés sur ${pm.nb_disponibles_programme} lots disponibles, ${pm.lots_meme_typo_quarantaine.join(", ")} en quarantaine)${NBSP}: «${NBSP}le seul / du programme${NBSP}» bloqué.`
+    : `Périmètre complet vérifié sur les ${typo} disponibles.`;
+  return `<div class="sings">${cols}</div><div class="note">${esc(scopeTxt)} Empreinte liée aux voisins${NBSP}: toute vente voisine déclenche la régénération.</div>`;
 }
 function body4(){
   const boxes = genIds.map(id => {
     const g = gen[id], c = g.controles;
-    const pages = c.clauses_citees.map(x => "p. " + x.page).join(", ");
-    return `<div class="box"><div style="display:flex;justify-content:space-between;align-items:center"><b class="mono">${id}</b>
-      ${g.statut==="PRETE"?`<span class="pill ok">Fiche prête</span>`:`<span class="pill q">Revue humaine</span>`}</div>
-      <div class="check"><i>${ICON.check}</i><span>${new Set(c.chiffres_verifies).size} valeurs chiffrées, ${c.violations?"certaines non prouvées":"toutes prouvées par le MBI, le plan ou la notice"}</span></div>
-      <div class="check"><i>${ICON.check}</i><span>Notice citée : ${pages}</span></div>
-      <div class="check"><i>${ICON.check}</i><span>0 prix, 0 mention fiscale, 0 superlatif dans le texte</span></div>
-      <div class="check"><i>${ICON.check}</i><span>${g.mentions.length} mentions légales assemblées hors IA, empreintes ${g.mentions_intactes?"conformes":"ALTÉRÉES"}</span></div></div>`;
+    const pages = c.clauses_citees.map(x => `p.${NNBSP}${x.page}`).join(", ");
+    const emp = g.empreinte_contexte ? ` · #${g.empreinte_contexte.slice(0,6)}` : "";
+    return `<div class="box"><div class="box-h"><b class="mono">${id}<span class="muted" style="font-weight:400;font-size:10.5px">${esc(emp)}</span></b>
+      ${g.statut==="PRETE"?`<span class="st-tag ok">Prête</span>`:`<span class="st-tag q">À revoir</span>`}</div>
+      <div class="chk"><span class="mk">OK</span><span>${new Set(c.chiffres_verifies).size} valeurs chiffrées prouvées (MBI, plan ou notice)</span></div>
+      <div class="chk"><span class="mk">OK</span><span>Portée bornée à l’échantillon, 0 prix ni mention fiscale</span></div>
+      <div class="chk"><span class="mk">OK</span><span>Notice (${pages}) et ${g.mentions.length} mentions hors IA (${g.mentions_intactes?"SHA-256 OK":"ALTÉRÉES"})</span></div></div>`;
   }).join("");
-  const sim = R.similarite.map(s => `<div class="alertbox v"><div><h4>Similarité ${s.paire.replace("-"," / ")} : ${Math.round(s.score*100)} %</h4>
-    <p>Alerte au-delà de ${Math.round(s.seuil*100)} %. Mesure sur le titre, l'accroche et les points forts ; les prestations viennent de la même notice.</p></div></div>`).join("");
-  const src = isCache ? `Textes : cache de secours pré-généré par Claude, repassé dans les mêmes contrôles.` : `Textes : ${esc(R.meta.modele)} en direct.`;
+  const sim = R.similarite.map(s => {
+    const sc = Math.round(s.score * 100), th = Math.round(s.seuil * 100);
+    return `<div class="alertbox v"><div style="flex:1">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+        <h4>Similarité ${s.paire.replace("-"," / ")}</h4>
+        <span class="hero-stat">${pct(sc)}</span>
+      </div>
+      <div class="bar-row">
+        <div class="bar-track"><div class="bar-fill" style="width:${Math.min(100, sc)}%"></div><div class="bar-mark" style="left:${th}%" title="Seuil ${th} %"></div></div>
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;margin-top:3px"><span>0${NNBSP}%</span><span>Seuil d’alerte${NBSP}: ${pct(th)}</span><span>100${NNBSP}%</span></div>
+      </div>
+    </div></div>`;
+  }).join("");
+  const src = isCache ? `Textes${NBSP}: cache pré-généré par Claude, validé par les mêmes contrôles.` : `Textes${NBSP}: ${esc(R.meta.modele)} en direct.`;
   return `<div class="gen">${boxes}</div>${sim}<div class="note">${src}</div>`;
 }
 function body5(){
   const t = R.lots_temoins[0];
   if (!t) return "";
   const p = R.productivite;
-  return `<div class="temoin"><div style="flex:1;min-width:240px"><b>Lot-témoin ${t.typologie} : ${t.lot_id}</b>
-    <div class="note" style="margin-top:2px">${esc(t.raison)} Sa validation couvre ${t.lots_couverts.join(" et ")}.</div></div>
-    ${S.temoin ? `<span class="pill ok">Validé, poussé en brouillon validé dans Sulu</span>` : `<button class="btn small" id="btnTemoin">Valider le lot-témoin</button>`}</div>
-    <div class="note">Relecture : ${p.lots_a_relire} fiche sur ${p.lots_generes} dans cette démo, au lieu de ${p.minutes_manuelles_par_lot} min de rédaction par lot (test de l'équipe contenu sur 40 lots).</div>`;
+  const minRel = p.minutes_relecture_temoin || 4;
+  const minMan = p.minutes_manuelles_par_lot * p.lots_generes;
+  const ratio = Math.max(4, Math.round((minRel / minMan) * 100));
+  return `<div class="temoin"><div style="flex:1;min-width:220px"><b>Lot-témoin ${t.typologie}${NBSP}: ${t.lot_id}</b>
+    <div class="note" style="margin-top:2px">${esc(t.raison)} Couvre ${t.lots_couverts.join(" et ")}.</div></div>
+    ${S.temoin ? `<span class="st-tag ok">Validé · poussé dans Sulu</span>` : `<button type="button" class="btn small" id="btnTemoin">Valider le lot-témoin</button>`}</div>
+    <div class="comp-bars">
+      <div><div class="cb-lbl"><span class="k">Avec B2 (lot-témoin)</span><b class="mono">${minRel}${NNBSP}min</b></div><div class="bar-track"><div class="bar-fill" style="width:${ratio}%"></div></div></div>
+      <div><div class="cb-lbl"><span class="k">Manuel (${p.lots_generes} × ${p.minutes_manuelles_par_lot}${NNBSP}min)</span><b class="mono">${minMan}${NNBSP}min</b></div><div class="bar-track"><div class="bar-fill red" style="width:100%"></div></div></div>
+    </div>
+    <div class="note">Charge humaine${NBSP}: ${p.lots_a_relire} relecture (~${minRel}${NNBSP}min) pour ${p.lots_generes} fiches générées, contre ${p.minutes_manuelles_par_lot}${NNBSP}min de rédaction manuelle par lot (test sur 40 lots).</div>`;
 }
 const BODIES = [body1, body2, body3, body4, body5];
 
 function renderSteps(){
   $("#steps").innerHTML = STEPS.map((st, i) => {
     const state = stepState(st.n);
-    const showBody = state !== "pending" && state !== "running";
-    return `<div class="card step" data-state="${state}"><div class="step-head"><span class="n">${state==="done"?ICON.check:st.n}</span>
-      <div><div class="gf">${st.gf}</div><h3>${st.titre}</h3></div><span class="st">${statusPill[state]}</span></div>
-      ${showBody ? `<div class="step-body">${BODIES[i]()}</div>` : `<div class="desc0">${st.desc}</div>`}</div>`;
+    const completed = state !== "pending" && state !== "running";
+    const expanded = completed && S.openSteps.has(st.n);
+    const compact = completed && !expanded;
+    return `<div class="step ${completed?"clickable":""} ${compact?"compact":""}" data-step="${st.n}" data-state="${state}">
+      <div class="step-head"><span class="n">0${st.n}</span>
+      <div style="min-width:0"><div class="gf">${st.gf}</div><h3>${st.titre}</h3></div>
+      ${compact ? `<span class="resume mono">${esc(stepSummary(st.n))}</span>` : ""}
+      <span class="st">${statusTag[state]}${completed?`<span class="chev">${expanded?"−":"+"}</span>`:""}</span></div>
+      ${expanded ? `<div class="step-body">${BODIES[i]()}</div>` : (!completed ? `<div class="desc0">${st.desc}</div>` : "")}</div>`;
   }).join("");
+  document.querySelectorAll(".step.clickable .step-head").forEach(hd => {
+    hd.onclick = () => {
+      const n = Number(hd.parentElement.dataset.step);
+      if (S.openSteps.has(n)) S.openSteps.delete(n); else S.openSteps.add(n);
+      renderSteps();
+    };
+  });
   const bt = $("#btnTemoin"); if (bt) bt.onclick = validerTemoin;
-  const labels = ["Lancer le contrôle et la génération", "Étape suivante : prix d'appel", "Étape suivante : singularités", "Étape suivante : rédaction", "Étape suivante : lot-témoin", "Pipeline terminé"];
+  const labels = ["Lancer le contrôle et la génération", "Étape suivante : prix d’appel", "Étape suivante : singularités", "Étape suivante : rédaction", "Étape suivante : lot-témoin", "Pipeline terminé"];
   const btn = $("#btnNext");
   btn.textContent = S.running ? "Traitement en cours" : (S.step === 5 && !S.temoin ? "En attente du lot-témoin" : labels[S.step]);
   btn.disabled = S.running || S.step >= 5;
-  $("#btnAuto").style.visibility = S.step >= 5 ? "hidden" : "visible";
+  const ba = $("#btnAuto");
+  ba.textContent = S.auto ? "arrêter le déroulé" : "tout dérouler";
+  ba.classList.toggle("active", S.auto);
+  ba.style.visibility = S.step >= 5 && !S.auto ? "hidden" : "visible";
   $("#progress").innerHTML = STEPS.map(st => `<i class="${S.step >= st.n ? "on" : ""}"></i>`).join("") + `<span>${S.step}/5</span>`;
-  const last = [...document.querySelectorAll(".step")][Math.max(0, S.step - (S.running ? 0 : 1))];
-  if (last) last.scrollIntoView({block:"nearest", behavior:"smooth"});
+  const stepEls = [...document.querySelectorAll(".step")];
+  if (S.step === 2 && S.openSteps.has(1) && stepEls[0]) {
+    stepEls[0].scrollIntoView({block:"start", behavior:"smooth"});
+  } else {
+    const target = stepEls[Math.max(0, S.step - (S.running ? 0 : 1))];
+    if (target) target.scrollIntoView({block:"nearest", behavior:"smooth"});
+  }
 }
 
 /* ---------- Journal ---------- */
 const t0 = Date.now();
 function log(txt, cls="", tag=""){
   const s = ((Date.now() - t0) / 1000).toFixed(1).padStart(5, " ");
-  S.log.push({s, txt, cls, tag}); S.log = S.log.slice(-7); renderLog();
+  S.log.push({s, txt, cls, tag}); S.log = S.log.slice(-6); renderLog();
 }
 function renderLog(){
   $("#log").innerHTML = S.log.map(l => `<div class="ln"><span class="t">${l.s}s</span>${l.tag?`<span class="tag">[${l.tag}]</span>`:""}<span class="${l.cls}">${esc(l.txt)}</span></div>`).join("");
@@ -439,12 +825,17 @@ function logsForStep(n){
   if (n === 2) {
     for (const e of R.etape2_exclus) out.push([`${e.lot_id} statut ${e.statut}${e.depuis ? " depuis le " + paris(e.depuis) : ""} : exclu`, "", "mbi"]);
     const a = R.etape2_prix_appel;
-    if (a) out.push([`prix d'appel ${eur(a.ancien_prix)} caduc, proposé ${eur(a.nouveau_prix)} (${a.nouveau_lot})`, "w", "prix"]);
+    if (a) out.push([`prix d’appel ${eur(a.ancien_prix)} caduc, proposé ${eur(a.nouveau_prix)} (${a.nouveau_lot})`, "w", "prix"]);
   }
-  if (n === 3) for (const [id, ss] of Object.entries(R.etape3_singularites)) out.push([`${id} : ${ss.map(s => s.code.toLowerCase()).join(", ")}`, "", "sing"]);
+  if (n === 3) {
+    const typo = lots[genIds[0]]?.typologie || "T3";
+    const pm = perims[typo];
+    if (pm && !pm.complet) out.push([`portée bornée : ${pm.nb_comparables}/${pm.nb_disponibles_programme} lots vérifiés, superlatifs globaux bloqués`, "w", "portée"]);
+    for (const [id, ss] of Object.entries(R.etape3_singularites)) out.push([`${id} : ${ss.map(s => s.code.toLowerCase()).join(", ")}`, "", "sing"]);
+  }
   if (n === 4) {
-    if (isCache) out.push([`mode cache : aucun appel réseau, mêmes contrôles qu'en direct`, "", "claude"]);
-    for (const id of genIds) { const g = gen[id]; out.push([`${id} ${g.statut === "PRETE" ? "rédigé" : "à revoir"} : ${new Set(g.controles.chiffres_verifies).size} valeurs chiffrées vérifiées, ${g.controles.clauses_citees.length} clauses citées`, g.statut === "PRETE" ? "v" : "q", "claude"]); }
+    if (isCache) out.push([`mode cache : aucun appel réseau, mêmes contrôles qu’en direct`, "", "claude"]);
+    for (const id of genIds) { const g = gen[id]; out.push([`${id} ${g.statut === "PRETE" ? "rédigé" : "à revoir"} : ${new Set(g.controles.chiffres_verifies).size} chiffres prouvés, portée vérifiée`, g.statut === "PRETE" ? "v" : "q", "claude"]); }
     for (const s of R.similarite) out.push([`similarité ${s.paire} ${Math.round(s.score * 100)} % (seuil ${Math.round(s.seuil * 100)} %)`, "v", "sim"]);
     out.push([`mentions légales assemblées par identifiant, empreintes conformes`, "v", "legal"]);
   }
@@ -452,71 +843,114 @@ function logsForStep(n){
   return out;
 }
 
-/* ---------- Déroulé ---------- */
+/* ---------- Déroulé (avec jeton d’annulation) ---------- */
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function avancer(){
   if (S.running || S.step >= 5) return;
+  const id = S.runId;
   S.running = true; renderAll();
   const lignes = logsForStep(S.step + 1);
   const pas = Math.max(180, Math.min(450, 1300 / Math.max(1, lignes.length)));
-  for (const [txt, cls, tag] of lignes) { await sleep(pas); log(txt, cls, tag); }
+  for (const [txt, cls, tag] of lignes) {
+    await sleep(pas);
+    if (id !== S.runId) return;
+    log(txt, cls, tag);
+  }
   await sleep(250);
+  if (id !== S.runId) return;
   S.step += 1; S.running = false;
+  syncOpenSteps();
   if (S.step === 4) { S.vue = "nexity"; }
   renderAll();
 }
+function reculer(){
+  if (S.step <= 0 && !S.running && !S.auto) return;
+  S.runId += 1; S.auto = false; S.running = false;
+  if (S.temoin && S.step === 5) { S.temoin = false; }
+  else if (S.step > 0) { S.step -= 1; }
+  if (S.step < 4) S.vue = "portail";
+  syncOpenSteps();
+  renderAll();
+}
 async function toutDerouler(){
-  if (S.auto) return; S.auto = true;
-  while (S.step < 5) { await avancer(); await sleep(900); }
-  S.auto = false;
+  if (S.auto) { S.runId += 1; S.auto = false; S.running = false; renderAll(); return; }
+  const id = S.runId;
+  S.auto = true; renderSteps();
+  while (S.step < 5 && id === S.runId) {
+    await avancer();
+    if (id !== S.runId || S.step >= 5) break;
+    await sleep(900);
+  }
+  if (id === S.runId) { S.auto = false; renderSteps(); }
 }
 function validerTemoin(){
   S.temoin = true;
   log(`${R.lots_temoins[0].lots_couverts.length} fiches poussées dans Sulu en brouillon validé`, "v", "sulu");
   renderAll();
 }
-function reset(){ Object.assign(S, {step:0, running:false, temoin:false, vue:"portail", lot:"B31", log:[]}); log("flux MBI reçu : " + R.lots.length + " lots, programme " + R.programme.id, "", "mbi"); renderAll(); }
+function toggleZoomPhone(force){
+  S.zoom = typeof force === "boolean" ? force : !S.zoom;
+  document.body.classList.toggle("zoom-phone", S.zoom);
+  $("#btnZoom").classList.toggle("on", S.zoom);
+  $("#btnZoom").textContent = S.zoom ? "Fermer" : "Zoom";
+  requestAnimationFrame(fitPhone);
+}
+function reset(){
+  S.runId += 1;
+  Object.assign(S, {step:0, running:false, temoin:false, vue:"portail", lot:"B31", log:[], auto:false, cut:50, openSteps:new Set()});
+  if (S.zoom) toggleZoomPhone(false);
+  log("flux MBI reçu : " + R.lots.length + " lots, programme " + R.programme.id, "", "mbi");
+  renderAll();
+  fitPhone();
+}
 
 /* ---------- Colonne 3 : mobile ---------- */
 function renderPhone(){
   document.querySelectorAll("#segVue button").forEach(b => b.classList.toggle("on", b.dataset.v === S.vue));
-  $("#segLot").innerHTML = genIds.map(id => `<button data-l="${id}" class="${S.lot === id ? "on" : ""}">${id}</button>`).join("");
-  document.querySelectorAll("#segLot button").forEach(b => b.onclick = () => { S.lot = b.dataset.l; renderPhone(); });
+  $("#segLot").innerHTML = genIds.map(id => `<button type="button" data-l="${id}" class="${S.lot === id ? "on" : ""}">${id}</button>`).join("");
+  document.querySelectorAll("#segLot button").forEach(b => b.onclick = () => { S.lot = b.dataset.l; b.blur(); renderPhone(); });
   const l = lots[S.lot];
   $("#app").innerHTML = S.vue === "portail" ? portal(l) : nexity(l);
   const range = $("#baRange");
-  if (range) range.oninput = e => $("#ba").style.setProperty("--cut", e.target.value + "%");
-  document.querySelectorAll(".cta button").forEach(b => b.onclick = () => toast("Démo : le rappel partirait au CRC avec le lot, la question et la simulation. Aucune donnée n'est collectée ici."));
+  if (range) {
+    range.value = String(S.cut);
+    $("#ba").style.setProperty("--cut", S.cut + "%");
+    range.oninput = e => { S.cut = Number(e.target.value); $("#ba").style.setProperty("--cut", S.cut + "%"); };
+    for (const ev of ["pointerup", "mouseup", "touchend", "change"]) {
+      range.addEventListener(ev, () => range.blur());
+    }
+  }
+  document.querySelectorAll(".cta button").forEach(b => b.onclick = () => toast("Démo : le rappel partirait au CRC avec le lot, la question et la simulation. Aucune donnée n’est collectée ici."));
 }
 function portal(l){
   return `<div class="portal"><div class="ph"><span class="sq"></span>Annonce portail (flux Marcus)</div>
     <div class="img" style="background-image:url(${A.facade})"></div>
     <div class="bd"><div class="t">Appartement ${l.typologie}</div><div class="p">${eur(l.prix_ttc)}</div>
-    <div class="muted" style="font-size:13px;margin-top:2px">${nf(l.surface_habitable_mbi,1)} m² / ${esc(R.programme.ville)}</div>
+    <div class="muted" style="font-size:13px;margin-top:2px">${nf(l.surface_habitable_mbi,1)}${NNBSP}m² · ${esc(R.programme.ville)}</div>
     <div class="d">${esc(l.description_actuelle_mbi_seloger)}</div></div>
-    <div class="warn">Ce texte d'une ligne, saisi en région dans le MBI, est le même sur nexity.fr, SeLoger et Leboncoin.</div>
+    <div class="warn">Ce texte d’une ligne, saisi en région dans le MBI, est le même sur nexity.fr, SeLoger et Leboncoin.</div>
     <div class="gbtn">Contacter le promoteur</div></div>`;
 }
 function nexity(l){
   const g = gen[l.lot_id];
   if (S.step < 4 || !g || !g.fiche) return `<div class="nx-head"><img src="${A.logoR}" alt="nexity"><div class="burger"></div></div>
-    <div class="empty"><b>Fiche lot pas encore générée</b>Lancez le pipeline : la page nexity.fr de ce lot n'existe pas aujourd'hui.</div>`;
+    <div class="empty"><b>Fiche lot pas encore générée</b>Lancez le pipeline${NBSP}: la page nexity.fr de ce lot n’existe pas aujourd’hui.</div>`;
   const f = g.fiche, sings = R.etape3_singularites[l.lot_id] || [];
   const clauses = Object.fromEntries(R.notice.clauses_extraites.map(c => [c.id, c]));
   const srcLabel = s => s.startsWith("SING.") ? "calcul" : s.startsWith("PLAN.") ? "plan" : "MBI";
   const visuelOk = /terrasse/i.test(l.exterieur_type);
   const hero = visuelOk
-    ? `<div class="ba" id="ba"><img src="${A.livre}" alt="Illustration de l'état livré"><img class="top" src="${A.inspiration}" alt="Illustration meublée">
+    ? `<div class="ba" id="ba" style="--cut:${S.cut}%"><img src="${A.livre}" alt="Illustration de l’état livré"><img class="top" src="${A.inspiration}" alt="Illustration meublée">
         <div class="line"></div><div class="knob">${ICON.lr}</div><span class="lab l">État livré (illustration)</span><span class="lab r">Inspiration meublée</span>
-        <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Comparer"></div>
-       <div class="cap">Illustrations non contractuelles. Le logement est livré nu, selon la notice (p. 8 et p. 16) ; le mobilier La Redoute est proposé après signature.</div>`
+        <input type="range" min="0" max="100" value="${S.cut}" id="baRange" aria-label="Comparer"></div>
+       <div class="cap">Illustrations non contractuelles. Le logement est livré nu, selon la notice (p.${NNBSP}8 et p.${NNBSP}16)${NBSP}; le mobilier La Redoute est proposé après signature.</div>`
     : `<div class="planbox" style="background-image:url(${planURI(l.lot_id)})"></div>
-       <div class="cap">Plan de vente. Visuel d'ambiance non affiché : il montre une terrasse, ce lot a un ${esc(l.exterieur_type.toLowerCase())}.</div>`;
-  const ribbon = S.temoin ? `<div class="ribbon ok">VALIDÉ, PRÊT À PUBLIER</div>` : `<div class="ribbon draft">BROUILLON SULU, EN ATTENTE DU LOT-TÉMOIN</div>`;
+       <div class="cap">Plan de vente. Visuel d’ambiance non affiché${NBSP}: il montre une terrasse, ce lot a un ${esc(l.exterieur_type.toLowerCase())}.</div>`;
+  const ribbon = S.temoin ? `<div class="ribbon ok">VALIDÉ · PRÊT À PUBLIER</div>` : `<div class="ribbon draft">BROUILLON SULU · EN ATTENTE DU LOT-TÉMOIN</div>`;
   const ptz = l.ptz_eligible ? `<span class="badge-red">PTZ possible*</span>` : "";
   return `${ribbon}<div class="nx-head"><img src="${A.logoR}" alt="nexity"><div class="burger"></div></div>
-    <div class="crumb">${esc(R.programme.nom)} / ${esc(R.programme.ville)}</div>${hero}
-    <div class="lp"><div class="ref">LOT ${l.lot_id} / ${l.typologie} / ${nf(l.surface_habitable_mbi,1)} M² / ${etage(l).toUpperCase()}</div>
+    <div class="crumb">${esc(R.programme.nom)} · ${esc(R.programme.ville)}</div>${hero}
+    <div class="lp"><div class="ref">LOT ${l.lot_id} · ${l.typologie} · ${nf(l.surface_habitable_mbi,1)}${NNBSP}M² · ${etage(l).toUpperCase()}</div>
       <h1>${esc(f.titre)}</h1>
       <div class="price"><span class="p">${eur(l.prix_ttc)}*</span>${ptz}</div>
       <div class="facts">${sings.map(s => `<span>${esc(s.libelle)}</span>`).join("")}<span>Livraison ${esc(R.programme.livraison_previsionnelle)}</span></div>
@@ -524,15 +958,21 @@ function nexity(l){
       <h2>Ce qui le distingue</h2>
       ${f.points_forts.map(p => `<div class="pf"><span class="dot"></span><span>${esc(p.texte)}${[...new Set(p.sources.map(srcLabel))].map(x => `<span class="src">${x}</span>`).join("")}</span></div>`).join("")}
       <h2>Livré selon la notice</h2>
-      ${f.prestations.map(p => `<div class="pr"><span class="np">NOTICE P. ${clauses[p.clause_id]?.page ?? "?"} / ${esc(clauses[p.clause_id]?.rubrique ?? "")}</span>${esc(p.texte)}</div>`).join("")}
+      ${f.prestations.map(p => `<div class="pr"><span class="np">NOTICE P.${NNBSP}${clauses[p.clause_id]?.page ?? "?"} · ${esc(clauses[p.clause_id]?.rubrique ?? "")}</span>${esc(p.texte)}</div>`).join("")}
     </div>
-    <div class="cta"><button class="b1">Être rappelé sur ce lot</button><button class="b2">Vérifier mon éligibilité au PTZ avec un conseiller</button></div>
-    <div class="legal"><span class="lock">${ICON.lock} MENTIONS HORS IA, EMPREINTE VÉRIFIÉE</span>${g.mentions.map(m => `<p>${esc(m.texte)}</p>`).join("")}</div>`;
+    <div class="cta"><button type="button" class="b1">Être rappelé sur ce lot</button><button type="button" class="b2">Vérifier mon éligibilité au PTZ avec un conseiller</button></div>
+    <div class="legal"><span class="lock">${ICON.lock} MENTIONS HORS IA · SHA-256 VÉRIFIÉ</span>${g.mentions.map(m => `<p>${esc(m.texte)}</p>`).join("")}</div>`;
 }
 function fitPhone(){
-  const z = $("#phoneZone"), w = $("#phoneWrap");
-  const sc = Math.min(1, (z.clientHeight - 6) / 868, (z.clientWidth - 6) / 390);
-  w.style.transform = `scale(${sc})`;
+  const z = $("#phoneZone"), w = $("#phoneWrap"), p = $("#phoneBox");
+  const availH = z.clientHeight - 8, availW = z.clientWidth - 8;
+  const targetH = S.zoom
+    ? Math.max(580, Math.min(820, Math.round(availH / 0.96)))
+    : Math.max(660, Math.min(820, Math.round(availH / 0.80)));
+  p.style.height = targetH + "px";
+  const maxSc = S.zoom ? 1.04 : 1;
+  const sc = Math.min(maxSc, availH / (targetH + 8), availW / 390);
+  w.style.transform = `scale(${Math.max(0.5, sc)})`;
 }
 let tt; function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("on"), 3200); }
 
@@ -540,20 +980,42 @@ function renderAll(){ renderInputs(); renderSteps(); renderPhone(); }
 
 /* ---------- Initialisation ---------- */
 $("#logoW").src = A.logoW;
-$("#srcChip").innerHTML = isCache ? `Rédaction : <b>cache de secours</b>` : `Rédaction : <b>${esc(R.meta.modele)}</b> en direct`;
+$("#srcChip").innerHTML = isCache ? `Rédaction${NBSP}: <b>cache de secours</b>` : `Rédaction${NBSP}: <b>${esc(R.meta.modele)}</b> en direct`;
 $("#flowTime").textContent = "flux du " + new Date(R.meta.execute_le).toLocaleDateString("fr-FR");
-$("#btnNext").onclick = avancer;
-$("#btnAuto").onclick = toutDerouler;
-document.querySelectorAll("#segVue button").forEach(b => b.onclick = () => { S.vue = b.dataset.v; renderPhone(); });
+$("#btnNext").onclick = () => { $("#btnNext").blur(); avancer(); };
+$("#btnAuto").onclick = () => { $("#btnAuto").blur(); toutDerouler(); };
+$("#btnZoom").onclick = () => { $("#btnZoom").blur(); toggleZoomPhone(); };
+document.querySelectorAll("#segVue button").forEach(b => b.onclick = () => { S.vue = b.dataset.v; b.blur(); renderPhone(); });
 document.addEventListener("keydown", e => {
-  if (e.target.tagName === "INPUT") return;
-  if (e.key === " " || e.key === "ArrowRight") { e.preventDefault(); if (S.step === 5 && !S.temoin) validerTemoin(); else avancer(); }
-  else if (e.key.toLowerCase() === "r") reset();
-  else if (e.key.toLowerCase() === "p") { S.vue = S.vue === "portail" ? "nexity" : "portail"; renderPhone(); }
-  else if (e.key.toLowerCase() === "l") { const i = genIds.indexOf(S.lot); S.lot = genIds[(i + 1) % genIds.length]; renderPhone(); }
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.target && e.target.matches && e.target.matches("input:not([type='range']), textarea, select, [contenteditable='true']")) return;
+  const k = e.key.toLowerCase();
+  if (e.key === " " || e.key === "ArrowRight") {
+    e.preventDefault();
+    if (e.target && e.target.blur) e.target.blur();
+    if (S.step === 5 && !S.temoin) validerTemoin(); else avancer();
+  } else if (e.key === "ArrowLeft") {
+    e.preventDefault();
+    reculer();
+  } else if (e.key === "Escape" && S.zoom) {
+    e.preventDefault();
+    toggleZoomPhone(false);
+  } else if (k === "r") {
+    e.preventDefault();
+    reset();
+  } else if (k === "p") {
+    e.preventDefault();
+    S.vue = S.vue === "portail" ? "nexity" : "portail"; renderPhone();
+  } else if (k === "l") {
+    e.preventDefault();
+    const i = genIds.indexOf(S.lot); S.lot = genIds[(i + 1) % genIds.length]; renderPhone();
+  } else if (k === "z") {
+    e.preventDefault();
+    toggleZoomPhone();
+  }
 });
 window.addEventListener("resize", fitPhone);
-reset(); fitPhone();
+reset();
 </script>
 </body>
 </html>

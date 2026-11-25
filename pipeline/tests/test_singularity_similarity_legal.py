@@ -1,8 +1,17 @@
+from dataclasses import replace
+
 from b2_pipeline.generator import charger_cache
 from b2_pipeline.legal import assembler_mentions, verifier_integrite
 from b2_pipeline.models import FicheLot
-from b2_pipeline.similarity import SEUIL_SIMILARITE, bigrammes, jaccard, similarite, similarites_paires
-from b2_pipeline.singularity import calculer_singularites
+from b2_pipeline.similarity import (
+    SEUIL_SIMILARITE,
+    bigrammes,
+    jaccard,
+    similarite,
+    similarites_paires,
+)
+from b2_pipeline.singularity import calculer_singularites, evaluer_perimetre
+
 from tests.conftest import CACHE
 
 
@@ -13,8 +22,25 @@ def codes(sings):
 def test_singularites_b31_et_b12(lots):
     voisins = [lots["B31"], lots["B12"]]
     assert codes(calculer_singularites(lots["B31"], voisins)) == {
-        "DERNIER_ETAGE", "PLUS_GRAND_EXTERIEUR", "TRAVERSANT", "PLUS_GRANDE_SURFACE"}
-    assert codes(calculer_singularites(lots["B12"], voisins)) == {"COEUR_ILOT", "PRIX_ACCES", "PRIX_M2"}
+        "DERNIER_ETAGE",
+        "PLUS_GRAND_EXTERIEUR",
+        "TRAVERSANT",
+        "PLUS_GRANDE_SURFACE",
+    }
+    assert codes(calculer_singularites(lots["B12"], voisins)) == {
+        "COEUR_ILOT",
+        "PRIX_ACCES",
+        "PRIX_M2",
+    }
+
+
+def test_perimetre_borne_sur_echantillon_partiel(donnees, lots):
+    perim = evaluer_perimetre("T3", donnees.flux.programme, list(lots.values()), {"B22"})
+    assert perim.complet is False
+    assert perim.nb_comparables == 2
+    assert perim.lots_meme_typo_quarantaine == ["B22"]
+    sings = calculer_singularites(lots["B31"], [lots["B31"], lots["B12"]], perimetre_complet=False)
+    assert all(s.portee == "echantillon_verifie" and "Seul" not in s.libelle for s in sings)
 
 
 def test_valeurs_formatees_en_francais(lots):
@@ -49,7 +75,11 @@ def test_fiche_copiee_declenche_l_alerte():
 
 def test_mentions_assemblees_mot_pour_mot(donnees, lots):
     mentions = assembler_mentions(lots["B31"], donnees.mentions)
-    assert [m.id for m in mentions] == ["LEGAL_VEFA_PRIX", "LEGAL_PTZ_2026", "LEGAL_VISUEL_NON_CONTRACTUEL"]
+    assert [m.id for m in mentions] == [
+        "LEGAL_VEFA_PRIX",
+        "LEGAL_PTZ_2026",
+        "LEGAL_VISUEL_NON_CONTRACTUEL",
+    ]
     assert all(m.texte == donnees.mentions.mentions[m.id] for m in mentions)
     assert verifier_integrite(mentions, donnees.mentions)
 
@@ -60,7 +90,8 @@ def test_mention_ptz_absente_si_lot_non_eligible(donnees, lots):
 
 
 def test_mention_alteree_detectee(donnees, lots):
-    from dataclasses import replace
     mentions = assembler_mentions(lots["B31"], donnees.mentions)
-    alteree = [replace(mentions[0], texte=mentions[0].texte + " Offre exceptionnelle.")] + mentions[1:]
+    alteree = [replace(mentions[0], texte=mentions[0].texte + " Offre exceptionnelle.")] + mentions[
+        1:
+    ]
     assert not verifier_integrite(alteree, donnees.mentions)

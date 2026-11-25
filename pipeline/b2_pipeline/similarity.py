@@ -10,16 +10,48 @@ from __future__ import annotations
 
 import re
 import unicodedata
-from itertools import combinations
+from itertools import combinations, pairwise
+from typing import Any
 
 from .models import FicheLot
 
 SEUIL_SIMILARITE = 0.30
 
 MOTS_VIDES = {
-    "le", "la", "les", "un", "une", "des", "de", "du", "d", "l", "et", "a", "au", "aux", "en",
-    "sur", "pour", "par", "avec", "dans", "ce", "cet", "cette", "son", "sa", "ses", "est", "qui",
-    "que", "ou", "se", "s", "m", "m2",
+    "le",
+    "la",
+    "les",
+    "un",
+    "une",
+    "des",
+    "de",
+    "du",
+    "d",
+    "l",
+    "et",
+    "a",
+    "au",
+    "aux",
+    "en",
+    "sur",
+    "pour",
+    "par",
+    "avec",
+    "dans",
+    "ce",
+    "cet",
+    "cette",
+    "son",
+    "sa",
+    "ses",
+    "est",
+    "qui",
+    "que",
+    "ou",
+    "se",
+    "s",
+    "m",
+    "m2",
 }
 
 
@@ -29,11 +61,10 @@ def mots(texte: str) -> list[str]:
 
 
 def bigrammes(texte: str) -> set[tuple[str, str]]:
-    m = mots(texte)
-    return set(zip(m, m[1:]))
+    return set(pairwise(mots(texte)))
 
 
-def jaccard(a: set, b: set) -> float:
+def jaccard(a: set[tuple[str, str]], b: set[tuple[str, str]]) -> float:
     if not a and not b:
         return 0.0
     return len(a & b) / len(a | b)
@@ -47,12 +78,16 @@ def similarite(f1: FicheLot, f2: FicheLot) -> float:
     return round(jaccard(bigrammes(texte_differenciant(f1)), bigrammes(texte_differenciant(f2))), 3)
 
 
-def similarites_paires(fiches: dict[str, FicheLot]) -> list[dict]:
-    resultats = []
+def similarites_paires(fiches: dict[str, FicheLot]) -> list[dict[str, Any]]:
+    resultats: list[dict[str, Any]] = []
     for a, b in combinations(sorted(fiches), 2):
         score = similarite(fiches[a], fiches[b])
-        resultats.append({
-            "paire": f"{a}-{b}", "score": score, "seuil": SEUIL_SIMILARITE,
-            "statut": "OK" if score < SEUIL_SIMILARITE else "ALERTE",
-        })
+        resultats.append(
+            {
+                "paire": f"{a}-{b}",
+                "score": score,
+                "seuil": SEUIL_SIMILARITE,
+                "statut": "OK" if score < SEUIL_SIMILARITE else "ALERTE",
+            }
+        )
     return resultats

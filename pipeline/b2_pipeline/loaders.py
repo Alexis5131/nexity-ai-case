@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from .models import BibliothequeMentions, FluxMBI, Notice
 
@@ -20,9 +21,10 @@ class DonneesDemo:
         return self.racine / relatif
 
 
-def _lire_json(chemin: Path) -> dict:
+def _lire_json(chemin: Path) -> dict[str, Any]:
     with chemin.open(encoding="utf-8") as f:
-        return json.load(f)
+        data: dict[str, Any] = json.load(f)
+        return data
 
 
 def charger_donnees(racine_assets: str | Path) -> DonneesDemo:

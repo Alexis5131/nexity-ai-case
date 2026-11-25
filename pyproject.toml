@@ -1,6 +1,6 @@
 [project]
 name = "nexity-b2-pipeline"
-version = "1.0.0"
+version = "1.1.0"
 description = "Prototype B2 : usine de pages lots differenciees avec garde-fous (cas Nexity.fr, donnees fictives)"
 requires-python = ">=3.11"
 dependencies = [
@@ -11,8 +11,26 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=8"]
+dev = [
+    "mypy>=1.11",
+    "pytest>=8",
+    "ruff>=0.8",
+    "types-defusedxml>=0.7",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["pipeline/tests"]
 pythonpath = ["pipeline"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "pipeline"
+warn_unused_configs = true
+check_untyped_defs = true

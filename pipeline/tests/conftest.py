@@ -1,7 +1,6 @@
 from pathlib import Path
 
 import pytest
-
 from b2_pipeline.loaders import charger_donnees
 
 RACINE = Path(__file__).resolve().parents[2]
@@ -16,7 +15,7 @@ def donnees():
 
 @pytest.fixture(scope="session")
 def lots(donnees):
-    return {l.lot_id: l for l in donnees.flux.lots}
+    return {lot.lot_id: lot for lot in donnees.flux.lots}
 
 
 class FauxClient:

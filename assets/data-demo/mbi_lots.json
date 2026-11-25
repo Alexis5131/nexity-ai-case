@@ -27,7 +27,6 @@
       "tva_reduite_5_5_eligible": false,
       "ptz_eligible": true,
       "surface_habitable_mbi": 63.4,
-      "surface_cartouche_plan_2d": 63.4,
       "exterieur_type": "Terrasse plein ciel",
       "exterieur_m2": 14.0,
       "exposition": "Sud-Ouest (traversant)",
@@ -46,7 +45,6 @@
       "tva_reduite_5_5_eligible": false,
       "ptz_eligible": true,
       "surface_habitable_mbi": 61.2,
-      "surface_cartouche_plan_2d": 61.2,
       "exterieur_type": "Balcon couvert sur jardin intérieur",
       "exterieur_m2": 6.5,
       "exposition": "Sud-Est (calme cœur d'îlot)",
@@ -65,14 +63,12 @@
       "tva_reduite_5_5_eligible": false,
       "ptz_eligible": true,
       "surface_habitable_mbi": 65.0,
-      "surface_cartouche_plan_2d": 61.8,
       "exterieur_type": "Balcon",
       "exterieur_m2": 5.8,
       "exposition": "Ouest",
       "parking_inclus": "1 place sous-sol",
       "description_actuelle_mbi_seloger": "Beau T3 lumineux de 65 m².",
-      "plan_2d_fichier": "plans-2d/lot-B22-T3-ANOMALIE-61.8m2.svg",
-      "note_interne_demo": "PIÈGE DÉMO GARDE-FOU #1 : Écart de -3,2 m² entre MBI (65,0) et Plan 2D (61,8) -> Quarantaine immédiate !"
+      "plan_2d_fichier": "plans-2d/lot-B22-T3-2e-etage-61.8m2.svg"
     },
     {
       "lot_id": "A04",
@@ -84,11 +80,9 @@
       "date_changement_statut": "2026-11-25T08:00:00Z",
       "prix_ttc": 269000,
       "surface_habitable_mbi": 59.5,
-      "surface_cartouche_plan_2d": 59.5,
       "exterieur_type": "Loggia",
       "exterieur_m2": 4.5,
-      "exposition": "Est",
-      "note_interne_demo": "PIÈGE DÉMO GARDE-FOU #3 : Ce lot portait le prix 'à partir de 269 000 €*' de la page programme et vient de passer VENDU -> Alerte mise à jour prix plancher à 279 000 € (Lot B12) !"
+      "exposition": "Est"
     }
   ]
 }

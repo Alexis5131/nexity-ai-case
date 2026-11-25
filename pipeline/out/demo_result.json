@@ -8,13 +8,13 @@
       "genere_le": "2026-11-25T12:00:00+01:00"
     },
     "erreur_initialisation": null,
-    "execute_le": "2026-11-25T11:06:00.744172+00:00",
+    "execute_le": "2026-11-25T12:00:00+01:00",
     "duree_totale_s": 0.0,
     "durees_etapes_s": [
-      0.001,
       0.0,
       0.0,
-      0.001
+      0.0,
+      0.0
     ]
   },
   "programme": {
@@ -122,7 +122,7 @@
       "exposition": "Ouest",
       "parking_inclus": "1 place sous-sol",
       "description_actuelle_mbi_seloger": "Beau T3 lumineux de 65 m².",
-      "plan_2d_fichier": "plans-2d/lot-B22-T3-ANOMALIE-61.8m2.svg",
+      "plan_2d_fichier": "plans-2d/lot-B22-T3-2e-etage-61.8m2.svg",
       "date_changement_statut": null,
       "prix_m2": 4446,
       "lecture_plan": {
@@ -246,76 +246,96 @@
       "depuis": "2026-11-25T08:00:00Z"
     }
   ],
+  "etape3_perimetres": {
+    "T3": {
+      "typologie": "T3",
+      "complet": false,
+      "nb_comparables": 2,
+      "nb_disponibles_flux": 3,
+      "nb_disponibles_programme": 14,
+      "lots_meme_typo_quarantaine": [
+        "B22"
+      ],
+      "formulation_autorisee": "parmi les 2 T3 disponibles vérifiés"
+    }
+  },
   "etape3_singularites": {
     "B31": [
       {
         "code": "DERNIER_ETAGE",
-        "libelle": "Seul T3 disponible au dernier étage",
+        "libelle": "Dernier étage parmi les T3 disponibles vérifiés",
         "valeur": "4e et dernier étage",
         "reference": null,
         "champs": [
           "etage",
           "dernier_etage"
-        ]
+        ],
+        "portee": "echantillon_verifie"
       },
       {
         "code": "PLUS_GRAND_EXTERIEUR",
-        "libelle": "Plus grand extérieur des T3 disponibles",
+        "libelle": "Plus grand extérieur des T3 disponibles vérifiés",
         "valeur": "14,0 m²",
         "reference": "6,5 m² pour le suivant",
         "champs": [
           "exterieur_m2",
           "exterieur_type"
-        ]
+        ],
+        "portee": "echantillon_verifie"
       },
       {
         "code": "TRAVERSANT",
-        "libelle": "Seul T3 disponible traversant",
+        "libelle": "Traversant parmi les T3 disponibles vérifiés",
         "valeur": "Sud-Ouest (traversant)",
         "reference": null,
         "champs": [
           "exposition"
-        ]
+        ],
+        "portee": "echantillon_verifie"
       },
       {
         "code": "PLUS_GRANDE_SURFACE",
-        "libelle": "Plus grande surface des T3 disponibles",
+        "libelle": "Plus grande surface des T3 disponibles vérifiés",
         "valeur": "63,4 m²",
         "reference": null,
         "champs": [
           "surface_habitable_mbi"
-        ]
+        ],
+        "portee": "echantillon_verifie"
       }
     ],
     "B12": [
       {
         "code": "COEUR_ILOT",
-        "libelle": "Seul T3 disponible côté cœur d'îlot",
+        "libelle": "Côté cœur d'îlot parmi les T3 disponibles vérifiés",
         "valeur": "Balcon couvert sur jardin intérieur",
         "reference": null,
         "champs": [
           "exposition",
           "exterieur_type"
-        ]
+        ],
+        "portee": "echantillon_verifie"
       },
       {
         "code": "PRIX_ACCES",
-        "libelle": "Prix le plus bas des T3 disponibles",
+        "libelle": "Prix le plus bas des T3 disponibles vérifiés",
         "valeur": "279 000 €",
         "reference": "312 000 € pour le suivant",
         "champs": [
           "prix_ttc"
-        ]
+        ],
+        "portee": "echantillon_verifie"
       },
       {
         "code": "PRIX_M2",
-        "libelle": "Meilleur prix au m² des T3 disponibles",
+        "libelle": "Meilleur prix au m² des T3 disponibles vérifiés",
         "valeur": "4 559 €/m²",
         "reference": "4 921 €/m² pour le suivant",
         "champs": [
           "prix_ttc",
           "surface_habitable_mbi"
-        ]
+        ],
+        "portee": "echantillon_verifie"
       }
     ]
   },
@@ -326,12 +346,13 @@
       "tentatives": 0,
       "violations": [],
       "erreur": null,
+      "empreinte_contexte": "c0192a3339f5",
       "fiche": {
         "titre": "T3 traversant au 4e et dernier étage, terrasse de 14 m²",
-        "accroche": "Le seul T3 disponible au dernier étage du bâtiment B : un séjour de 27,2 m² qui s'ouvre sur une terrasse plein ciel orientée Sud-Ouest.",
+        "accroche": "Au 4e et dernier étage du bâtiment B, ce T3 traversant prolonge son séjour de 27,2 m² par une terrasse plein ciel orientée Sud-Ouest.",
         "points_forts": [
           {
-            "texte": "Terrasse plein ciel de 14 m², le plus grand extérieur des T3 disponibles (6,5 m² pour le suivant).",
+            "texte": "Terrasse plein ciel de 14 m², le plus grand extérieur des T3 disponibles vérifiés (6,5 m² pour le suivant).",
             "sources": [
               "MBI.exterieur_type",
               "MBI.exterieur_m2",
@@ -339,7 +360,7 @@
             ]
           },
           {
-            "texte": "Logement traversant, exposition principale Sud-Ouest, au 4e et dernier étage.",
+            "texte": "Appartement traversant à exposition Sud-Ouest, situé au 4e et dernier étage parmi les T3 disponibles vérifiés.",
             "sources": [
               "MBI.exposition",
               "MBI.etage",
@@ -393,6 +414,7 @@
         "chiffres_verifies": [
           4.0,
           14.0,
+          4.0,
           27.2,
           14.0,
           6.5,
@@ -429,6 +451,7 @@
           "SING.PLUS_GRAND_EXTERIEUR",
           "SING.TRAVERSANT"
         ],
+        "empreinte_contexte": "c0192a3339f5",
         "violations": 0
       }
     },
@@ -438,12 +461,13 @@
       "tentatives": 0,
       "violations": [],
       "erreur": null,
+      "empreinte_contexte": "77b6381f4af6",
       "fiche": {
         "titre": "T3 de 61,2 m² côté cœur d'îlot, au 1er étage",
-        "accroche": "Exposé Sud-Est et tourné vers le jardin intérieur, c'est le T3 disponible le plus accessible du programme, avec le meilleur prix au m².",
+        "accroche": "Au 1er étage tourné vers le jardin intérieur et exposé Sud-Est, ce T3 affiche le budget d'entrée et le prix au m² les plus accessibles des T3 disponibles vérifiés.",
         "points_forts": [
           {
-            "texte": "Balcon couvert de 6,5 m² ouvert sur le jardin intérieur, en cœur d'îlot.",
+            "texte": "Balcon couvert de 6,5 m² ouvert sur le jardin intérieur calme, côté cœur d'îlot.",
             "sources": [
               "MBI.exterieur_type",
               "MBI.exterieur_m2",
@@ -451,7 +475,7 @@
             ]
           },
           {
-            "texte": "Le prix d'entrée et le meilleur prix au m² parmi les T3 disponibles du programme.",
+            "texte": "Prix d'accès et meilleur prix au m² parmi les T3 disponibles vérifiés aujourd'hui.",
             "sources": [
               "SING.PRIX_ACCES",
               "SING.PRIX_M2"
@@ -503,6 +527,7 @@
         "chiffres_verifies": [
           61.2,
           1.0,
+          1.0,
           6.5,
           25.8,
           11.8,
@@ -535,6 +560,7 @@
           "SING.PRIX_ACCES",
           "SING.PRIX_M2"
         ],
+        "empreinte_contexte": "77b6381f4af6",
         "violations": 0
       }
     }
@@ -542,7 +568,7 @@
   "similarite": [
     {
       "paire": "B12-B31",
-      "score": 0.053,
+      "score": 0.061,
       "seuil": 0.3,
       "statut": "OK"
     }
@@ -560,6 +586,7 @@
   ],
   "productivite": {
     "minutes_manuelles_par_lot": 36,
+    "minutes_relecture_temoin": 4,
     "lots_generes": 2,
     "lots_a_relire": 1
   }

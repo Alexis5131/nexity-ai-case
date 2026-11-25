@@ -29,12 +29,14 @@ class ClientOutil(Protocol):
 
 
 class ClientClaude:
-    def __init__(self, client: Any | None = None, modele: str = MODELE_PAR_DEFAUT, timeout_s: float = 20.0):
+    def __init__(
+        self, client: Any | None = None, modele: str = MODELE_PAR_DEFAUT, timeout_s: float = 20.0
+    ):
         if client is None:
             import anthropic  # import tardif : le mode cache ne depend pas du SDK
 
             client = anthropic.Anthropic(timeout=timeout_s, max_retries=1)
-        self._client = client
+        self._client: Any = client
         self.modele = modele
 
     def appeler_outil(
@@ -49,7 +51,13 @@ class ClientClaude:
             model=self.modele,
             max_tokens=max_tokens,
             system=systeme,
-            tools=[{"name": nom_outil, "description": f"Renvoie le resultat {nom_outil}.", "input_schema": schema}],
+            tools=[
+                {
+                    "name": nom_outil,
+                    "description": f"Renvoie le resultat {nom_outil}.",
+                    "input_schema": schema,
+                }
+            ],
             tool_choice={"type": "tool", "name": nom_outil},
             messages=[{"role": "user", "content": contenu}],
         )

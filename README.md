@@ -1,92 +1,81 @@
-# Prototype B2 : usine de pages lots différenciées (cas nexity.fr)
+# Prototype B2 : usine de pages lots différenciées (`nexity.fr`)
 
-Prototype pédagogique : programme, lots, plans et visuels fictifs. Aucun formulaire actif, aucune donnée collectée.
+Usine back-office qui transforme un flux MBI brut, les plans d'architecte 2D et la notice descriptive VEFA en fiches lots différenciées et vérifiées pour Sulu 3 / `nexity.fr` (données fictives, zéro formulaire actif).
 
-## Lancer la démo (aucune installation)
+```mermaid
+flowchart LR
+    In["Entrees MBI + Plans 2D + Notice"] --> G1["1. Quarantaine Surface (seuil 0,5 m2)"]
+    G1 --> G2["2. Statuts & Prix d'appel"]
+    G2 --> S["3. Singularites & Portee bornee"]
+    S --> LLM["4. Redaction Claude + Controles & Mentions SHA-256"]
+    LLM --> Rev["5. Validation Lot-Temoin -> Sulu 3 / Mobile"]
+```
 
-Ouvrir `demo/index.html` dans Chrome, puis passer en plein écran. Le fichier contient tout : résultat du pipeline, visuels, plans, logos et polices. Il fonctionne sans réseau.
+## Démarrage rapide (`uv`)
 
-| Touche | Action |
-| --- | --- |
-| Espace ou flèche droite | Étape suivante (à l'étape 5 : valide le lot-témoin) |
-| R | Réinitialiser |
-| P | Basculer entre l'annonce portail et la page nexity.fr |
-| L | Changer de lot (B31, B12) |
-
-Le bouton « tout dérouler » enchaîne les 5 étapes seul. Le curseur de l'image se manipule à la souris.
-
-## Scénario de 4 minutes
-
-| Minute | Ce que l'on montre | Étape |
-| --- | --- | --- |
-| 1 | Le programme L'Orée Seine, les 4 lots du flux MBI et leur annonce actuelle d'une ligne. Téléphone en vue « Portail aujourd'hui ». | 0 |
-| 2 | Garde-fou 1 : B22 en quarantaine (plan 61,80 m², MBI 65,00 m²). Garde-fou 2 : A04 vendu, prix d'appel 269 000 € remplacé par 279 000 € (B12). | 1 et 2 |
-| 3 | Singularités calculées avant le modèle, puis rédaction et contrôles : valeurs chiffrées prouvées, notice citée par page, mentions légales hors IA, similarité B12/B31. | 3 et 4 |
-| 4 | Lot-témoin B31 validé. Téléphone : page nexity.fr de B31 (curseur état livré / inspiration), touche L pour B12, touche P pour revenir au portail. | 5 |
-
-## Les trois garde-fous et les risques demandés par le jury
-
-| Risque | Garde-fou dans le prototype | Où le voir |
-| --- | --- | --- |
-| Erreur de l'IA ou donnée fausse | Le cartouche de chaque plan est comparé au MBI (seuil 0,5 m²) et à la somme des pièces ; un lot en écart est mis en quarantaine, rien n'est généré. Tout chiffre du texte doit exister dans le MBI, le plan ou la notice, sinon la fiche est refusée. | Étapes 1 et 4 |
-| Promesse que Nexity ne peut pas tenir | Chaque prestation cite sa clause de notice (page) ; termes interdits (cuisine équipée, vue imprenable, superlatifs) ; le visuel d'ambiance n'est affiché que si le lot a le même type d'extérieur (B12 montre son plan, pas la terrasse). | Étape 4 et téléphone |
-| Risque juridique | Aucun prix ni mention fiscale dans le texte du modèle ; le prix (avec astérisque) est injecté par le code ; les mentions légales sont assemblées par identifiant depuis la bibliothèque validée, avec empreinte vérifiée ; un prix d'appel caduc déclenche une alerte. | Étapes 2 et 4, pied de la page mobile |
-
-## Mode live avec Claude
-
-Par défaut, la démo utilise le **cache de secours** : des fiches pré-générées par Claude pendant la préparation, repassées dans exactement les mêmes contrôles que le mode live. C'est le mode conseillé en salle.
-
-Pour relancer en direct (lecture des plans PNG par Claude Vision et rédaction) :
+Ouvrir directement `demo/index.html` dans Chrome (100 % autonome hors ligne), ou relancer le pipeline et l'assemblage avec `uv` :
 
 ```bash
+# 1. Installer l'environnement et les outils de qualité
 uv sync
+
+# 2. Relancer le pipeline en mode cache déterministe et assembler la démo
+uv run python demo/build_demo.py --run cache
+
+# 3. Mode live avec Claude Vision + Rédaction (repli automatique sur le cache sans clé)
 export ANTHROPIC_API_KEY=sk-ant-...
 export B2_MODELE=claude-sonnet-5-5        # optionnel
 uv run python demo/build_demo.py --run live
 ```
 
-- Sans clé, le mode live bascule seul sur le cache. Pour lancer le pipeline sans reconstruire la démo : `cd pipeline && uv run python -m b2_pipeline.run --mode live`.
-- En cas d'erreur réseau ou de réponse refusée deux fois, le pipeline se replie sur la lecture SVG et sur le cache : la démo ne casse jamais.
-- Un passage live réussi met à jour `pipeline/cache/generation_cache.json`, qui devient le nouveau cache de secours.
-- Le mode live n'a pas pu être testé contre l'API réelle pendant la préparation (pas de clé) : faites un passage avant 20h et relisez le résultat.
-- En production chez Nexity, le même code tourne avec `anthropic.AnthropicBedrock` (région UE), sans autre changement.
+### Raccourcis clavier de la démo
 
-## Tests
+| Touche | Action |
+| :--- | :--- |
+| `Espace` ou `→` | Étape suivante (à l'étape 5 : valide le lot-témoin) |
+| `←` | Revenir à l'étape précédente |
+| `R` | Réinitialiser immédiatement (interrompt aussi « tout dérouler ») |
+| `P` | Basculer entre l'annonce portail et la page `nexity.fr` |
+| `L` | Changer de lot (`B31` ↔ `B12`) |
+| `Z` / `Échap` | Agrandir / refermer le téléphone en mode vidéoprojecteur |
+
+## Scénario de démonstration (4 minutes)
+
+| Minute | Ce que l'on montre | Étape |
+| :---: | :--- | :---: |
+| **1** | Le programme *L'Orée Seine*, les 4 lots du flux MBI et leur annonce actuelle d'une ligne. Téléphone en vue « Portail aujourd'hui ». | `0` |
+| **2** | **Garde-fou 1** : `B22` bloqué en quarantaine (plan `61,80 m²` vs MBI `65,00 m²`). **Garde-fou 2** : `A04` vendu, prix d'appel `269 000 €*` recalculé à `279 000 €*` (`B12`). Les deux panneaux restent visibles ensemble. | `1` et `2` |
+| **3** | Singularités pré-calculées avec **portée bornée à l'échantillon vérifié** et **empreinte liée aux voisins**, puis rédaction et contrôles : chiffres prouvés, notice citée par page, mentions légales hors IA, similarité `B12 / B31` (`6 %`). | `3` et `4` |
+| **4** | Validation du lot-témoin `B31` (1 relecture de ~4 min pour 2 fiches, contre 36 min/lot en manuel). Téléphone : curseur état livré / inspiration, `L` pour `B12` (plan affiché au lieu du visuel terrasse), `P` pour comparer au portail, `Z` pour zoomer sur projecteur. | `5` |
+
+## Garde-fous implémentés face aux risques du jury
+
+| Risque | Garde-fou dans le code | Où le vérifier |
+| :--- | :--- | :--- |
+| **Erreur de l'IA ou donnée MBI fausse** | Comparaison cartouche plan ↔ MBI (seuil `0,5 m²`) et somme des pièces ↔ cartouche ; quarantaine bloquante avant tout appel LLM ; rejet de tout chiffre absent du MBI, du plan ou de la notice. | Étapes `1` et `4`, `guardrails.py`, `generator.py` |
+| **Promesse intenable ou superlatif non prouvé** | **Portée comparative bornée** (`evaluer_perimetre`) : tant que le flux ne couvre pas tout le stock disponible sans voisin en quarantaine (`≥ 3` lots), « le seul / du programme / de la résidence » est interdit. **Empreinte de stock liée aux voisins** (`empreinte_contexte`) : si un voisin passe `VENDU`, les fiches impactées sont invalidées et régénérées. Visuel terrasse masqué sur un lot à balcon (`B12`). | Étapes `3` et `4`, téléphone, `singularity.py`, `generator.py` |
+| **Risque juridique et fiscal** | Zéro prix ni dispositif fiscal dans le texte du modèle ; prix injecté par le code ; mentions légales assemblées par identifiant avec empreinte SHA-256 vérifiée ; alerte immédiate sur prix d'appel « à partir de » caduc. | Étapes `2` et `4`, pied mobile, `legal.py` |
+
+## Newcomer Map
+
+| Chemin | Rôle |
+| :--- | :--- |
+| `pipeline/b2_pipeline/models.py` | Schémas Pydantic du flux MBI, de la notice, des mentions et de `FicheLot` |
+| `pipeline/b2_pipeline/plan_reader.py` | Lecture du cartouche architecte en SVG déterministe ou via Claude Vision (PNG) |
+| `pipeline/b2_pipeline/guardrails.py` | Quarantaine surface (`0,5 m²`), contrôle du prix d'appel et filtrage des lots |
+| `pipeline/b2_pipeline/singularity.py` | Calcul des singularités et évaluation du périmètre de comparaison (`PerimetreComparaison`) |
+| `pipeline/b2_pipeline/generator.py` | Appel Claude (outil forcé), contrôle des chiffres et de la portée, empreinte stock, cache |
+| `pipeline/b2_pipeline/similarity.py` | Similarité Jaccard sur bigrammes hors mots vides (seuil d'alerte `30 %`) |
+| `pipeline/b2_pipeline/legal.py` | Assemblage déterministe des mentions légales et contrôle d'intégrité SHA-256 |
+| `pipeline/b2_pipeline/run.py` | Orchestration de bout en bout, invalidation sur mouvement de stock, sortie déterministe |
+| `demo/template.html` | Studio Sulu 3 en 3 colonnes + aperçu mobile interactif et mode zoom projecteur |
+| `demo/build_demo.py` | Assemblage idempotent de `demo/index.html` autonome hors ligne |
+| `assets/data-demo/mbi_lots.json` | Extrait MBI de 4 lots T3 du programme *L'Orée Seine* |
+
+## Développement et vérifications
 
 ```bash
 uv run pytest
+uv run ruff check . && uv run ruff format --check .
+uv run mypy pipeline demo
 ```
-
-39 tests : lecture des 3 plans, quarantaine B22, recalcul du prix d'appel, singularités, similarité, intégrité des mentions, refus des chiffres inventés, des prix, des termes interdits et des clauses inconnues, nouvel essai après refus, repli sur le cache, mise à jour du cache après un passage live réussi.
-
-## Architecture
-
-```text
-pipeline/b2_pipeline/
-  models.py        schémas des entrées (MBI, notice, mentions) et de la sortie du modèle
-  plan_reader.py   lecture du cartouche : texte SVG (déterministe) ou Claude Vision (PNG)
-  guardrails.py    quarantaine surface, prix d'appel, lots générables
-  singularity.py   indice de singularité intra-programme
-  generator.py     consigne, appel à Claude (outil forcé), contrôles, cache
-  similarity.py    Jaccard sur bigrammes, seuil 30 %
-  legal.py         mentions assemblées par identifiant, empreintes
-  run.py           orchestration et écriture de pipeline/out/demo_result.json
-demo/
-  template.html    interface (3 colonnes et téléphone)
-  build_demo.py    assemble demo/index.html en un seul fichier hors ligne
-```
-
-## Écarts volontaires avec le plan de build
-
-- **Similarité B31 / B12 : 5 %**, valeur calculée sur les textes réels (le plan annonçait 18 %). À reporter dans les slides.
-- **Avantage de la terrasse de B31** : affiché comme « 14,0 m² contre 6,5 m² pour le suivant » (calculé), au lieu du « +65 % » du plan, qui ne correspond à aucun calcul sur les données.
-- **Badge « PTZ possible* »** au lieu de « Éligible PTZ » : l'éligibilité dépend des revenus de l'acheteur, pas du lot.
-- **Plan B22** : dans la copie du projet, le bandeau « CAS TEST DÉMO », le sous-titre « Lot avec écart flux MBI » et le cadre rouge ont été retirés (ils donnaient la réponse). Le PNG a été régénéré à partir du SVG nettoyé.
-- **Le champ `surface_cartouche_plan_2d` du JSON MBI est ignoré** : dans la réalité, le MBI ne connaît pas la surface du plan ; le pipeline la lit sur le plan.
-- **Image de gauche du curseur** étiquetée « État livré (illustration) » : c'est une image générée, pas une photo du logement.
-
-## Limites à assumer en questions
-
-- Les singularités sont calculées sur les T3 disponibles et fiables du flux reçu (2 lots ici) ; en production, sur tous les lots du programme.
-- Le prix d'appel recalculé ne porte que sur les lots du flux de démo.
-- La similarité lexicale ne mesure pas la qualité ; elle détecte les textes copiés d'un lot à l'autre.

@@ -6,14 +6,14 @@
   "lots": {
     "B31": {
       "titre": "T3 traversant au 4e et dernier étage, terrasse de 14 m²",
-      "accroche": "Le seul T3 disponible au dernier étage du bâtiment B : un séjour de 27,2 m² qui s'ouvre sur une terrasse plein ciel orientée Sud-Ouest.",
+      "accroche": "Au 4e et dernier étage du bâtiment B, ce T3 traversant prolonge son séjour de 27,2 m² par une terrasse plein ciel orientée Sud-Ouest.",
       "points_forts": [
         {
-          "texte": "Terrasse plein ciel de 14 m², le plus grand extérieur des T3 disponibles (6,5 m² pour le suivant).",
+          "texte": "Terrasse plein ciel de 14 m², le plus grand extérieur des T3 disponibles vérifiés (6,5 m² pour le suivant).",
           "sources": ["MBI.exterieur_type", "MBI.exterieur_m2", "SING.PLUS_GRAND_EXTERIEUR"]
         },
         {
-          "texte": "Logement traversant, exposition principale Sud-Ouest, au 4e et dernier étage.",
+          "texte": "Appartement traversant à exposition Sud-Ouest, situé au 4e et dernier étage parmi les T3 disponibles vérifiés.",
           "sources": ["MBI.exposition", "MBI.etage", "SING.TRAVERSANT", "SING.DERNIER_ETAGE"]
         },
         {
@@ -38,14 +38,14 @@
     },
     "B12": {
       "titre": "T3 de 61,2 m² côté cœur d'îlot, au 1er étage",
-      "accroche": "Exposé Sud-Est et tourné vers le jardin intérieur, c'est le T3 disponible le plus accessible du programme, avec le meilleur prix au m².",
+      "accroche": "Au 1er étage tourné vers le jardin intérieur et exposé Sud-Est, ce T3 affiche le budget d'entrée et le prix au m² les plus accessibles des T3 disponibles vérifiés.",
       "points_forts": [
         {
-          "texte": "Balcon couvert de 6,5 m² ouvert sur le jardin intérieur, en cœur d'îlot.",
+          "texte": "Balcon couvert de 6,5 m² ouvert sur le jardin intérieur calme, côté cœur d'îlot.",
           "sources": ["MBI.exterieur_type", "MBI.exterieur_m2", "SING.COEUR_ILOT"]
         },
         {
-          "texte": "Le prix d'entrée et le meilleur prix au m² parmi les T3 disponibles du programme.",
+          "texte": "Prix d'accès et meilleur prix au m² parmi les T3 disponibles vérifiés aujourd'hui.",
           "sources": ["SING.PRIX_ACCES", "SING.PRIX_M2"]
         },
         {

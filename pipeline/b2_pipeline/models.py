@@ -23,9 +23,8 @@ class Programme(BaseModel):
 class Lot(BaseModel):
     """Un lot tel qu'il sort du flux MBI.
 
-    Le champ `surface_cartouche_plan_2d` present dans le JSON de demo est
-    volontairement ignore (extra="ignore") : dans la realite, le MBI ne connait
-    pas la surface du plan. Le pipeline la lit sur le plan lui-meme.
+    Tout champ additionnel non reconnu du flux regional est ignore (`extra="ignore"`) :
+    le pipeline lit toujours la surface architecte directement sur le plan de vente.
     """
 
     model_config = ConfigDict(extra="ignore")
