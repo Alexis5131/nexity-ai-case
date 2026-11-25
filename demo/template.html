@@ -624,7 +624,7 @@ const isCache = R.meta.mode_effectif !== "live";
 function renderInputs(){
   const p = R.programme, alerte = R.etape2_prix_appel;
   const prix = (S.step >= 2 && alerte)
-    ? `<span class="val old">${eur(alerte.ancien_prix)}*</span><span class="val new">${eur(alerte.nouveau_prix)}*</span><span class="tag">Mise à jour proposée</span>`
+    ? `<span class="val old">${eur(alerte.ancien_prix)}*</span><span class="val new">${eur(alerte.nouveau_prix)}*</span><span class="tag">${alerte.flux_complet ? "Mise à jour proposée" : "Candidat, à confirmer"}</span>`
     : `<span class="val">${eur(p.prix_a_partir_de_affiche_page_programme)}*</span><span class="muted" style="font-size:11.5px">porté par le lot ${p.lot_portant_prix_appel}</span>`;
   let h = `<div class="prog"><div class="photo" style="background-image:url(${A.facade})"></div><div class="body">
     <div class="cap-fig">Fig. 1 · ${esc(p.id)}</div><h3>${esc(p.nom)}</h3>
@@ -705,7 +705,7 @@ function body2(){
   return `<div class="alertbox w"><div style="flex:1"><h4>Prix «${NBSP}à partir de${NBSP}» caduc sur la page programme</h4>
     <p>${esc(a.motif)}${ex && ex.depuis ? ` le ${paris(ex.depuis)}` : ""}.</p>
     <div class="bigprice"><s>${eur(a.ancien_prix)}*</s><span class="arrow">→</span><span>${eur(a.nouveau_prix)}*</span><span class="arrow">(lot ${a.nouveau_lot})</span></div>
-    <p>Recalculé sur ${esc(a.perimetre)} (lot en quarantaine exclu) · visa juridique requis.</p></div></div>`;
+    <p>Recalculé sur ${esc(a.perimetre)} (lot en quarantaine exclu) · visa juridique requis.${a.flux_complet ? "" : ` <b>Flux partiel : ${eur(a.nouveau_prix)}* est le moins cher des lots reçus, pas un prix définitif. À confirmer sur le flux complet avant publication.</b>`}</p></div></div>`;
 }
 function body3(){
   const cols = Object.entries(R.etape3_singularites).map(([id, ss]) => {
@@ -825,7 +825,7 @@ function logsForStep(n){
   if (n === 2) {
     for (const e of R.etape2_exclus) out.push([`${e.lot_id} statut ${e.statut}${e.depuis ? " depuis le " + paris(e.depuis) : ""} : exclu`, "", "mbi"]);
     const a = R.etape2_prix_appel;
-    if (a) out.push([`prix d’appel ${eur(a.ancien_prix)} caduc, proposé ${eur(a.nouveau_prix)} (${a.nouveau_lot})`, "w", "prix"]);
+    if (a) out.push([`prix d’appel ${eur(a.ancien_prix)} caduc, ${a.flux_complet ? "proposé" : "candidat à confirmer"} ${eur(a.nouveau_prix)} (${a.nouveau_lot})`, "w", "prix"]);
   }
   if (n === 3) {
     const typo = lots[genIds[0]]?.typologie || "T3";

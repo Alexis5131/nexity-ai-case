@@ -237,7 +237,8 @@
     "motif": "Le lot A04 qui porte le prix d'appel est passé au statut VENDU",
     "nouveau_lot": "B12",
     "nouveau_prix": 279000,
-    "perimetre": "2 lot(s) disponible(s) et fiable(s) dans le flux reçu"
+    "perimetre": "2 lot(s) disponible(s) et fiable(s) dans le flux reçu (3 disponible(s) reçus sur 14 au programme)",
+    "flux_complet": false
   },
   "etape2_exclus": [
     {

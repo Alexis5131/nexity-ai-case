@@ -44,6 +44,17 @@ def test_prix_appel_recalcule_apres_vente_de_a04(donnees, lots):
     assert alerte.ancien_lot == "A04" and alerte.ancien_prix == 269000
     assert alerte.nouveau_lot == "B12" and alerte.nouveau_prix == 279000
     assert "VENDU" in alerte.motif
+    # Flux partiel (lots recus < lots disponibles au programme) : prix = candidat seulement
+    assert alerte.flux_complet is False
+    assert "sur" in alerte.perimetre
+
+
+def test_prix_appel_definitif_si_flux_complet(donnees, lots):
+    prog = donnees.flux.programme.model_copy(
+        update={"nb_lots_disponibles": sum(1 for lot in lots.values() if lot.disponible)}
+    )
+    alerte = controler_prix_appel(prog, list(lots.values()), {"B22"})
+    assert alerte is not None and alerte.flux_complet is True
 
 
 def test_lot_en_quarantaine_exclu_du_prix_appel(donnees, lots):

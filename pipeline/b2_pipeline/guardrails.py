@@ -37,6 +37,7 @@ class AlertePrixAppel:
     nouveau_lot: str | None
     nouveau_prix: int | None
     perimetre: str
+    flux_complet: bool = True  # False : le nouveau prix n'est qu'un candidat a confirmer
 
 
 def controler_surface(
@@ -100,13 +101,20 @@ def controler_prix_appel(
     else:
         return None
 
+    nb_dispo_flux = sum(1 for lot in lots if lot.disponible)
+    flux_complet = nb_dispo_flux >= programme.nb_lots_disponibles
     return AlertePrixAppel(
         ancien_lot=programme.lot_portant_prix_appel,
         ancien_prix=affiche,
         motif=motif,
         nouveau_lot=meilleur.lot_id if meilleur else None,
         nouveau_prix=meilleur.prix_ttc if meilleur else None,
-        perimetre=f"{len(candidats)} lot(s) disponible(s) et fiable(s) dans le flux reçu",
+        perimetre=(
+            f"{len(candidats)} lot(s) disponible(s) et fiable(s) dans le flux reçu "
+            f"({nb_dispo_flux} disponible(s) reçus sur {programme.nb_lots_disponibles} "
+            "au programme)"
+        ),
+        flux_complet=flux_complet,
     )
 
 
