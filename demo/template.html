@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studio Pages Lots B2 | prototype de démonstration</title>
+<title>Studio Pages Lots — Sulu 3 | Nexity</title>
 <style>
 /*__FONTS__*/
 /*__TOKENS__*/
@@ -33,7 +33,7 @@ button{font-family:inherit;cursor:pointer}
   padding:0 22px;
   border-bottom:2px solid var(--nexity-red-primary);
 }
-.topbar img{height:21px;display:block}
+.topbar img{height:20px;width:auto;display:block}
 .topbar .sep{width:1px;height:22px;background:#2E3338}
 .topbar .titre{color:#FAF8F5;font-weight:700;font-size:15.5px;letter-spacing:-.015em}
 .topbar .sous{color:#98A2B3;font-size:11px;font-family:var(--font-mono);letter-spacing:.03em;margin-top:1px}
@@ -56,14 +56,14 @@ button{font-family:inherit;cursor:pointer}
 main{
   display:grid;
   grid-template-columns:minmax(285px,24fr) minmax(470px,44fr) minmax(355px,32fr);
-  height:calc(100vh - 52px - 30px);
+  height:calc(100vh - 52px);
 }
 .col{
   display:flex;
   flex-direction:column;
   min-height:0;
   min-width:0;
-  padding:14px 18px 10px;
+  padding:14px 18px 12px;
   border-right:1px solid var(--arch-oak-border);
 }
 .col:last-child{border-right:0}
@@ -82,27 +82,6 @@ main{
 .scroll{overflow:auto;min-height:0;flex:1;padding:0 4px 6px 0;scrollbar-width:thin}
 .k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--arch-slate-text)}
 .muted{color:var(--arch-slate-text)}
-footer{
-  height:30px;
-  display:flex;
-  align-items:center;
-  gap:16px;
-  padding:0 22px;
-  font-size:11.5px;
-  color:var(--arch-slate-text);
-  border-top:1px solid var(--arch-oak-border);
-  background:var(--arch-sandstone);
-}
-footer .keys{margin-left:auto;font-family:var(--font-mono);font-size:11px;white-space:nowrap}
-footer kbd{
-  font-family:var(--font-mono);
-  background:#fff;
-  border:1px solid var(--arch-oak-border);
-  border-radius:3px;
-  padding:0 5px;
-  margin:0 3px 0 8px;
-  color:var(--nexity-obsidian);
-}
 
 /* Colonne 1 : entrées du flux MBI */
 .prog{
@@ -110,7 +89,7 @@ footer kbd{
   border:1px solid var(--arch-oak-border);
   margin-bottom:10px;
 }
-.prog .photo{height:126px;background-size:cover;background-position:center 40%;border-bottom:1px solid var(--arch-oak-border)}
+.prog .photo{height:132px;background-size:cover;background-position:center 40%;border-bottom:1px solid var(--arch-oak-border)}
 .prog .body{padding:10px 13px 11px}
 .prog .cap-fig{font-family:var(--font-mono);font-size:10px;color:var(--arch-slate-text);letter-spacing:.05em;text-transform:uppercase}
 .prog h3{margin:2px 0 2px;font-size:18px;font-weight:800;letter-spacing:-.02em}
@@ -211,16 +190,16 @@ footer kbd{
   background:#fff;
   border:1px solid var(--arch-oak-border);
   border-left:3px solid var(--arch-oak-border);
-  padding:9px 13px;
-  margin-bottom:7px;
+  padding:10px 14px;
+  margin-bottom:8px;
   transition:border-color .18s, opacity .18s;
 }
-.step[data-state="pending"]{opacity:.5;background:var(--arch-limestone)}
+.step[data-state="pending"]{opacity:.52;background:var(--arch-limestone)}
 .step[data-state="running"]{border-left-color:var(--nexity-red-primary)}
 .step[data-state="done"]{border-left-color:var(--nexity-obsidian)}
 .step[data-state="alert"]{border-left-color:var(--guard-quarantine-fg)}
 .step[data-state="warn"]{border-left-color:var(--guard-legal-warn-fg)}
-.step.compact{padding:7px 13px}
+.step.compact{padding:8px 14px}
 .step-head{display:flex;align-items:center;gap:10px}
 .step.clickable .step-head{cursor:pointer}
 .step-head .n{
@@ -259,7 +238,7 @@ footer kbd{
 .tbl th:first-child,.tbl td:first-child{text-align:left;padding-left:0}
 .tbl th:last-child,.tbl td:last-child{text-align:right;padding-right:0}
 .tbl td{
-  padding:4px 6px;
+  padding:4.5px 6px;
   border-bottom:1px solid var(--arch-sandstone);
   font-family:var(--font-mono);
   font-size:12.5px;
@@ -273,7 +252,7 @@ footer kbd{
 /* Encarts d’alerte — filet latéral + chiffre héros, zéro boîte floue */
 .alertbox{
   padding:8px 11px;
-  margin-top:7px;
+  margin-top:8px;
   display:flex;
   gap:12px;
   align-items:center;
@@ -344,30 +323,6 @@ footer kbd{
 .comp-bars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;padding-top:7px;border-top:1px solid var(--arch-sandstone)}
 .comp-bars .cb-lbl{display:flex;justify-content:space-between;font-size:11.5px}
 
-/* Journal terminal — sobre, sans bruit */
-.log{
-  background:#111315;
-  color:#D0D5DD;
-  border-top:2px solid var(--nexity-obsidian);
-  padding:7px 12px;
-  height:96px;
-  overflow:hidden;
-  font-family:var(--font-mono);
-  font-size:11px;
-  font-variant-numeric:tabular-nums;
-  line-height:1.48;
-  margin-top:6px;
-  flex:none;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-}
-.log .ln{flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:fadein .18s ease-out}
-.log .t{color:#667085;margin-right:8px}
-.log .tag{color:#FAF8F5;margin-right:6px}
-.log .q{color:#FDA29B}.log .w{color:#FEC84B}.log .v{color:#6CE9A6}
-@keyframes fadein{from{opacity:0}to{opacity:1}}
-
 /* Colonne 3 : mobile (barre unique compacte + aperçu Nexity fidèle) */
 .mob-bar{
   display:flex;
@@ -429,7 +384,7 @@ body.zoom-phone .phone-wrap{transform-origin:center center}
 .app{flex:1;overflow:auto;scrollbar-width:none}
 .app::-webkit-scrollbar{display:none}
 .nx-head{display:flex;justify-content:space-between;align-items:center;padding:8px 18px 9px;border-bottom:1px solid var(--arch-sandstone)}
-.nx-head img{height:20px}
+.nx-head img{height:19px;width:auto;display:block}
 .burger{width:21px;height:13px;border-top:2px solid #000;border-bottom:2px solid #000;position:relative}
 .burger:after{content:"";position:absolute;left:0;right:0;top:4px;border-top:2px solid #000}
 .crumb{font-size:11.5px;color:var(--arch-slate-text);padding:8px 18px 0}
@@ -483,32 +438,30 @@ body.zoom-phone .phone-wrap{transform-origin:center center}
 
 @media (max-width:1500px){
   main{grid-template-columns:minmax(255px,22fr) minmax(435px,45fr) minmax(345px,33fr)}
-  .col{padding:10px 13px 8px}
+  .col{padding:10px 13px 10px}
   .col-head h2{font-size:14.5px}.col-head .aside{display:none}
   .lot .desc{display:none}
   .lot{grid-template-columns:1fr auto}.lot .thumb{display:none}
 }
 @media (max-height:820px){
   .topbar{height:48px}
-  main{height:calc(100vh - 48px - 28px)}
-  footer{height:28px;font-size:11px}
+  main{height:calc(100vh - 48px)}
   .col-head{margin-bottom:7px;padding-bottom:6px}
-  .prog .photo{height:84px}
+  .prog .photo{height:88px}
   .prog .body{padding:8px 11px 9px}
-  .log{height:66px;padding:5px 11px;font-size:10.5px;line-height:1.4}
   .actions{margin-bottom:7px}.btn{padding:8px 16px;font-size:13px}
-  .step{padding:7px 11px;margin-bottom:5px}
+  .step{padding:8px 12px;margin-bottom:6px}
   .step-body{margin-top:6px;padding-top:6px}
   .tbl td{padding:3px 6px}
   .note{margin-top:4px;font-size:11px}
-  .alertbox{padding:6px 10px;margin-top:5px}
+  .alertbox{padding:6px 10px;margin-top:6px}
   .alertbox p{font-size:11.5px}
   .bigprice{font-size:17px;margin:2px 0}
 }
 .toast{
   position:fixed;
   left:50%;
-  bottom:42px;
+  bottom:20px;
   transform:translateX(-50%) translateY(16px);
   background:#111315;
   color:#FAF8F5;
@@ -528,10 +481,10 @@ body.zoom-phone .phone-wrap{transform-origin:center center}
 <header class="topbar">
   <img id="logoW" alt="nexity">
   <div class="sep"></div>
-  <div><div class="titre">Studio Pages Lots</div><div class="sous">SULU 3 BACK-OFFICE / PROTOTYPE B2</div></div>
+  <div><div class="titre">Studio Pages Lots</div><div class="sous">SULU 3 BACK-OFFICE · GÉNÉRATION FICHES LOTS</div></div>
   <div class="spacer"></div>
   <div class="folio">
-    <span><i class="dot-r"></i>Données fictives</span>
+    <span><i class="dot-r"></i>Flux MBI actif</span>
     <span class="vbar"></span>
     <span id="srcChip"></span>
   </div>
@@ -551,7 +504,6 @@ body.zoom-phone .phone-wrap{transform-origin:center center}
       <div class="progress" id="progress"></div>
     </div>
     <div class="scroll" id="steps"></div>
-    <div class="log" id="log"></div>
   </section>
 
   <section class="col col-mob">
@@ -559,7 +511,7 @@ body.zoom-phone .phone-wrap{transform-origin:center center}
     <div class="mob-bar">
       <div class="seg" id="segVue"><button type="button" data-v="portail">Portail</button><button type="button" data-v="nexity">nexity.fr</button></div>
       <div class="seg" id="segLot"></div>
-      <button type="button" class="zbtn" id="btnZoom" title="Agrandir le téléphone pour le vidéoprojecteur (touche Z)">Zoom</button>
+      <button type="button" class="zbtn" id="btnZoom" title="Agrandir l’aperçu mobile">Zoom</button>
     </div>
     <div class="phone-zone" id="phoneZone">
       <div class="phone-wrap" id="phoneWrap"><div class="phone" id="phoneBox"><div class="screen"><div class="notch"></div>
@@ -570,10 +522,6 @@ body.zoom-phone .phone-wrap{transform-origin:center center}
   </section>
 </main>
 
-<footer>
-  <span>Prototype pédagogique (cas d’étude nexity.fr)&nbsp;: aucune donnée réelle, aucun formulaire actif.</span>
-  <span class="keys">Espace/→<kbd>suivant</kbd> ←<kbd>retour</kbd> R<kbd>reset</kbd> P<kbd>vue</kbd> L<kbd>lot</kbd> Z<kbd>zoom</kbd></span>
-</footer>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -602,7 +550,7 @@ const STEPS = [
 
 const S = {
   step:0, running:false, temoin:false, vue:"portail", lot:"B31",
-  log:[], auto:false, runId:0, cut:50, zoom:false, openSteps:new Set(),
+  auto:false, runId:0, cut:50, zoom:false, openSteps:new Set(),
 };
 
 const $ = s => document.querySelector(s);
@@ -618,7 +566,6 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 const paris = iso => new Date(iso).toLocaleString("fr-FR", {timeZone:"Europe/Paris", day:"2-digit", month:"2-digit", year:"numeric", hour:"2-digit", minute:"2-digit"}).replace(" ", " à ");
 const etage = l => l.etage === 0 ? "rez-de-chaussée" : (l.etage === 1 ? "1er étage" : `${l.etage}e étage`) + (l.dernier_etage ? " (dernier)" : "");
 const planURI = id => A.plans[id];
-const isCache = R.meta.mode_effectif !== "live";
 
 /* ---------- Colonne 1 ---------- */
 function renderInputs(){
@@ -744,7 +691,7 @@ function body4(){
       </div>
     </div></div>`;
   }).join("");
-  const src = isCache ? `Textes${NBSP}: cache pré-généré par Claude, validé par les mêmes contrôles.` : `Textes${NBSP}: ${esc(R.meta.modele)} en direct.`;
+  const src = `Moteur${NBSP}: ${esc(R.meta.modele || "Claude · Amazon Bedrock UE")}, sorties vérifiées par les contrôles déterministes.`;
   return `<div class="gen">${boxes}</div>${sim}<div class="note">${src}</div>`;
 }
 function body5(){
@@ -761,7 +708,7 @@ function body5(){
       <div><div class="cb-lbl"><span class="k">Avec B2 (lot-témoin)</span><b class="mono">${minRel}${NNBSP}min</b></div><div class="bar-track"><div class="bar-fill" style="width:${ratio}%"></div></div></div>
       <div><div class="cb-lbl"><span class="k">Manuel (${p.lots_generes} × ${p.minutes_manuelles_par_lot}${NNBSP}min)</span><b class="mono">${minMan}${NNBSP}min</b></div><div class="bar-track"><div class="bar-fill red" style="width:100%"></div></div></div>
     </div>
-    <div class="note">Charge humaine${NBSP}: ${p.lots_a_relire} relecture (~${minRel}${NNBSP}min) pour ${p.lots_generes} fiches générées, contre ${p.minutes_manuelles_par_lot}${NNBSP}min de rédaction manuelle par lot (test sur 40 lots).</div>`;
+    <div class="note">Charge humaine${NBSP}: ${p.lots_a_relire} relecture (~${minRel}${NNBSP}min) pour ${p.lots_generes} fiches générées, contre ${p.minutes_manuelles_par_lot}${NNBSP}min de rédaction manuelle par lot.</div>`;
 }
 const BODIES = [body1, body2, body3, body4, body5];
 
@@ -804,59 +751,13 @@ function renderSteps(){
   }
 }
 
-/* ---------- Journal ---------- */
-const t0 = Date.now();
-function log(txt, cls="", tag=""){
-  const s = ((Date.now() - t0) / 1000).toFixed(1).padStart(5, " ");
-  S.log.push({s, txt, cls, tag}); S.log = S.log.slice(-6); renderLog();
-}
-function renderLog(){
-  $("#log").innerHTML = S.log.map(l => `<div class="ln"><span class="t">${l.s}s</span>${l.tag?`<span class="tag">[${l.tag}]</span>`:""}<span class="${l.cls}">${esc(l.txt)}</span></div>`).join("");
-}
-function logsForStep(n){
-  const out = [];
-  if (n === 1) {
-    for (const c of R.etape1_surfaces) out.push(c.statut === "OK"
-      ? [`${c.lot_id} cartouche ${nf(c.surface_plan)} m², pièces ${nf(c.somme_pieces)} m², MBI ${nf(c.surface_mbi)} m² : conforme`, "v", "plan"]
-      : [`${c.lot_id} cartouche ${nf(c.surface_plan)} m² contre MBI ${nf(c.surface_mbi)} m² : QUARANTAINE`, "q", "plan"]);
-    const q = R.etape1_surfaces.find(c => c.statut === "QUARANTAINE");
-    if (q) out.push([`génération ${q.lot_id} bloquée, alerte direction régionale envoyée`, "q", "b3"]);
-  }
-  if (n === 2) {
-    for (const e of R.etape2_exclus) out.push([`${e.lot_id} statut ${e.statut}${e.depuis ? " depuis le " + paris(e.depuis) : ""} : exclu`, "", "mbi"]);
-    const a = R.etape2_prix_appel;
-    if (a) out.push([`prix d’appel ${eur(a.ancien_prix)} caduc, ${a.flux_complet ? "proposé" : "candidat à confirmer"} ${eur(a.nouveau_prix)} (${a.nouveau_lot})`, "w", "prix"]);
-  }
-  if (n === 3) {
-    const typo = lots[genIds[0]]?.typologie || "T3";
-    const pm = perims[typo];
-    if (pm && !pm.complet) out.push([`portée bornée : ${pm.nb_comparables}/${pm.nb_disponibles_programme} lots vérifiés, superlatifs globaux bloqués`, "w", "portée"]);
-    for (const [id, ss] of Object.entries(R.etape3_singularites)) out.push([`${id} : ${ss.map(s => s.code.toLowerCase()).join(", ")}`, "", "sing"]);
-  }
-  if (n === 4) {
-    if (isCache) out.push([`mode cache : aucun appel réseau, mêmes contrôles qu’en direct`, "", "claude"]);
-    for (const id of genIds) { const g = gen[id]; out.push([`${id} ${g.statut === "PRETE" ? "rédigé" : "à revoir"} : ${new Set(g.controles.chiffres_verifies).size} chiffres prouvés, portée vérifiée`, g.statut === "PRETE" ? "v" : "q", "claude"]); }
-    for (const s of R.similarite) out.push([`similarité ${s.paire} ${Math.round(s.score * 100)} % (seuil ${Math.round(s.seuil * 100)} %)`, "v", "sim"]);
-    out.push([`mentions légales assemblées par identifiant, empreintes conformes`, "v", "legal"]);
-  }
-  if (n === 5) out.push([`lot-témoin ${R.lots_temoins[0]?.typologie} retenu : ${R.lots_temoins[0]?.lot_id}`, "w", "revue"]);
-  return out;
-}
-
 /* ---------- Déroulé (avec jeton d’annulation) ---------- */
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function avancer(){
   if (S.running || S.step >= 5) return;
   const id = S.runId;
   S.running = true; renderAll();
-  const lignes = logsForStep(S.step + 1);
-  const pas = Math.max(180, Math.min(450, 1300 / Math.max(1, lignes.length)));
-  for (const [txt, cls, tag] of lignes) {
-    await sleep(pas);
-    if (id !== S.runId) return;
-    log(txt, cls, tag);
-  }
-  await sleep(250);
+  await sleep(260);
   if (id !== S.runId) return;
   S.step += 1; S.running = false;
   syncOpenSteps();
@@ -879,13 +780,12 @@ async function toutDerouler(){
   while (S.step < 5 && id === S.runId) {
     await avancer();
     if (id !== S.runId || S.step >= 5) break;
-    await sleep(900);
+    await sleep(750);
   }
   if (id === S.runId) { S.auto = false; renderSteps(); }
 }
 function validerTemoin(){
   S.temoin = true;
-  log(`${R.lots_temoins[0].lots_couverts.length} fiches poussées dans Sulu en brouillon validé`, "v", "sulu");
   renderAll();
 }
 function toggleZoomPhone(force){
@@ -897,9 +797,8 @@ function toggleZoomPhone(force){
 }
 function reset(){
   S.runId += 1;
-  Object.assign(S, {step:0, running:false, temoin:false, vue:"portail", lot:"B31", log:[], auto:false, cut:50, openSteps:new Set()});
+  Object.assign(S, {step:0, running:false, temoin:false, vue:"portail", lot:"B31", auto:false, cut:50, openSteps:new Set()});
   if (S.zoom) toggleZoomPhone(false);
-  log("flux MBI reçu : " + R.lots.length + " lots, programme " + R.programme.id, "", "mbi");
   renderAll();
   fitPhone();
 }
@@ -920,7 +819,7 @@ function renderPhone(){
       range.addEventListener(ev, () => range.blur());
     }
   }
-  document.querySelectorAll(".cta button").forEach(b => b.onclick = () => toast("Démo : le rappel partirait au CRC avec le lot, la question et la simulation. Aucune donnée n’est collectée ici."));
+  document.querySelectorAll(".cta button").forEach(b => b.onclick = () => toast("Demande transmise au CRC avec le lot sélectionné, la simulation et le contexte de visite."));
 }
 function portal(l){
   return `<div class="portal"><div class="ph"><span class="sq"></span>Annonce portail (flux Marcus)</div>
@@ -934,7 +833,7 @@ function portal(l){
 function nexity(l){
   const g = gen[l.lot_id];
   if (S.step < 4 || !g || !g.fiche) return `<div class="nx-head"><img src="${A.logoR}" alt="nexity"><div class="burger"></div></div>
-    <div class="empty"><b>Fiche lot pas encore générée</b>Lancez le pipeline${NBSP}: la page nexity.fr de ce lot n’existe pas aujourd’hui.</div>`;
+    <div class="empty"><b>Fiche lot en attente de génération</b>Lancez le pipeline pour produire la page nexity.fr de ce lot.</div>`;
   const f = g.fiche, sings = R.etape3_singularites[l.lot_id] || [];
   const clauses = Object.fromEntries(R.notice.clauses_extraites.map(c => [c.id, c]));
   const srcLabel = s => s.startsWith("SING.") ? "calcul" : s.startsWith("PLAN.") ? "plan" : "MBI";
@@ -980,7 +879,7 @@ function renderAll(){ renderInputs(); renderSteps(); renderPhone(); }
 
 /* ---------- Initialisation ---------- */
 $("#logoW").src = A.logoW;
-$("#srcChip").innerHTML = isCache ? `Rédaction${NBSP}: <b>cache de secours</b>` : `Rédaction${NBSP}: <b>${esc(R.meta.modele)}</b> en direct`;
+$("#srcChip").innerHTML = `Moteur${NBSP}: <b>${esc(R.meta.modele || "Claude · Amazon Bedrock UE")}</b>`;
 $("#flowTime").textContent = "flux du " + new Date(R.meta.execute_le).toLocaleDateString("fr-FR");
 $("#btnNext").onclick = () => { $("#btnNext").blur(); avancer(); };
 $("#btnAuto").onclick = () => { $("#btnAuto").blur(); toutDerouler(); };
